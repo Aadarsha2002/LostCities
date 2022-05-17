@@ -32,6 +32,6 @@ public class player {
                 cards.add(c);
             }
         }
-        return cards;
+        return;
     }
 }
