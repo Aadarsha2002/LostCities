@@ -8,23 +8,9 @@ Holds:
 */
 
 public class player {
-    private ArrayList<card> hand;
+    private ArrayList<cards> hand;
 
-    public void display() {
-        System.out.println(hand.toString());
-    }
-
-    // adds a card to the hand
-    public void addCard(card c) {
-        hand.add(c);
-    }
-
-    // removes a card from the hand
-    public void getCard(card c) {
-        hand.remove(c);
-    }
-
-    //returns all cards of requested color
+    // returns all cards of requested color
     public ArrayList<card> getCardsbyColor(Color col) {
         ArrayList<card> cards;
         for (card c : hand) {
@@ -32,6 +18,6 @@ public class player {
                 cards.add(c);
             }
         }
-        return;
+        return cards;
     }
 }
