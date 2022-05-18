@@ -10,6 +10,5 @@ public class LostCities {
         cards white_discard = new cards('D');
         cards green_discard = new cards('D');
         cards red_discard = new cards('D');
-        
     }
 }

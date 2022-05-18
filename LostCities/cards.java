@@ -53,7 +53,7 @@ public class cards {
     }
 
     public ArrayList<card> getCardsbyColor(Color col) {
-        ArrayList<card> c1;
+        ArrayList<card> c1 = new ArrayList<card>();
         for (card c : cards) {
             if (c.getCardColor() == col) {
                 c1.add(c);
@@ -81,7 +81,7 @@ public class cards {
     }
 
     public boolean sort() {
-        ArrayList<card> sorted_cards;
+        ArrayList<card> sorted_cards = new ArrayList<card>();
         for (int i = 0; i < col.length && !is_discard_pile; i++) {
             ArrayList<card> c = getCardsbyColor(col[i]);
             // sort c

@@ -9,4 +9,9 @@ Holds:
 
 public class player {
     private cards hand;
+    private cards placed_down;
+
+    public cards showHand() {
+        return placed_down;
+    }
 }
