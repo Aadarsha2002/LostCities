@@ -21,10 +21,11 @@ public class LostCities {
                 p2.addCard(c);
         }
 
+        undealt.display();
+        p1.display();
+        p2.display();
+
         while (!undealt.isEmpty()) {
-            undealt.display();
-            p1.display();
-            p2.display();
         }
 
     }

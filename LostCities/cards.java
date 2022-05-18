@@ -45,7 +45,11 @@ public class cards {
 
     // Display the cards
     public void display() {
-        System.out.println(cards.toString());
+        System.out.print("[");
+        for (card c : cards) {
+            System.out.print(c.getCardColor().toString() + c.getCardNumber() + ", ");
+        }
+        System.out.println("]");
     }
 
     // Add a card to the cards
@@ -115,18 +119,20 @@ public class cards {
     // Sort the cards (if not discard pile) according to numbers in each color
     public void sort() {
         ArrayList<card> sorted_cards = new ArrayList<card>();
-        for (int i = 0; i < col.length && !is_discard_pile; i++) {
-            ArrayList<card> c = getCardsbyColor(col[i]);
+        for (int x = 0; x < col.length && !is_discard_pile; x++) {
+            ArrayList<card> c = getCardsbyColor(col[x]);
             // sort c
-            for (int j = 0; j < c.size() - 1; j++) {
-                int min_card_index = j;
-                for (int k = j + 1; k < c.size(); k++) {
-                    if (c.get(k).getCardNumber() < c.get(min_card_index).getCardNumber())
-                        min_card_index = k;
+            for (int i = 0; i < c.size() - 1; i++) {
+                int min_card_index = i;
+                for (int j = i + 1; j < c.size(); j++) {
+                    if (c.get(j).getCardNumber() < c.get(min_card_index).getCardNumber())
+                        min_card_index = j;
                 }
                 card temp = c.get(min_card_index);
-                c.add(min_card_index, c.get(j));
-                c.add(j, temp);
+                c.remove(min_card_index);
+                c.add(min_card_index, c.get(i));
+                c.remove(i);
+                c.add(i, temp);
             }
             // append c to sorted_cards
             appendCards(sorted_cards, c);
