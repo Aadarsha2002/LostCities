@@ -66,6 +66,7 @@ public class cards {
         cards.remove(c);
     }
 
+    // checks whether a specific card exists in the cards
     public boolean hasCard(card c) {
         return cards.indexOf(c) != -1;
     }
