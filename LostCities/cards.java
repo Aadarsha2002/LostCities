@@ -47,7 +47,7 @@ public class cards {
     public void display() {
         System.out.print("[");
         for (card c : cards) {
-            System.out.print(c.getCardColor().toString() + c.getCardNumber() + ", ");
+            System.out.print(c.getCardNumber() + ", ");
         }
         System.out.println("]");
     }
