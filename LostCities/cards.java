@@ -49,13 +49,13 @@ public class cards {
     }
 
     public ArrayList<card> getCardsbyColor(Color col) {
-        ArrayList<card> c;
-        for (card card : cards) {
-            if (card.getCardColor() == col) {
-                c.add(card);
+        ArrayList<card> c1;
+        for (card c : cards) {
+            if (c.getCardColor() == col) {
+                c1.add(c);
             }
         }
-        return c;
+        return c1;
     }
 
     public void makeUndealtCardsPile() {
@@ -68,35 +68,23 @@ public class cards {
 
     public boolean sort() {
         ArrayList<card> sorted_cards;
-        for (int i = 0; i < col.length; i++) {
+        for (int i = 0; i < col.length && !is_discard_pile; i++) {
             ArrayList<card> c = getCardsbyColor(col[i]);
-            for (int j = 0; i < c.size() - 1; i++) {
-                int min_card_index = i;
-                for (int k = i + 1; j < c.size(); j++) {
-                    if (c.get(j).getCardNumber() < c.get(min_card_index).getCardNumber())
-                        min_card_index = j;
+            // sort c
+            for (int j = 0; j < c.size() - 1; j++) {
+                int min_card_index = j;
+                for (int k = j + 1; k < c.size(); k++) {
+                    if (c.get(k).getCardNumber() < c.get(min_card_index).getCardNumber())
+                        min_card_index = k;
                 }
                 card temp = c.get(min_card_index);
-                c.add(min_card_index, c.get(i));
-                c.add(i, temp);
+                c.add(min_card_index, c.get(j));
+                c.add(j, temp);
             }
+            // append c to sorted_cards
+            appendCards(sorted_cards, c);
         }
 
-        if (checkAllSameColor()) {
-            for (int i = 0; i < cards.size() - 1; i++) {
-                int min_card_index = i;
-                for (int j = i + 1; j < cards.size(); j++) {
-                    if (cards.get(j).getCardNumber() < cards.get(min_card_index).getCardNumber())
-                        min_card_index = j;
-                }
-                card temp = cards.get(min_card_index);
-                cards.add(min_card_index, cards.get(i));
-                cards.add(i, temp);
-            }
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private boolean checkAllSameColor() {
@@ -109,10 +97,10 @@ public class cards {
         return true;
     }
 
-    private ArrayList<card> appendCards(ArrayList<card> c1, ArrayList<card> c2) {
-        for (card c : c2) {
-            c1.add(c);
+    private ArrayList<card> appendCards(ArrayList<card> to, ArrayList<card> from) {
+        for (card c : from) {
+            to.add(c);
         }
-        return c1;
+        return to;
     }
 }
