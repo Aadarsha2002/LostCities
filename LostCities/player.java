@@ -12,6 +12,8 @@ public class player {
     private cards placed_down;
 
     public player() {
+        hand = new cards();
+        placed_down = new cards();
     }
 
     public void display() {
