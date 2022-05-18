@@ -50,9 +50,8 @@ public class cards {
 
     // Add a card to the cards
     public void addCard(card c) {
-        if (is_discard_pile) {
-            if (c.getCardColor() == cards.get(0).getCardColor())
-                cards.add(c);
+        if (is_discard_pile && c.getCardColor() == cards.get(0).getCardColor()) {
+            cards.add(c);
         } else if (!is_undealtCards) {
             cards.add(c);
             sort();
@@ -89,14 +88,14 @@ public class cards {
          * col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
          * num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
          */
-        for (int i = 0; i < col.length; i++) {
+        for (Color c : col) {
             // add normal number cards
-            for (int j = 1; j < num.length; j++) {
-                addCard(new card(num[j], col[i]));
+            for (int n : num) {
+                addCard(new card(n, c));
             }
             // add handshake cards
             for (int j = 0; j < 3; j++) {
-                addCard(new card(num[0], col[i]));
+                addCard(new card(num[0], c));
             }
         }
         shuffleCards();
