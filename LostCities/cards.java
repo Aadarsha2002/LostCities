@@ -1,6 +1,9 @@
 package LostCities;
 
 import java.util.ArrayList;
+
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
+
 import java.awt.*;
 
 /*
@@ -34,6 +37,9 @@ public class cards {
         if (is_discard_pile) {
             if (c.getCardColor() == cards.get(0).getCardColor())
                 cards.add(c);
+        } else if (!is_undealtCards) {
+            cards.add(c);
+            sort();
         } else {
             cards.add(c);
         }
@@ -64,6 +70,10 @@ public class cards {
     }
 
     public boolean sort() {
+        for (int i = 0; i < cards.size(); i++) {
+            
+        }
+
         if (checkAllSameColor()) {
             for (int i = 0; i < cards.size() - 1; i++) {
                 int min_card_index = i;
