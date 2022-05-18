@@ -1,9 +1,6 @@
 package LostCities;
 
 import java.util.ArrayList;
-
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-
 import java.awt.*;
 
 /*
@@ -15,6 +12,8 @@ public class cards {
     private ArrayList<card> cards;
     private boolean is_discard_pile;
     private boolean is_undealtCards;
+    static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     public cards(char c) {
         if (c == 'U' || c == 'u') {
@@ -60,8 +59,6 @@ public class cards {
     }
 
     public void makeUndealtCardsPile() {
-        Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-        int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         for (int i = 0; i < col.length; i++) {
             for (int j = 0; j < num.length - 1; j++) {
                 addCard(new card(num[j], col[i]));
@@ -70,8 +67,8 @@ public class cards {
     }
 
     public boolean sort() {
-        for (int i = 0; i < cards.size(); i++) {
-            
+        for (int i = 0; i < col.length; i++) {
+
         }
 
         if (checkAllSameColor()) {
