@@ -6,6 +6,10 @@ import java.awt.*;
 /*
 Holds
     A pile of cards
+    Whether the pile is a discard pile or not
+    Whether the pile is the undealt cards pile or not
+    Array of colors possible
+    Array of numbers possible (0 for handshake card)
 */
 
 public class cards {
@@ -60,8 +64,11 @@ public class cards {
 
     public void makeUndealtCardsPile() {
         for (int i = 0; i < col.length; i++) {
-            for (int j = 0; j < num.length - 1; j++) {
+            for (int j = 1; j < num.length; j++) {
                 addCard(new card(num[j], col[i]));
+            }
+            for (int j = 0; j < 3; j++) {
+                addCard(new card(num[0], col[i]));
             }
         }
     }
