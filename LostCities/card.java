@@ -11,6 +11,8 @@ Holds:
 public class card {
     public int card_number;
     public Color card_color;
+    static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     // set default values
     public card() {
@@ -20,6 +22,12 @@ public class card {
 
     // set passed values to variables
     public card(int num, Color col) {
+        for (int i = 0; i < card.col.length; i++) {
+            if (card.col[i] == col)
+                break;
+            else if (card.col[i] != col && i == card.col.length - 1)
+                throw new java.lang.Error("Invalid Color input");
+        }
         card_number = num;
         card_color = col;
     }

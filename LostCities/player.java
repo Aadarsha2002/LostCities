@@ -9,11 +9,18 @@ Holds:
 
 public class player {
     private cards hand;
-    private cards placed_down;
+    private ArrayList<cards> placed_down;
+    /*
+     * placed_down[0] = yellow
+     * placed_down[1] = blue
+     * placed_down[2] = white
+     * placed_down[3] = green
+     * placed_down[4] = red
+     */
 
     public player() {
         hand = new cards();
-        placed_down = new cards();
+        placed_down = new ArrayList<>();
     }
 
     public void display() {
@@ -24,17 +31,26 @@ public class player {
         return hand;
     }
 
-    public cards getPlacedCards() {
+    public ArrayList<cards> getPlacedCards() {
         return placed_down;
     }
 
     public void placeCard(card c) {
         hand.removeCard(c);
-        placed_down.addCard(c);
+        if (c.getCardColor() == Color.yellow) {
+            placed_down.get(0).addCard(c);
+        } else if (c.getCardColor() == Color.blue) {
+            placed_down.get(1).addCard(c);
+        } else if (c.getCardColor() == Color.white) {
+            placed_down.get(2).addCard(c);
+        } else if (c.getCardColor() == Color.green) {
+            placed_down.get(3).addCard(c);
+        } else if (c.getCardColor() == Color.red) {
+            placed_down.get(4).addCard(c);
+        }
     }
 
     public void addCard(card c) {
         hand.addCard(c);
-        if()
     }
 }

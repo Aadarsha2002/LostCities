@@ -60,6 +60,13 @@ public class cards {
         }
     }
 
+    // get top card
+    public card getCard() {
+        card c = cards.get(cards.size());
+        removeCard(c);
+        return c;
+    }
+
     // Remove a specific card from the cards
     public void removeCard(card c) {
         cards.remove(c);
