@@ -31,7 +31,12 @@ public class cards {
     }
 
     public void addCard(card c) {
-        cards.add(c);
+        if (is_discard_pile) {
+            if (c.getCardColor() == cards.get(0).getCardColor())
+                cards.add(c);
+        } else {
+            cards.add(c);
+        }
     }
 
     public void getCard(card c) {
@@ -53,8 +58,7 @@ public class cards {
         int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         for (int i = 0; i < col.length; i++) {
             for (int j = 0; j < num.length - 1; j++) {
-                card new_card = new card(num[j], col[i]);
-                cards.add(new_card);
+                addCard(new card(num[j], col[i]));
             }
         }
     }
