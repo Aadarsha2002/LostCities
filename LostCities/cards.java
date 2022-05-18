@@ -10,6 +10,21 @@ Holds
 
 public class cards {
     private ArrayList<card> cards;
+    private boolean is_discard_pile;
+    private boolean is_undealtCards;
+
+    public cards(char c) {
+        if (c == 'U' || c == 'u') {
+            is_undealtCards = true;
+            is_discard_pile = false;
+        } else if (c == 'D' || c == 'd') {
+            is_undealtCards = false;
+            is_discard_pile = true;
+        } else {
+            is_undealtCards = false;
+            is_discard_pile = false;
+        }
+    }
 
     public void display() {
         System.out.println(cards.toString());
