@@ -84,7 +84,8 @@ public class cards {
             // append c to sorted_cards
             appendCards(sorted_cards, c);
         }
-
+        cards = sorted_cards;
+        return true;
     }
 
     private boolean checkAllSameColor() {
