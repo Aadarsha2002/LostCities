@@ -1,6 +1,7 @@
 package LostCities;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.awt.*;
 
 /*
@@ -19,10 +20,13 @@ public class cards {
     static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
+    // Constructor which takes in a character (U or D) indicating whether the pile
+    // of cards is undealt pile or discard cards
     public cards(char c) {
         if (c == 'U' || c == 'u') {// if undealt cards pile
             is_undealtCards = true;
             is_discard_pile = false;
+            makeUndealtCardsPile();
         } else if (c == 'D' || c == 'd') {// if discard pile
             is_undealtCards = false;
             is_discard_pile = true;
@@ -32,10 +36,18 @@ public class cards {
         }
     }
 
+    // Constructor which makes a non-special pile of cards
+    public cards() {
+        is_undealtCards = false;
+        is_discard_pile = false;
+    }
+
+    // Display the cards
     public void display() {
         System.out.println(cards.toString());
     }
 
+    // Add a card to the cards
     public void addCard(card c) {
         if (is_discard_pile) {
             if (c.getCardColor() == cards.get(0).getCardColor())
@@ -48,12 +60,18 @@ public class cards {
         }
     }
 
-    public void getCard(card c) {
+    // Remove a specific card from the cards
+    public void removeCard(card c) {
         cards.remove(c);
     }
 
+    public boolean hasCard(card c) {
+        return cards.indexOf(c) != -1;
+    }
+
+    // Return cards of a specific color
     public ArrayList<card> getCardsbyColor(Color col) {
-        ArrayList<card> c1 = new ArrayList<card>();
+        ArrayList<card> c1 = new ArrayList<>();
         for (card c : cards) {
             if (c.getCardColor() == col) {
                 c1.add(c);
@@ -62,6 +80,7 @@ public class cards {
         return c1;
     }
 
+    // Make the pile of undealt cards and shuffle it
     public void makeUndealtCardsPile() {
         /*
          * Reference:
@@ -78,9 +97,11 @@ public class cards {
                 addCard(new card(num[0], col[i]));
             }
         }
+        shuffleCards();
     }
 
-    public boolean sort() {
+    // Sort the cards (if not discard pile) according to numbers in each color
+    public void sort() {
         ArrayList<card> sorted_cards = new ArrayList<card>();
         for (int i = 0; i < col.length && !is_discard_pile; i++) {
             ArrayList<card> c = getCardsbyColor(col[i]);
@@ -99,9 +120,9 @@ public class cards {
             appendCards(sorted_cards, c);
         }
         cards = sorted_cards;
-        return true;
     }
 
+    // Return true if all cards are same color
     private boolean checkAllSameColor() {
         Color col = cards.get(0).getCardColor();
         for (card c : cards) {
@@ -112,10 +133,18 @@ public class cards {
         return true;
     }
 
+    // Append 2nd arraylist to 1st arraylist.
+    // Return the 1st arraylist
     private ArrayList<card> appendCards(ArrayList<card> to, ArrayList<card> from) {
         for (card c : from) {
             to.add(c);
         }
         return to;
+    }
+
+    // Shuffle the cards
+    private void shuffleCards() {
+        if (!is_discard_pile)
+            Collections.shuffle(cards);
     }
 }

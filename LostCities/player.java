@@ -11,7 +11,28 @@ public class player {
     private cards hand;
     private cards placed_down;
 
-    public cards showHand() {
+    public player() {
+    }
+
+    public void display() {
+        hand.display();
+    }
+
+    public cards getHand() {
+        return hand;
+    }
+
+    public cards getPlacedCards() {
         return placed_down;
+    }
+
+    public void placeCard(card c) {
+        hand.removeCard(c);
+        placed_down.addCard(c);
+    }
+
+    public void addCard(card c) {
+        hand.addCard(c);
+        if()
     }
 }
