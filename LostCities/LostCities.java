@@ -12,7 +12,7 @@ public class LostCities {
         cards green_discard = new cards('D');
         cards red_discard = new cards('D');
 
-        // deal 8 cards cards
+        // deal 8 cards cards to each player
         for (int i = 0; i < 8 * 2; i++) {
             card c = undealt.getCard();
             if (i % 2 == 0)
@@ -20,6 +20,12 @@ public class LostCities {
             else
                 p2.addCard(c);
         }
-                
+
+        while (!undealt.isEmpty()) {
+            undealt.display();
+            p1.display();
+            p2.display();
+        }
+
     }
 }

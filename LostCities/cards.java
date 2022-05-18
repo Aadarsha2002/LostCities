@@ -14,7 +14,7 @@ Holds
 */
 
 public class cards {
-    private ArrayList<card> cards;
+    private ArrayList<card> cards = new ArrayList<>();
     private boolean is_discard_pile;
     private boolean is_undealtCards;
     static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
@@ -62,7 +62,7 @@ public class cards {
 
     // get top card
     public card getCard() {
-        card c = cards.get(cards.size());
+        card c = cards.get(cards.size() - 1);
         removeCard(c);
         return c;
     }
@@ -75,6 +75,10 @@ public class cards {
     // checks whether a specific card exists in the cards
     public boolean hasCard(card c) {
         return cards.indexOf(c) != -1;
+    }
+
+    public boolean isEmpty() {
+        return (cards.size() == 0) ? true : false;
     }
 
     // Return cards of a specific color
