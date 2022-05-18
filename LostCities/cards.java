@@ -30,6 +30,7 @@ public class cards {
         } else if (c == 'D' || c == 'd') {// if discard pile
             is_undealtCards = false;
             is_discard_pile = true;
+
         } else {
             is_undealtCards = false;
             is_discard_pile = false;
