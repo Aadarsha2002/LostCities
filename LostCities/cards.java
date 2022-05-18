@@ -45,7 +45,7 @@ public class cards {
     }
 
     public boolean sort() {
-        if (allSameColor()) {
+        if (checkAllSameColor()) {
             for (int i = 0; i < cards.size() - 1; i++) {
                 int min_card_index = i;
                 for (int j = i + 1; j < cards.size(); j++) {
