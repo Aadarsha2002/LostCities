@@ -16,10 +16,10 @@ public class cards {
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     public cards(char c) {
-        if (c == 'U' || c == 'u') {
+        if (c == 'U' || c == 'u') {// if undealt cards pile
             is_undealtCards = true;
             is_discard_pile = false;
-        } else if (c == 'D' || c == 'd') {
+        } else if (c == 'D' || c == 'd') {// if discard pile
             is_undealtCards = false;
             is_discard_pile = true;
         } else {
