@@ -62,7 +62,7 @@ public class cards {
         }
     }
 
-    private boolean allSameColor() {
+    private boolean checkAllSameColor() {
         Color col = cards.get(0).getCardColor();
         for (card c : cards) {
             if (c.getCardColor() != col) {
