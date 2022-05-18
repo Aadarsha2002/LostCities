@@ -67,8 +67,19 @@ public class cards {
     }
 
     public boolean sort() {
+        ArrayList<card> sorted_cards;
         for (int i = 0; i < col.length; i++) {
-
+            ArrayList<card> c = getCardsbyColor(col[i]);
+            for (int j = 0; i < c.size() - 1; i++) {
+                int min_card_index = i;
+                for (int k = i + 1; j < c.size(); j++) {
+                    if (c.get(j).getCardNumber() < c.get(min_card_index).getCardNumber())
+                        min_card_index = j;
+                }
+                card temp = c.get(min_card_index);
+                c.add(min_card_index, c.get(i));
+                c.add(i, temp);
+            }
         }
 
         if (checkAllSameColor()) {
@@ -96,5 +107,12 @@ public class cards {
             }
         }
         return true;
+    }
+
+    private ArrayList<card> appendCards(ArrayList<card> c1, ArrayList<card> c2) {
+        for (card c : c2) {
+            c1.add(c);
+        }
+        return c1;
     }
 }
