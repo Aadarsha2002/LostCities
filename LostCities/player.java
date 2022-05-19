@@ -8,6 +8,8 @@ Holds:
 */
 
 public class player {
+    static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
     private cards hand;
     private ArrayList<cards> placed_down;
     /*
@@ -56,5 +58,10 @@ public class player {
 
     public void addCard(card c) {
         hand.addCard(c);
+    }
+
+    public void calculateScore() {
+        hand.sort();
+
     }
 }
