@@ -25,6 +25,7 @@ public class LostCities {
         p1.display();
         p2.display();
 
+        // GamePlay!
         while (!undealt.isEmpty()) {
         }
 

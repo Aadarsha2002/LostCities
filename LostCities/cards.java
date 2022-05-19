@@ -2,6 +2,7 @@ package LostCities;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 import java.awt.*;
 
 /*
@@ -47,7 +48,8 @@ public class cards {
     public void display() {
         System.out.print("[");
         for (card c : cards) {
-            System.out.print(c.getCardNumber() + ", ");
+            c.display();
+            System.out.print(", ");
         }
         System.out.println("]");
     }
@@ -114,6 +116,11 @@ public class cards {
             }
         }
         shuffleCards();
+        shuffleCards();
+        shuffleCards();
+        shuffleCards();
+        shuffleCards();
+        shuffleCards();
     }
 
     // Sort the cards (if not discard pile) according to numbers in each color
@@ -162,7 +169,8 @@ public class cards {
 
     // Shuffle the cards
     private void shuffleCards() {
-        if (!is_discard_pile)
+        if (!is_discard_pile){
             Collections.shuffle(cards);
+        }
     }
 }

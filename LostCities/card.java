@@ -34,7 +34,7 @@ public class card {
 
     // display the card to console
     public void display() {
-        System.out.println(card_color.toString().charAt(0) + card_number);
+        System.out.print(getColorName(card_color) + card_number);
     }
 
     // return card number
@@ -45,5 +45,20 @@ public class card {
     // return card color
     public Color getCardColor() {
         return card_color;
+    }
+
+    private String getColorName(Color col) {
+        if (col == card.col[0]) {
+            return "Yellow";
+        } else if (col == card.col[1]) {
+            return "Blue";
+        } else if (col == card.col[2]) {
+            return "White";
+        } else if (col == card.col[3]) {
+            return "Green";
+        } else if (col == card.col[4]) {
+            return "Red";
+        }
+        return "";
     }
 }
