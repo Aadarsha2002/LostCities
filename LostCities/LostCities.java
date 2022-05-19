@@ -41,13 +41,14 @@ public class LostCities {
             System.out.println("It's player 1's turn: ");
             System.out.print("Player 1's Hand: ");
             p1.display();
+
             System.out.print("Which card do you want to place [index of card 0-7]?");
             placing_card_index = in.nextInt();
-            System.out.println("Want to discard [D] or place [P]? ");
-            discard_or_place = in.nextLine();
-
             placing_card = p1.getHand().getCardAt(placing_card_index);
             p1.getHand().removeCard(placing_card);
+
+            System.out.println("Want to discard [D] or place [P]? ");
+            discard_or_place = in.nextLine();
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p1.getHand().getCard().getCardColorName() == getColorName(col[0])) {
                     yellow_discard.addCard(placing_card);
@@ -111,11 +112,11 @@ public class LostCities {
             p2.display();
             System.out.print("Which card do you want to place [index of card 0-7]?");
             placing_card_index = in.nextInt();
-            System.out.println("Want to discard [D] or place [P]? ");
-            discard_or_place = in.nextLine();
-
             placing_card = p2.getHand().getCard();
             p2.getHand().removeCard(placing_card);
+
+            System.out.println("Want to discard [D] or place [P]? ");
+            discard_or_place = in.nextLine();
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p2.getHand().getCard().getCardColorName() == getColorName(col[0])) {
                     yellow_discard.addCard(placing_card);
