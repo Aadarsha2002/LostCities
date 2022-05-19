@@ -1,9 +1,12 @@
 package LostCities;
 
 import java.util.Scanner;
+import java.awt.*;
 
 public class LostCities {
     public static void main(String args[]) {
+        Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+        int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         // setup
         player p1 = new player();
         player p2 = new player();
@@ -27,6 +30,13 @@ public class LostCities {
         p2.display();
 
         Scanner in = new Scanner(System.in);
+        int placing_card_index = 0;
+        card placing_card = new card();
+        card picking_card = new card();
+        char discard_or_undealt;
+        char discard_or_place;
+        char picked_color;
+        int picked_number;
 
         // GamePlay!
         while (!undealt.isEmpty()) {
@@ -34,24 +44,83 @@ public class LostCities {
             System.out.println("It's player 1's turn: ");
             System.out.print("Player 1's Hand: ");
             p1.display();
-            System.out.print("Which card do you want to play? ");
-            
+            System.out.print("Which card do you want to place [index of card 0-n]?");
+            placing_card_index = in.nextInt();
+            System.out.println("Want to discard [D] or place [P]? ");
+            discard_or_place = in.nextLine().charAt(0);
 
-            
-            System.out.println("Discard Piles: ");
-            System.out.print("Yellow: ");
-            yellow_discard.display();
-            System.out.print("Blue: ");
-            blue_discard.display();
-            System.out.print("White: ");
-            white_discard.display();
-            System.out.print("Green: ");
-            green_discard.display();
-            System.out.print("Red: ");
-            red_discard.display();
-            System.out.print("Which card do you want to pick? ");
+            placing_card = p1.getHand().getCard();
+            p1.getHand().removeCard(placing_card);
+            if (discard_or_place == 'D' || discard_or_place == 'd') {
+                if (p1.getHand().getCard().getCardColorName() == getColorName(col[0])) {
+                    yellow_discard.addCard(placing_card);
+                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[1])) {
+                    blue_discard.addCard(placing_card);
+                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[2])) {
+                    white_discard.addCard(placing_card);
+                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[3])) {
+                    green_discard.addCard(placing_card);
+                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[4])) {
+                    red_discard.addCard(placing_card);
+                }
+            }
+
+            System.out.print("Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
+            discard_or_undealt = in.next().charAt(0);
+            if (discard_or_undealt == 'D' || discard_or_undealt == 'd') {
+                System.out.println("Discard Piles: ");
+                System.out.print("Yellow: ");
+                yellow_discard.display();
+                System.out.print("Blue: ");
+                blue_discard.display();
+                System.out.print("White: ");
+                white_discard.display();
+                System.out.print("Green: ");
+                green_discard.display();
+                System.out.print("Red: ");
+                red_discard.display();
+
+                System.out.print("Which color do you want to pick [Y, B, W, G, R]? ");
+                picked_color = in.nextLine().charAt(0);
+
+                if (picked_color == getColorName(col[0]).charAt(0)) {
+                    picking_card = yellow_discard.getCard();
+                    yellow_discard.removeCard(picking_card);
+                } else if (picked_color == getColorName(col[1]).charAt(0)) {
+                    picking_card = blue_discard.getCard();
+                    blue_discard.removeCard(picking_card);
+                } else if (picked_color == getColorName(col[2]).charAt(0)) {
+                    picking_card = white_discard.getCard();
+                    white_discard.removeCard(picking_card);
+                } else if (picked_color == getColorName(col[3]).charAt(0)) {
+                    picking_card = green_discard.getCard();
+                    green_discard.removeCard(picking_card);
+                } else if (picked_color == getColorName(col[4]).charAt(0)) {
+                    picking_card = red_discard.getCard();
+                    red_discard.removeCard(picking_card);
+                }
+                p1.addCard(picking_card);
+            } else {
+
+            }
 
             // Player 2's turn
         }
+    }
+
+    private static String getColorName(Color c) {
+        Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+        if (c == col[0]) {
+            return "Yellow";
+        } else if (c == col[1]) {
+            return "Blue";
+        } else if (c == col[2]) {
+            return "White";
+        } else if (c == col[3]) {
+            return "Green";
+        } else if (c == col[4]) {
+            return "Red";
+        }
+        return "";
     }
 }

@@ -47,6 +47,11 @@ public class card {
         return card_color;
     }
 
+    // return card color name in string form
+    public String getCardColorName() {
+        return getColorName(card_color);
+    }
+
     private String getColorName(Color col) {
         if (col == card.col[0]) {
             return "Yellow";

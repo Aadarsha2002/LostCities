@@ -58,24 +58,30 @@ public class cards {
     public void addCard(card c) {
         if (is_discard_pile && c.getCardColor() == cards.get(0).getCardColor()) {
             cards.add(c);
-        } else if (!is_undealtCards) {
+        } else if (is_undealtCards) {
             cards.add(c);
-            sort();
         } else {
             cards.add(c);
+            sort();
         }
     }
 
     // get top card
     public card getCard() {
         card c = cards.get(cards.size() - 1);
-        removeCard(c);
         return c;
     }
 
     // Remove a specific card from the cards
     public void removeCard(card c) {
         cards.remove(c);
+    }
+
+    // overloaded function to take in a color and number to create a card and then
+    // remove
+    // Remove a specific card from the cards
+    public void removeCard(Color col, int n) {
+        cards.remove(new card(n, col));
     }
 
     // checks whether a specific card exists in the cards
@@ -169,7 +175,7 @@ public class cards {
 
     // Shuffle the cards
     private void shuffleCards() {
-        if (!is_discard_pile){
+        if (!is_discard_pile) {
             Collections.shuffle(cards);
         }
     }
