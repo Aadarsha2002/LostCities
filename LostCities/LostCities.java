@@ -46,7 +46,7 @@ public class LostCities {
             System.out.println("Want to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();
 
-            placing_card = p1.getHand().getCard();
+            placing_card = p1.getHand().getCardAt(placing_card_index);
             p1.getHand().removeCard(placing_card);
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p1.getHand().getCard().getCardColorName() == getColorName(col[0])) {

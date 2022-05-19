@@ -69,8 +69,12 @@ public class cards {
 
     // get top card
     public card getCard() {
-        card c = cards.get(cards.size() - 1);
-        return c;
+        return cards.get(cards.size() - 1);
+    }
+
+    // get card from a specific index
+    public card getCardAt(int index) {
+        return cards.get(index);
     }
 
     // Remove a specific card from the cards
