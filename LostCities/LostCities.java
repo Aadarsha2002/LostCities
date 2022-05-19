@@ -191,6 +191,10 @@ public class LostCities {
             System.out.print("Red: ");
             red_discard.display();
         }
+
+        //calculate player's hands now!
+        
+
     }
 
     private static String getColorName(Color c) {
