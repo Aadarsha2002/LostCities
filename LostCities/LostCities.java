@@ -38,18 +38,19 @@ public class LostCities {
         // GamePlay!
         while (!undealt.isEmpty()) {
             // Player 1's turn
+            System.out.println("**********************************");
             System.out.println("It's player 1's turn: ");
             System.out.print("Player 1's Hand: ");
             p1.display();
 
-            System.out.print("Which card do you want to place [index of card 0-7]?");
+            System.out.print("\n Which card do you want to place [index of card 0-7]? ");
             placing_card_index = in.nextInt();
             in.reset();
             placing_card = p1.getHand().getCardAt(placing_card_index);
             p1.getHand().removeCard(placing_card);
 
             in.nextLine();
-            System.out.println("Want to discard [D] or place [P]? ");
+            System.out.print("\n Want to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p1.getHand().getCard().getCardColorName() == getColorName(col[0])) {
@@ -67,7 +68,7 @@ public class LostCities {
                 p1.placeCard(placing_card);
             }
 
-            System.out.print("Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
+            System.out.print("\n Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
             discard_or_undealt = in.next();
             if (discard_or_undealt == "D" || discard_or_undealt == "d") {
                 System.out.println("Discard Piles: ");
@@ -82,7 +83,7 @@ public class LostCities {
                 System.out.print("Red: ");
                 red_discard.display();
 
-                System.out.print("Which color do you want to pick [Y, B, W, G, R]? ");
+                System.out.print("\n Which color do you want to pick [Y, B, W, G, R]? ");
                 picked_color = in.nextLine();
 
                 if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
@@ -109,15 +110,16 @@ public class LostCities {
             }
 
             // Player 2's turn
+            System.out.println("**********************************");
             System.out.println("It's player 2's turn: ");
             System.out.print("Player 2's Hand: ");
             p2.display();
-            System.out.print("Which card do you want to place [index of card 0-7]?");
+            System.out.print("\n Which card do you want to place [index of card 0-7]?");
             placing_card_index = in.nextInt();
             placing_card = p2.getHand().getCard();
             p2.getHand().removeCard(placing_card);
 
-            System.out.println("Want to discard [D] or place [P]? ");
+            System.out.print("\n Want to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p2.getHand().getCard().getCardColorName() == getColorName(col[0])) {
@@ -135,7 +137,7 @@ public class LostCities {
                 p2.placeCard(placing_card);
             }
 
-            System.out.print("Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
+            System.out.print("\n Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
             discard_or_undealt = in.next();
             if (discard_or_undealt == "D" || discard_or_undealt == "d") {
                 System.out.println("Discard Piles: ");
@@ -150,7 +152,7 @@ public class LostCities {
                 System.out.print("Red: ");
                 red_discard.display();
 
-                System.out.print("Which color do you want to pick [Y, B, W, G, R]? ");
+                System.out.print("\n Which color do you want to pick [Y, B, W, G, R]? ");
                 picked_color = in.nextLine();
 
                 if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
