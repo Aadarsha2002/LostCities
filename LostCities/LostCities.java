@@ -1,5 +1,7 @@
 package LostCities;
 
+import java.util.Scanner;
+
 public class LostCities {
     public static void main(String args[]) {
         // setup
@@ -21,13 +23,35 @@ public class LostCities {
                 p2.addCard(c);
         }
 
-        undealt.display();
-        p1.display();
+        System.out.println("Player 2's Hand: ");
         p2.display();
+
+        Scanner in = new Scanner(System.in);
 
         // GamePlay!
         while (!undealt.isEmpty()) {
+            // Player 1's turn
+            System.out.println("It's player 1's turn: ");
+            System.out.print("Player 1's Hand: ");
+            p1.display();
+            System.out.print("Which card do you want to play? ");
             
+
+            
+            System.out.println("Discard Piles: ");
+            System.out.print("Yellow: ");
+            yellow_discard.display();
+            System.out.print("Blue: ");
+            blue_discard.display();
+            System.out.print("White: ");
+            white_discard.display();
+            System.out.print("Green: ");
+            green_discard.display();
+            System.out.print("Red: ");
+            red_discard.display();
+            System.out.print("Which card do you want to pick? ");
+
+            // Player 2's turn
         }
     }
 }
