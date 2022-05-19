@@ -41,7 +41,7 @@ public class LostCities {
             System.out.println("It's player 1's turn: ");
             System.out.print("Player 1's Hand: ");
             p1.display();
-            System.out.print("Which card do you want to place [index of card 0-n]?");
+            System.out.print("Which card do you want to place [index of card 0-7]?");
             placing_card_index = in.nextInt();
             System.out.println("Want to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();
@@ -109,7 +109,7 @@ public class LostCities {
             System.out.println("It's player 2's turn: ");
             System.out.print("Player 2's Hand: ");
             p2.display();
-            System.out.print("Which card do you want to place [index of card 0-n]?");
+            System.out.print("Which card do you want to place [index of card 0-7]?");
             placing_card_index = in.nextInt();
             System.out.println("Want to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();

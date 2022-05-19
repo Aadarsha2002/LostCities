@@ -15,6 +15,7 @@ Holds
 */
 
 public class cards {
+    Random rnd = new Random(0);
     private ArrayList<card> cards = new ArrayList<>();
     private boolean is_discard_pile;
     private boolean is_undealtCards;
@@ -176,7 +177,7 @@ public class cards {
     // Shuffle the cards
     private void shuffleCards() {
         if (!is_discard_pile) {
-            Collections.shuffle(cards);
+            Collections.shuffle(cards, rnd);
         }
     }
 }

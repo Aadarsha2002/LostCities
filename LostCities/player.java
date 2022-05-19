@@ -20,7 +20,7 @@ public class player {
 
     public player() {
         hand = new cards();
-        placed_down = new ArrayList<>();
+        placed_down = new ArrayList<>(5);
     }
 
     public void display() {
