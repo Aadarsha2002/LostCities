@@ -37,8 +37,6 @@ public class LostCities {
 
         // GamePlay!
         while (!undealt.isEmpty()) {
-
-            System.out.println("There are ")
             // Player 1's turn
             System.out.println("**********************************");
             System.out.println("It's player 1's turn: ");
@@ -179,6 +177,21 @@ public class LostCities {
                 undealt.removeCard(picking_card);
                 p2.addCard(picking_card);
             }
+
+            System.out.println("There are " + undealt.size() + " undealt cards left");
+
+            System.out.println("Discard Piles: ");
+            System.out.print("Yellow: ");
+            yellow_discard.display();
+            System.out.print("Blue: ");
+            blue_discard.display();
+            System.out.print("White: ");
+            white_discard.display();
+            System.out.print("Green: ");
+            green_discard.display();
+            System.out.print("Red: ");
+            red_discard.display();
+
         }
     }
 

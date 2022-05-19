@@ -45,6 +45,11 @@ public class cards {
         is_discard_pile = false;
     }
 
+    // Returns the size of the pile
+    public int size() {
+        return cards.size();
+    }
+
     // Display the cards
     public void display() {
         System.out.print("[");
