@@ -37,6 +37,8 @@ public class LostCities {
 
         // GamePlay!
         while (!undealt.isEmpty()) {
+
+            System.out.println("There are ")
             // Player 1's turn
             System.out.println("**********************************");
             System.out.println("It's player 1's turn: ");
