@@ -100,7 +100,7 @@ public class cards {
     }
 
     public boolean isEmpty() {
-        return (cards.size() == 0) ? true : false;
+        return (size() == 0) ? true : false;
     }
 
     // Return cards of a specific color

@@ -178,8 +178,7 @@ public class LostCities {
                 p2.addCard(picking_card);
             }
 
-            System.out.println("There are " + undealt.size() + " undealt cards left");
-
+            System.out.println("There are " + undealt.size() + " undealt cards left\n");
             System.out.println("Discard Piles: ");
             System.out.print("Yellow: ");
             yellow_discard.display();
@@ -191,7 +190,6 @@ public class LostCities {
             green_discard.display();
             System.out.print("Red: ");
             red_discard.display();
-
         }
     }
 
