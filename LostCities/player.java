@@ -61,7 +61,8 @@ public class player {
     }
 
     public void calculateScore() {
-        hand.sort();
-
+        for (Color col : col) {
+            
+        }
     }
 }

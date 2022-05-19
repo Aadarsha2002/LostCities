@@ -193,7 +193,7 @@ public class LostCities {
         }
 
         //calculate player's hands now!
-        
+
 
     }
 
