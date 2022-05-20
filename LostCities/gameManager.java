@@ -19,9 +19,5 @@ public class gameManager {
     player p1 = new player();
     player p2 = new player();
     cards undealt = new cards('U');
-    cards yellow_discard = new cards('D');
-    cards blue_discard = new cards('D');
-    cards white_discard = new cards('D');
-    cards green_discard = new cards('D');
-    cards red_discard = new cards('D');
+    discardPiles discards = new discardPiles();
 }
