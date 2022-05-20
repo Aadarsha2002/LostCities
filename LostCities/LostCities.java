@@ -43,14 +43,14 @@ public class LostCities {
             System.out.print("Player 1's Hand: ");
             p1.display();
 
-            System.out.print("\n Which card do you want to place [index of card 0-7]? ");
+            System.out.print("\nWhich card do you want to place [index of card 0-7]? ");
             placing_card_index = in.nextInt();
             in.reset();
             placing_card = p1.getHand().getCardAt(placing_card_index);
             p1.getHand().removeCard(placing_card);
 
             in.nextLine();
-            System.out.print("\n Want to discard [D] or place [P]? ");
+            System.out.print("\nWant to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p1.getHand().getCard().getCardColorName() == getColorName(col[0])) {
@@ -68,7 +68,7 @@ public class LostCities {
                 p1.placeCard(placing_card);
             }
 
-            System.out.print("\n Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
+            System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
             discard_or_undealt = in.next();
             if (discard_or_undealt == "D" || discard_or_undealt == "d") {
                 System.out.println("Discard Piles: ");
@@ -83,7 +83,7 @@ public class LostCities {
                 System.out.print("Red: ");
                 red_discard.display();
 
-                System.out.print("\n Which color do you want to pick [Y, B, W, G, R]? ");
+                System.out.print("\nWhich color do you want to pick [Y, B, W, G, R]? ");
                 picked_color = in.nextLine();
 
                 if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
@@ -114,12 +114,12 @@ public class LostCities {
             System.out.println("It's player 2's turn: ");
             System.out.print("Player 2's Hand: ");
             p2.display();
-            System.out.print("\n Which card do you want to place [index of card 0-7]?");
+            System.out.print("\nWhich card do you want to place [index of card 0-7]?");
             placing_card_index = in.nextInt();
             placing_card = p2.getHand().getCard();
             p2.getHand().removeCard(placing_card);
 
-            System.out.print("\n Want to discard [D] or place [P]? ");
+            System.out.print("\nWant to discard [D] or place [P]? ");
             discard_or_place = in.nextLine();
             if (discard_or_place == "D" || discard_or_place == "d") {
                 if (p2.getHand().getCard().getCardColorName() == getColorName(col[0])) {
@@ -137,7 +137,7 @@ public class LostCities {
                 p2.placeCard(placing_card);
             }
 
-            System.out.print("\n Want to pick from Discard Pile [D] or Undealt Pile [U]? ");
+            System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
             discard_or_undealt = in.next();
             if (discard_or_undealt == "D" || discard_or_undealt == "d") {
                 System.out.println("Discard Piles: ");
@@ -152,7 +152,7 @@ public class LostCities {
                 System.out.print("Red: ");
                 red_discard.display();
 
-                System.out.print("\n Which color do you want to pick [Y, B, W, G, R]? ");
+                System.out.print("\nWhich color do you want to pick [Y, B, W, G, R]? ");
                 picked_color = in.nextLine();
 
                 if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
@@ -192,10 +192,13 @@ public class LostCities {
             red_discard.display();
         }
 
-        //calculate player's hands now!
-        
+        // calculate player's hands now!
+        int p1_score = p1.calculateScore();
+        int p2_score = p2.calculateScore();
 
-
+        System.out.println("***********************************");
+        System.out.println("\n\nPlayer 1 scored " + p1_score);
+        System.out.println("Player 2 scored " + p2_score);
     }
 
     private static String getColorName(Color c) {
