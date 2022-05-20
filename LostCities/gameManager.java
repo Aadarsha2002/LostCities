@@ -20,4 +20,9 @@ public class gameManager {
     player p2 = new player();
     cards undealt = new cards('U');
     discardPiles discards = new discardPiles();
+
+    // setup game
+    public gameManager() {
+        
+    }
 }
