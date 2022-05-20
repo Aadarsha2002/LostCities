@@ -60,9 +60,29 @@ public class player {
         hand.addCard(c);
     }
 
-    public void calculateScore() {
+    public int calculateScore() {
+        hand.sort();
+        int total = 0;
         for (Color col : col) {
-            
+            ArrayList<card> cards = new ArrayList<>();
+            cards = hand.getCardsbyColor(col);
+            int multiplier = 1;
+            int sum = 0;
+            // count multipliers and sum of numbered cards
+            for (card c : cards) {
+                if (c.getCardNumber() == 0) {
+                    multiplier++;
+                } else {
+                    sum += c.getCardNumber();
+                }
+            }
+            if (cards.size() != 0)// cost
+                sum -= 20;
+            sum *= multiplier;// multiplier
+            if (cards.size() >= 8)// bonus points
+                sum += 20;
+            total += sum;// add to total
         }
+        return total;
     }
 }
