@@ -1,7 +1,6 @@
 package LostCities;
 
 import java.util.Scanner;
-import java.awt.*;
 
 public class LostCities {
     public static void main(String args[]) {
