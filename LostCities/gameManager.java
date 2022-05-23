@@ -35,8 +35,10 @@ public class gameManager {
             else
                 p2.addCard(c);
         }
-        System.out.println("Player 1's Hand: " + displayPlayerHand(p1));
-        System.out.println("Player 2's Hand: " + displayPlayerHand(p2));
+        System.out.println("Player 1's Hand: ");
+        displayPlayerHand(p1);
+        System.out.println("Player 2's Hand: ");
+        displayPlayerHand(p2);
     }
 
     // Play the game!!!
