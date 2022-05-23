@@ -9,21 +9,6 @@ public class LostCities {
         // GamePlay!
         while (!undealt.isEmpty()) {
             // Player 1's turn
-            if (discard_or_place == "D" || discard_or_place == "d") {
-                if (p1.getHand().getCard().getCardColorName() == getColorName(col[0])) {
-                    yellow_discard.addCard(placing_card);
-                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[1])) {
-                    blue_discard.addCard(placing_card);
-                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[2])) {
-                    white_discard.addCard(placing_card);
-                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[3])) {
-                    green_discard.addCard(placing_card);
-                } else if (p1.getHand().getCard().getCardColorName() == getColorName(col[4])) {
-                    red_discard.addCard(placing_card);
-                }
-            } else {
-                p1.placeCard(placing_card);
-            }
 
             System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
             discard_or_undealt = in.next();

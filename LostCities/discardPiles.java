@@ -26,6 +26,10 @@ public class discardPiles {
         return discard_piles.get(getDiscardPileIndex(col)).getCard();
     }
 
+    public void addCard(card c) {
+        discard_piles.get(getDiscardPileIndex(c.getCardColor())).addCard(c);
+    }
+
     // Return the index of the discard pile according to its color
     private int getDiscardPileIndex(Color col) {
         if (col == Color.yellow) {

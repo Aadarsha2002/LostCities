@@ -76,23 +76,16 @@ public class gameManager {
         p.removeCard(outgoing_card);
 
         in.nextLine();
-        
+
         System.out.print("\nWant to discard [D] or place [P]? ");
         String discard_or_place = in.nextLine();
         if (discard_or_place == "D" || discard_or_place == "d") {
-            if (p.getHand().getCard().getCardColorName() == getColorName(col[0])) {
-                yellow_discard.addCard(placing_card);
-            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[1])) {
-                blue_discard.addCard(placing_card);
-            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[2])) {
-                white_discard.addCard(placing_card);
-            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[3])) {
-                green_discard.addCard(placing_card);
-            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[4])) {
-                red_discard.addCard(placing_card);
-            }
+            discards.addCard(outgoing_card);
         } else {
-            p.placeCard(placing_card);
+            p.placeCard(outgoing_card);
         }
+        in.nextLine();
+        System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
+        String discard_or_undealt = in.next();
     }
 }
