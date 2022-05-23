@@ -81,6 +81,11 @@ public class player {
         return placed_down;
     }
 
+    /** Return topmost card in a specific color of placed piles */
+    public card getTopPlacedCard(Color col) {
+        return placed_down.get(getIndex(col)).getTopCard();
+    }
+
     /** Insert a card into hand */
     public void addCard(card c) {
         hand.addCard(c);
@@ -103,17 +108,8 @@ public class player {
      */
     public void placeCard(card c) {
         hand.removeCard(c);
-        if (c.getCardColor() == Color.yellow && c.getCardNumber() > hand.getTopCard().getCardNumber()) {
-            placed_down.get(0).addCard(c);
-        } else if (c.getCardColor() == Color.blue) {
-            placed_down.get(1).addCard(c);
-        } else if (c.getCardColor() == Color.white) {
-            placed_down.get(2).addCard(c);
-        } else if (c.getCardColor() == Color.green) {
-            placed_down.get(3).addCard(c);
-        } else if (c.getCardColor() == Color.red) {
-            placed_down.get(4).addCard(c);
-        }
+        if (isValidCardtoPlace(c))
+            placed_down.get(getIndex(c.getCardColor())).addCard(c);
     }
 
     /**
@@ -152,5 +148,30 @@ public class player {
             total += sum;// add to total
         }
         return total;
+    }
+
+    /**
+     * Returns true if the given card is either
+     * handshake card (0), or
+     * higher than the topmost placed card of its color
+     */
+    private boolean isValidCardtoPlace(card c) {
+        return c.getCardNumber() > getTopPlacedCard(c.getCardColor()).getCardNumber() || c.getCardNumber() == 0;
+    }
+
+    /** Return index of placed cards pile according to given color */
+    private int getIndex(Color col) {
+        if (col == Color.yellow) {
+            return 0;
+        } else if (col == Color.blue) {
+            return 1;
+        } else if (col == Color.white) {
+            return 2;
+        } else if (col == Color.green) {
+            return 3;
+        } else if (col == Color.red) {
+            return 4;
+        }
+        return -1;
     }
 }
