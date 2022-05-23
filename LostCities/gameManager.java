@@ -29,79 +29,79 @@ public class gameManager {
      * - Play the game
      */
     public gameManager() {
-        // dealCards();
-        makeCustomCardsPile();
+        dealCards();
+        // makeCustomCardsPile();
         playGame();
     }
 
-    private void makeCustomCardsPile() {
-        // P1 Cards
-        cards ac = new cards();
-        ac.addCard(new card(7, Color.yellow));
-        ac.addCard(new card(6, Color.yellow));
-        ac.addCard(new card(4, Color.yellow));
-        ac.addCard(new card(3, Color.yellow));
-        ac.addCard(new card(0, Color.yellow));
-        ac.addCard(new card(10, Color.blue));
-        ac.addCard(new card(9, Color.blue));
-        ac.addCard(new card(5, Color.blue));
-        p1 = new player(ac);
-        ac = new cards();
-        ac.addCard(new card(9, Color.yellow));
-        ac.addCard(new card(3, Color.red));
-        ac.addCard(new card(6, Color.blue));
-        ac.addCard(new card(0, Color.white));
-        ac.addCard(new card(0, Color.white));
-        ac.addCard(new card(0, Color.white));
-        ac.addCard(new card(4, Color.white));
-        ac.addCard(new card(2, Color.white));
-        p2 = new player(ac);
-        ac = new cards();
-        ac.addCard(new card(5, Color.white));
-        ac.addCard(new card(8, Color.blue));
-        ac.addCard(new card(3, Color.white));
-        ac.addCard(new card(0, Color.green));
-        ac.addCard(new card(6, Color.white));
-        ac.addCard(new card(8, Color.green));
-        ac.addCard(new card(7, Color.white));
-        ac.addCard(new card(7, Color.green));
-        ac.addCard(new card(8, Color.white));
-        ac.addCard(new card(9, Color.red));
-        ac.addCard(new card(9, Color.white));
-        ac.addCard(new card(8, Color.red));
-        ac.addCard(new card(10, Color.white));
-        ac.addCard(new card(4, Color.blue));
-        ac.addCard(new card(3, Color.green));
-        ac.addCard(new card(3, Color.blue));
-        ac.addCard(new card(7, Color.blue));
-        ac.addCard(new card(0, Color.red));
-        ac.addCard(new card(0, Color.yellow));
-        ac.addCard(new card(5, Color.red));
-        ac.addCard(new card(0, Color.red));
-        ac.addCard(new card(4, Color.red));
-        ac.addCard(new card(0, Color.red));
-        ac.addCard(new card(2, Color.blue));
-        ac.addCard(new card(0, Color.blue));
-        ac.addCard(new card(10, Color.green));
-        ac.addCard(new card(0, Color.green));
-        ac.addCard(new card(10, Color.red));
-        ac.addCard(new card(7, Color.red));
-        ac.addCard(new card(0, Color.yellow));
-        ac.addCard(new card(0, Color.blue));
-        ac.addCard(new card(9, Color.green));
-        ac.addCard(new card(6, Color.green));
-        ac.addCard(new card(5, Color.yellow));
-        ac.addCard(new card(2, Color.yellow));
-        ac.addCard(new card(0, Color.blue));
-        ac.addCard(new card(5, Color.green));
-        ac.addCard(new card(0, Color.green));
-        ac.addCard(new card(10, Color.yellow));
-        ac.addCard(new card(4, Color.green));
-        ac.addCard(new card(6, Color.red));
-        ac.addCard(new card(2, Color.green));
-        ac.addCard(new card(2, Color.red));
-        ac.addCard(new card(8, Color.yellow));
-    }
+    // private void makeCustomCardsPile() {
+    // // P1 Cards
+    // cards ac = new cards();
+    // ac.addCard(new card(7, Color.yellow));
+    // ac.addCard(new card(6, Color.yellow));
+    // ac.addCard(new card(4, Color.yellow));
+    // ac.addCard(new card(3, Color.yellow));
+    // ac.addCard(new card(0, Color.yellow));
+    // ac.addCard(new card(10, Color.blue));
+    // ac.addCard(new card(9, Color.blue));
+    // ac.addCard(new card(5, Color.blue));
+    // p1 = new player(ac);
+    // ac = new cards();
+    // ac.addCard(new card(9, Color.yellow));
+    // ac.addCard(new card(3, Color.red));
+    // ac.addCard(new card(6, Color.blue));
+    // ac.addCard(new card(0, Color.white));
+    // ac.addCard(new card(0, Color.white));
+    // ac.addCard(new card(0, Color.white));
+    // ac.addCard(new card(4, Color.white));
+    // ac.addCard(new card(2, Color.white));
+    // p2 = new player(ac);
+    // undealt = new cards('u');
+    // undealt.addCard(new card(5, Color.white));
+    // undealt.addCard(new card(8, Color.blue));
+    // undealt.addCard(new card(3, Color.white));
+    // undealt.addCard(new card(0, Color.green));
+    // undealt.addCard(new card(6, Color.white));
+    // undealt.addCard(new card(8, Color.green));
+    // undealt.addCard(new card(7, Color.white));
+    // undealt.addCard(new card(7, Color.green));
+    // undealt.addCard(new card(8, Color.white));
+    // undealt.addCard(new card(9, Color.red));
+    // undealt.addCard(new card(9, Color.white));
+    // undealt.addCard(new card(8, Color.red));
+    // undealt.addCard(new card(10, Color.white));
+    // undealt.addCard(new card(4, Color.blue));
+    // undealt.addCard(new card(3, Color.green));
+    // undealt.addCard(new card(3, Color.blue));
+    // undealt.addCard(new card(7, Color.blue));
+    // undealt.addCard(new card(0, Color.red));
+    // undealt.addCard(new card(0, Color.yellow));
+    // undealt.addCard(new card(5, Color.red));
+    // undealt.addCard(new card(0, Color.red));
+    // undealt.addCard(new card(4, Color.red));
+    // undealt.addCard(new card(0, Color.red));
+    // undealt.addCard(new card(2, Color.blue));
+    // undealt.addCard(new card(0, Color.blue));
+    // undealt.addCard(new card(10, Color.green));
+    // undealt.addCard(new card(0, Color.green));
+    // undealt.addCard(new card(10, Color.red));
+    // undealt.addCard(new card(7, Color.red));
+    // undealt.addCard(new card(0, Color.yellow));
+    // undealt.addCard(new card(0, Color.blue));
+    // undealt.addCard(new card(9, Color.green));
+    // undealt.addCard(new card(6, Color.green));
+    // undealt.addCard(new card(5, Color.yellow));
+    // undealt.addCard(new card(2, Color.yellow));
+    // undealt.addCard(new card(0, Color.blue));
+    // undealt.addCard(new card(5, Color.green));
+    // undealt.addCard(new card(0, Color.green));
+    // undealt.addCard(new card(10, Color.yellow));
+    // undealt.addCard(new card(4, Color.green));
+    // undealt.addCard(new card(6, Color.red));
+    // undealt.addCard(new card(2, Color.green));
+    // undealt.addCard(new card(2, Color.red));
+    // undealt.addCard(new card(8, Color.yellow));
+    // }
 
     /** Deal cards to both players from undealt cards pile */
     private void dealCards() {
@@ -168,7 +168,7 @@ public class gameManager {
          * - number of undealt cards left
          * - discard piles
          */
-        System.out.println("There are " + undealt.size() + " undealt cards left\n");
+        System.out.println("\nThere are " + undealt.size() + " undealt cards left\n");
         discards.displayPiles();
     }
 
@@ -189,10 +189,6 @@ public class gameManager {
         System.out.print("\nWant to discard [D] or place [P]? ");
         String discard_or_place = in.nextLine(); // get choice
 
-        // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
-        // (why you ask? I don't know!)
-        in.nextLine();
-
         /** Ask which card player wants to place */
         System.out.print("\nWhich card do you want to play [index of card 0-7]? ");
         int outgoing_card_index = in.nextInt(); // index of card in hand
@@ -205,7 +201,8 @@ public class gameManager {
             p.placeCard(outgoing_card); // if player wants to place, add to player's placed cards
         }
 
-        // clear again
+        // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
+        // (why you ask? I don't know!)
         in.nextLine();
     }
 
@@ -234,8 +231,7 @@ public class gameManager {
             // if player chose to take undealt card, get the card from undealt pile
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
-            System.out.print("\nYou chose undealt pile.");
-            incoming_card.display();
+            System.out.print("\nYou chose undealt pile\n");
         }
         System.out.print("\nYou're getting this card: ");
         incoming_card.display();
