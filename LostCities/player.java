@@ -32,10 +32,11 @@ public class player {
     public player() {
         hand = new cards();
         placed_down = new ArrayList<>();
-
-        for (int i = 0; i < 5; i++) {
-            placed_down.add(new cards());
-        }
+        placed_down.add(new cards());
+        placed_down.add(new cards());
+        placed_down.add(new cards());
+        placed_down.add(new cards());
+        placed_down.add(new cards());
     }
 
     /**
