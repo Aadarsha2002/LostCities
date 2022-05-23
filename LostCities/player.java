@@ -37,8 +37,17 @@ public class player {
         return hand;
     }
 
+    public void removeCard(card c) {
+        hand.removeCard(c);
+    }
+
     public ArrayList<cards> getPlacedCards() {
         return placed_down;
+    }
+
+    public card getCardAt(int index) {
+        return hand.getCardAt(index);
+
     }
 
     public void placeCard(card c) {

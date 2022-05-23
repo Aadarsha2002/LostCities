@@ -73,5 +73,9 @@ public class gameManager {
 
         System.out.print("\nWhich card do you want to place [index of card 0-7]? ");
         int outgoing_card_index = in.nextInt();
+        outgoing_card = p.getCardAt(outgoing_card_index);
+        p.removeCard(outgoing_card);
+
+        
     }
 }
