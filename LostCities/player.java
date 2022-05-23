@@ -58,7 +58,7 @@ public class player {
     }
 
     /** Output placed down cards of player */
-    public void displayPiles() {
+    public void displayPlacedDownCards() {
         System.out.print("Yellow: ");
         placed_down.get(0).display();
         System.out.print("Blue: ");
