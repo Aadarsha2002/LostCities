@@ -9,6 +9,7 @@ import java.awt.*;
 Holds
     array of colors possible
     array of numbers possible (0 for handshake card)
+    
     a pile of cards
     whether the pile is a discard pile or not
     whether the pile is the undealt cards pile or not

@@ -23,7 +23,10 @@ public class discardPiles {
      * discard_piles[0] = red
      */
 
-    // Constructor
+    /**
+     * CONSTRUCTOR
+     * Make discard piles (5 piles)
+     */
     public discardPiles() {
         discard_piles = new ArrayList<>(5);
         for (cards c : discard_piles) {
@@ -31,22 +34,16 @@ public class discardPiles {
         }
     }
 
-    // get the top card
+    /** Return topmost card */
     public card getCard(Color col) {
         return discard_piles.get(getDiscardPileIndex(col)).getTopCard();
     }
 
-    // removes the top card
-    public void removeCard(Color col) {
-        discard_piles.get(getDiscardPileIndex(col)).removeCard(getCard(col));
-    }
-
-    // OVERLOADED FUNCTION to verify and remove the top card
-    public void removeCard(card c) {
-        if (isTopCard(c))
-            removeCard(c.getCardColor());
-    }
-
+    /**
+     * OVERLOAD FUNCTION
+     * Returns the topmost card from the given color's discard pile
+     * (color passed as String)
+     */
     public card getCard(String picked_color) {
         if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
             return getCard(Color.yellow);
@@ -62,10 +59,28 @@ public class discardPiles {
         return new card();
     }
 
+    /** Remove topmost card from given color's discard pile */
+    public void removeCard(Color col) {
+        discard_piles.get(getDiscardPileIndex(col)).removeCard(getCard(col));
+    }
+
+    /**
+     * OVERLOAD FUNCTION
+     * Takes in a card
+     * Verifies it's the topmost card
+     * if it is, removes it
+     */
+    public void removeCard(card c) {
+        if (isTopCard(c))
+            removeCard(c.getCardColor());
+    }
+
+    /** Insert card into the appropriate discard pile */
     public void addCard(card c) {
         discard_piles.get(getDiscardPileIndex(c.getCardColor())).addCard(c);
     }
 
+    /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
         System.out.print("Yellow: ");
@@ -80,11 +95,12 @@ public class discardPiles {
         discard_piles.get(getDiscardPileIndex(Color.red)).display();
     }
 
+    /** Return true if given card is topmost card */
     private boolean isTopCard(card c) {
         return c == getCard(c.getCardColor()) ? true : false;
     }
 
-    // Return the index of the discard pile according to its color
+    /** Return index of discard pile according to given color */
     private int getDiscardPileIndex(Color col) {
         if (col == Color.yellow) {
             return 0;
@@ -100,6 +116,7 @@ public class discardPiles {
         return -1;
     }
 
+    /** Return string form of color passed as parameter */
     private String getColorName(Color c) {
         if (c == col[0]) {
             return "Yellow";

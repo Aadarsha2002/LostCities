@@ -6,6 +6,7 @@ import java.awt.*;
 Holds:
     array of colors possible
     array of numbers possible (0 for handshake card)
+    
     cards in hand
     piles of cards placed down (outside of board)
 */
