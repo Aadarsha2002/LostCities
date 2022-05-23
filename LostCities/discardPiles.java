@@ -26,8 +26,26 @@ public class discardPiles {
         return discard_piles.get(getDiscardPileIndex(col)).getCard();
     }
 
+    public card getCard(String col) {
+        
+    }
+
     public void addCard(card c) {
         discard_piles.get(getDiscardPileIndex(c.getCardColor())).addCard(c);
+    }
+
+    public void displayPiles() {
+        System.out.println("Discard Piles: ");
+        System.out.print("Yellow: ");
+        discard_piles.get(getDiscardPileIndex(Color.yellow)).display();
+        System.out.print("Blue: ");
+        discard_piles.get(getDiscardPileIndex(Color.blue)).display();
+        System.out.print("White: ");
+        discard_piles.get(getDiscardPileIndex(Color.white)).display();
+        System.out.print("Green: ");
+        discard_piles.get(getDiscardPileIndex(Color.green)).display();
+        System.out.print("Red: ");
+        discard_piles.get(getDiscardPileIndex(Color.red)).display();
     }
 
     // Return the index of the discard pile according to its color

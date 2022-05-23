@@ -87,5 +87,36 @@ public class gameManager {
         in.nextLine();
         System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
         String discard_or_undealt = in.next();
+
+        if (discard_or_undealt == "D" || discard_or_undealt == "d") {
+            discards.displayPiles();
+
+            System.out.print("\nWhich color do you want to pick [Y, B, W, G, R]? ");
+            String picked_color = in.nextLine();
+
+            incoming_card = discards.getCard(picked_color);
+
+            if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
+                picking_card = yellow_discard.getCard();
+                yellow_discard.removeCard(picking_card);
+            } else if (picked_color.charAt(0) == getColorName(col[1]).charAt(0)) {
+                picking_card = blue_discard.getCard();
+                blue_discard.removeCard(picking_card);
+            } else if (picked_color.charAt(0) == getColorName(col[2]).charAt(0)) {
+                picking_card = white_discard.getCard();
+                white_discard.removeCard(picking_card);
+            } else if (picked_color.charAt(0) == getColorName(col[3]).charAt(0)) {
+                picking_card = green_discard.getCard();
+                green_discard.removeCard(picking_card);
+            } else if (picked_color.charAt(0) == getColorName(col[4]).charAt(0)) {
+                picking_card = red_discard.getCard();
+                red_discard.removeCard(picking_card);
+            }
+            p1.addCard(picking_card);
+        } else {
+            picking_card = undealt.getCard();
+            undealt.removeCard(picking_card);
+            p1.addCard(picking_card);
+        }
     }
 }

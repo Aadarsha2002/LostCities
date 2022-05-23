@@ -9,9 +9,6 @@ public class LostCities {
         // GamePlay!
         while (!undealt.isEmpty()) {
             // Player 1's turn
-
-            System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
-            discard_or_undealt = in.next();
             if (discard_or_undealt == "D" || discard_or_undealt == "d") {
                 System.out.println("Discard Piles: ");
                 System.out.print("Yellow: ");
