@@ -17,7 +17,10 @@ public class card {
     public int card_number;
     public Color card_color;
 
-    /** Set defalut values */
+    /**
+     * CONSTRUCTOR
+     * Set defalut values
+     */
     public card() {
         card_number = Integer.MIN_VALUE;
         card_color = Color.black;

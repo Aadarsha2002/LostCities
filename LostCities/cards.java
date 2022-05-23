@@ -25,7 +25,7 @@ public class cards {
     private boolean is_undealtCards; // holds whether the pile is undealt cards pile or not
 
     /**
-     * Constructor
+     * CONSTRUCTOR
      * Takes in a character (U/D) indicating whether pile of cards is undealt pile
      * of discard cards
      */
@@ -45,7 +45,7 @@ public class cards {
     }
 
     /**
-     * Constructor
+     * CONSTRUCTOR
      * Makes non-special pile of cards
      */
     public cards() {
@@ -81,7 +81,7 @@ public class cards {
     }
 
     /** Return topmost card */
-    public card getCard() {
+    public card getTopCard() {
         return cards.get(cards.size() - 1);
     }
 

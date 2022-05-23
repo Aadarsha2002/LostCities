@@ -24,7 +24,7 @@ public class discardPiles {
 
     // get the top card
     public card getCard(Color col) {
-        return discard_piles.get(getDiscardPileIndex(col)).getCard();
+        return discard_piles.get(getDiscardPileIndex(col)).getTopCard();
     }
 
     // removes the top card

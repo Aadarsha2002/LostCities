@@ -24,7 +24,10 @@ public class player {
      * placed_down[4] = red
      */
 
-    /** */
+    /**
+     * CONSTRUCTOR
+     * Make new hand and placed down card list
+     */
     public player() {
         hand = new cards();
         placed_down = new ArrayList<>();
@@ -34,30 +37,44 @@ public class player {
         }
     }
 
+    /** Output hand to console */
     public void display() {
         hand.display();
     }
 
+    /** Return hand */
     public cards getHand() {
         return hand;
     }
 
-    public void removeCard(card c) {
-        hand.removeCard(c);
-    }
-
+    /** Return placed cards */
     public ArrayList<cards> getPlacedCards() {
         return placed_down;
     }
 
+    /** Insert a card into hand */
+    public void addCard(card c) {
+        hand.addCard(c);
+    }
+
+    /** Remove a card from hand */
+    public void removeCard(card c) {
+        hand.removeCard(c);
+    }
+
+    /** Return card at specific index in hand */
     public card getCardAt(int index) {
         return hand.getCardAt(index);
 
     }
 
+    /**
+     * Remove specific card from hand
+     * Add it to placed cards list appropriately
+     */
     public void placeCard(card c) {
         hand.removeCard(c);
-        if (c.getCardColor() == Color.yellow) {
+        if (c.getCardColor() == Color.yellow && c.getCardNumber() > hand.getTopCard().getCardNumber()) {
             placed_down.get(0).addCard(c);
         } else if (c.getCardColor() == Color.blue) {
             placed_down.get(1).addCard(c);
@@ -68,10 +85,6 @@ public class player {
         } else if (c.getCardColor() == Color.red) {
             placed_down.get(4).addCard(c);
         }
-    }
-
-    public void addCard(card c) {
-        hand.addCard(c);
     }
 
     public int calculateScore() {

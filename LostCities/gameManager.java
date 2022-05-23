@@ -28,7 +28,7 @@ public class gameManager {
     // Deal cards to players
     public void dealCards() {
         for (int i = 0; i < 8 * 2; i++) {
-            card c = undealt.getCard();
+            card c = undealt.getTopCard();
             undealt.removeCard(c);
             if (i % 2 == 0)
                 p1.addCard(c);
@@ -131,7 +131,8 @@ public class gameManager {
             incoming_card = discards.getCard(picked_color); // get the card that player chose
             discards.removeCard(incoming_card); // remove the card from the discard piles
         } else {
-            incoming_card = undealt.getCard(); // if player chose to take undealt card, get the card from undealt pile
+            // if player chose to take undealt card, get the card from undealt pile
+            incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
             System.out.print("\nYou chose undealt pile.");
             incoming_card.display();
