@@ -59,13 +59,12 @@ public class gameManager {
     // Player 1's actions
     private void playPlayer(player p) {
         Scanner in = new Scanner(System.in);
-        int player_number = (p == p1) ? 1 : 2;
         card outgoing_card = new card();
         card incoming_card = new card();
 
         System.out.println("**********************************");
-        System.out.println("It's player " + player_number + "'s turn: ");
-        System.out.print("Player " + player_number + "'s Hand: ");
+        System.out.println("It's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
+        System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Hand: ");
         p.display();
 
         System.out.print("\nWhich card do you want to place [index of card 0-7]? ");
@@ -94,11 +93,14 @@ public class gameManager {
 
             incoming_card = discards.getCard(picked_color);
             discards.removeCard(incoming_card);
-            p1.addCard(incoming_card);
+            p.addCard(incoming_card);
         } else {
             incoming_card = undealt.getCard();
             undealt.removeCard(incoming_card);
             p.addCard(incoming_card);
         }
+
+        System.out.println("There are " + undealt.size() + " undealt cards left\n");
+        discards.displayPiles();
     }
 }

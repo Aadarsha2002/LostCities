@@ -139,5 +139,4 @@ public class LostCities {
         System.out.println("\n\nPlayer 1 scored " + p1_score);
         System.out.println("Player 2 scored " + p2_score);
     }
-
 }
