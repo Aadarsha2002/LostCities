@@ -138,8 +138,8 @@ public class cards {
             for (int n : num) {
                 addCard(new card(n, c));
             }
-            // add handshake cards
-            for (int j = 0; j < 3; j++) {
+            // add 2 more handshake cards (1 was added in above loop)
+            for (int j = 0; j < 2; j++) {
                 addCard(new card(num[0], c));
             }
         }
