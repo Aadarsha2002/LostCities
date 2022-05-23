@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.awt.*;
 /*
 Holds:
+    array of colors possible
+    array of numbers possible (0 for handshake card)
     cards in hand
+    piles of cards placed down (outside of board)
 */
 
 public class player {
     static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
     private cards hand;
     private ArrayList<cards> placed_down;
     /*
@@ -20,6 +24,7 @@ public class player {
      * placed_down[4] = red
      */
 
+    /** */
     public player() {
         hand = new cards();
         placed_down = new ArrayList<>();

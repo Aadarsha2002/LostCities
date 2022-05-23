@@ -55,6 +55,7 @@ public class card {
         return getColorName(card_color);
     }
 
+    /** Return string form of color passed as parameter */
     private String getColorName(Color col) {
         if (col == card.col[0]) {
             return "Yellow";
