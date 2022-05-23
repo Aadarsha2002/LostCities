@@ -108,7 +108,7 @@ public class player {
      */
     public void placeCard(card c) {
         hand.removeCard(c);
-        if (isValidCardtoPlace(c))
+        if (placed_down.get(getIndex(c.getCardColor())).isEmpty() || isValidCardtoPlace(c))
             placed_down.get(getIndex(c.getCardColor())).addCard(c);
     }
 
