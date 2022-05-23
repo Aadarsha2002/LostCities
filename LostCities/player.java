@@ -87,6 +87,18 @@ public class player {
         }
     }
 
+    /**
+     * Return the score of player
+     * -> In each color
+     * - count multipliers (multiplier++)
+     * - sum numbered cards (sum+=c.getCardNumber())
+     * - deduct 20 (sum-=20)
+     * - multiply sum and multipliers (sum*=multiplier)
+     * - add 20 bonus if more than 8 cards are placed down (sum+=20)
+     * - add sum to total
+     * 
+     * Return total
+     */
     public int calculateScore() {
         hand.sort();
         int total = 0;

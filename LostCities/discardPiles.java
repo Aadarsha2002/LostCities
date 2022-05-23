@@ -2,10 +2,19 @@ package LostCities;
 
 import java.util.ArrayList;
 import java.awt.*;
+/*
+Holds:
+    array of colors possible
+    array of numbers possible (0 for handshake card)
+    
+    List of discard piles
+*/
 
 public class discardPiles {
-    ArrayList<cards> discard_piles = new ArrayList<>();
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    ArrayList<cards> discard_piles = new ArrayList<>();
     /*
      * discard_piles[0] = yellow
      * discard_piles[0] = blue
