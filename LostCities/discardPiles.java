@@ -14,7 +14,7 @@ public class discardPiles {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    ArrayList<cards> discard_piles = new ArrayList<>();
+    ArrayList<cards> discard_piles = new ArrayList<>(5);
     /*
      * discard_piles[0] = yellow
      * discard_piles[0] = blue
