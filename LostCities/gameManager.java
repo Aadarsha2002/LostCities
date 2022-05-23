@@ -90,7 +90,7 @@ public class gameManager {
         System.out.println("\nIt's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
         System.out.print("Pre Turn Statistics: \nPlayer " + ((p == p1) ? 1 : 2) + "'s Hand: ");
         p.display();
-        System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: ");
+        System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: \n");
         p.displayPlacedDownCards();
         discards.displayPiles();
         System.out.println("\nThere are " + undealt.size() + " undealt cards left");

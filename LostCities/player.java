@@ -59,15 +59,15 @@ public class player {
 
     /** Output placed down cards of player */
     public void displayPlacedDownCards() {
-        System.out.print("Yellow: ");
+        System.out.print("Yellow:\t");
         placed_down.get(0).display();
-        System.out.print("Blue: ");
+        System.out.print("Blue:\t");
         placed_down.get(1).display();
-        System.out.print("White: ");
+        System.out.print("White:\t");
         placed_down.get(2).display();
-        System.out.print("Green: ");
+        System.out.print("Green:\t");
         placed_down.get(3).display();
-        System.out.print("Red: ");
+        System.out.print("Red:\t");
         placed_down.get(4).display();
     }
 

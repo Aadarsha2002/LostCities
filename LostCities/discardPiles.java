@@ -86,15 +86,15 @@ public class discardPiles {
     /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
-        System.out.print("Yellow: ");
+        System.out.print("Yellow:\t");
         discard_piles.get(getDiscardPileIndex(Color.yellow)).display();
-        System.out.print("Blue: ");
+        System.out.print("Blue:\t");
         discard_piles.get(getDiscardPileIndex(Color.blue)).display();
-        System.out.print("White: ");
+        System.out.print("White:\t");
         discard_piles.get(getDiscardPileIndex(Color.white)).display();
-        System.out.print("Green: ");
+        System.out.print("Green:\t");
         discard_piles.get(getDiscardPileIndex(Color.green)).display();
-        System.out.print("Red: ");
+        System.out.print("Red:\t");
         discard_piles.get(getDiscardPileIndex(Color.red)).display();
     }
 
