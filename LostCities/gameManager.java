@@ -34,75 +34,6 @@ public class gameManager {
         playGame();
     }
 
-    // private void makeCustomCardsPile() {
-    // // P1 Cards
-    // cards ac = new cards();
-    // ac.addCard(new card(7, Color.yellow));
-    // ac.addCard(new card(6, Color.yellow));
-    // ac.addCard(new card(4, Color.yellow));
-    // ac.addCard(new card(3, Color.yellow));
-    // ac.addCard(new card(0, Color.yellow));
-    // ac.addCard(new card(10, Color.blue));
-    // ac.addCard(new card(9, Color.blue));
-    // ac.addCard(new card(5, Color.blue));
-    // p1 = new player(ac);
-    // ac = new cards();
-    // ac.addCard(new card(9, Color.yellow));
-    // ac.addCard(new card(3, Color.red));
-    // ac.addCard(new card(6, Color.blue));
-    // ac.addCard(new card(0, Color.white));
-    // ac.addCard(new card(0, Color.white));
-    // ac.addCard(new card(0, Color.white));
-    // ac.addCard(new card(4, Color.white));
-    // ac.addCard(new card(2, Color.white));
-    // p2 = new player(ac);
-    // undealt = new cards('u');
-    // undealt.addCard(new card(5, Color.white));
-    // undealt.addCard(new card(8, Color.blue));
-    // undealt.addCard(new card(3, Color.white));
-    // undealt.addCard(new card(0, Color.green));
-    // undealt.addCard(new card(6, Color.white));
-    // undealt.addCard(new card(8, Color.green));
-    // undealt.addCard(new card(7, Color.white));
-    // undealt.addCard(new card(7, Color.green));
-    // undealt.addCard(new card(8, Color.white));
-    // undealt.addCard(new card(9, Color.red));
-    // undealt.addCard(new card(9, Color.white));
-    // undealt.addCard(new card(8, Color.red));
-    // undealt.addCard(new card(10, Color.white));
-    // undealt.addCard(new card(4, Color.blue));
-    // undealt.addCard(new card(3, Color.green));
-    // undealt.addCard(new card(3, Color.blue));
-    // undealt.addCard(new card(7, Color.blue));
-    // undealt.addCard(new card(0, Color.red));
-    // undealt.addCard(new card(0, Color.yellow));
-    // undealt.addCard(new card(5, Color.red));
-    // undealt.addCard(new card(0, Color.red));
-    // undealt.addCard(new card(4, Color.red));
-    // undealt.addCard(new card(0, Color.red));
-    // undealt.addCard(new card(2, Color.blue));
-    // undealt.addCard(new card(0, Color.blue));
-    // undealt.addCard(new card(10, Color.green));
-    // undealt.addCard(new card(0, Color.green));
-    // undealt.addCard(new card(10, Color.red));
-    // undealt.addCard(new card(7, Color.red));
-    // undealt.addCard(new card(0, Color.yellow));
-    // undealt.addCard(new card(0, Color.blue));
-    // undealt.addCard(new card(9, Color.green));
-    // undealt.addCard(new card(6, Color.green));
-    // undealt.addCard(new card(5, Color.yellow));
-    // undealt.addCard(new card(2, Color.yellow));
-    // undealt.addCard(new card(0, Color.blue));
-    // undealt.addCard(new card(5, Color.green));
-    // undealt.addCard(new card(0, Color.green));
-    // undealt.addCard(new card(10, Color.yellow));
-    // undealt.addCard(new card(4, Color.green));
-    // undealt.addCard(new card(6, Color.red));
-    // undealt.addCard(new card(2, Color.green));
-    // undealt.addCard(new card(2, Color.red));
-    // undealt.addCard(new card(8, Color.yellow));
-    // }
-
     /** Deal cards to both players from undealt cards pile */
     private void dealCards() {
         for (int i = 0; i < 8 * 2; i++) {
@@ -156,6 +87,7 @@ public class gameManager {
          * - their hand
          */
         System.out.println("**********************************");
+        undealt.sort();
         undealt.display();
         System.out.println("Undealt Size: " + undealt.size());
         System.out.println("\n\nIt's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
