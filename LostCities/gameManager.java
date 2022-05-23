@@ -44,7 +44,6 @@ public class gameManager {
     // Play the game!!!
     public void playGame() {
         String discard_or_undealt;
-        String discard_or_place;
         String picked_color;
 
         while (!undealt.isEmpty()) {
@@ -76,6 +75,24 @@ public class gameManager {
         outgoing_card = p.getCardAt(outgoing_card_index);
         p.removeCard(outgoing_card);
 
+        in.nextLine();
         
+        System.out.print("\nWant to discard [D] or place [P]? ");
+        String discard_or_place = in.nextLine();
+        if (discard_or_place == "D" || discard_or_place == "d") {
+            if (p.getHand().getCard().getCardColorName() == getColorName(col[0])) {
+                yellow_discard.addCard(placing_card);
+            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[1])) {
+                blue_discard.addCard(placing_card);
+            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[2])) {
+                white_discard.addCard(placing_card);
+            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[3])) {
+                green_discard.addCard(placing_card);
+            } else if (p.getHand().getCard().getCardColorName() == getColorName(col[4])) {
+                red_discard.addCard(placing_card);
+            }
+        } else {
+            p.placeCard(placing_card);
+        }
     }
 }
