@@ -156,7 +156,9 @@ public class gameManager {
          * - their hand
          */
         System.out.println("**********************************");
-        System.out.println("It's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
+        undealt.display();
+        System.out.println("Undealt Size: " + undealt.size());
+        System.out.println("\n\nIt's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
         System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Hand: ");
         p.display();
 
