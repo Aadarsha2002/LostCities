@@ -61,10 +61,15 @@ public class cards {
 
     /** Display cards to console */
     public void display() {
+        if (cards.isEmpty()) {
+            System.out.println("[]");
+            return;
+        }
         System.out.print("[");
         for (card c : cards) {
             c.display();
-            System.out.print(", ");
+            if (c != cards.get(cards.size() - 1))
+                System.out.print(", ");
         }
         System.out.println("]");
     }

@@ -86,8 +86,8 @@ public class gameManager {
          * - indicate Player's turn
          * - their hand
          */
-        System.out.println("**********************************");
-        System.out.println("\n\nIt's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
+        System.out.println("\n**********************************");
+        System.out.println("\nIt's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
         System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Hand: ");
         p.display();
 
