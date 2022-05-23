@@ -43,8 +43,6 @@ public class gameManager {
 
     // Play the game!!!
     public void playGame() {
-        String discard_or_undealt;
-        String picked_color;
 
         while (!undealt.isEmpty()) {
             // Player 1's Turn
