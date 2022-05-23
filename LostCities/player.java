@@ -56,6 +56,20 @@ public class player {
         hand.display();
     }
 
+    /** Output placed down cards of player */
+    public void displayPiles() {
+        System.out.print("Yellow: ");
+        placed_down.get(0).display();
+        System.out.print("Blue: ");
+        placed_down.get(1).display();
+        System.out.print("White: ");
+        placed_down.get(2).display();
+        System.out.print("Green: ");
+        placed_down.get(3).display();
+        System.out.print("Red: ");
+        placed_down.get(4).display();
+    }
+
     /** Return hand */
     public cards getHand() {
         return hand;
