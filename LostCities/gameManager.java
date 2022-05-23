@@ -167,11 +167,14 @@ public class gameManager {
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
             System.out.print("\nYou chose undealt pile\n");
         }
-        System.out.print("\nYou're getting this card: ");
+        System.out.print("\nYou're getting ");
         incoming_card.display();
         p.addCard(incoming_card);// add the card to player's hand
 
-        // clear yet again
+        System.out.print("\nYour hand is now ");
+        p.display();
+
+        // clear again
         in.nextLine();
     }
 }
