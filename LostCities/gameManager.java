@@ -94,7 +94,7 @@ public class gameManager {
         System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: \n");
         p.displayPlacedDownCards();
         discards.displayPiles();
-        System.out.println("\nThere are " + undealt.size() + " undealt cards left");
+        System.out.println("There are " + undealt.size() + " undealt cards left");
 
         outgoingPlay(p); // placing/discarding card from hand
         incomingPlay(p); // taking card from undealt pile/discard piles
@@ -108,6 +108,8 @@ public class gameManager {
         System.out.println("\nPost Turn Statistics: ");
         System.out.println("\nThere are " + undealt.size() + " undealt cards left");
         discards.displayPiles();
+        System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: \n");
+        p.displayPlacedDownCards();
     }
 
     /** Output player's hand to console */
