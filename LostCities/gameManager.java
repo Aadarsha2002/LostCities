@@ -135,6 +135,9 @@ public class gameManager {
         }
         outgoing_card.display();
 
+        System.out.print("\nYour hand is now ");
+        p.display();
+
         // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
         // (why you ask? I don't know!)
         in.nextLine();
