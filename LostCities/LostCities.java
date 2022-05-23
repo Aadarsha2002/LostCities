@@ -130,13 +130,5 @@ public class LostCities {
             System.out.print("Red: ");
             red_discard.display();
         }
-
-        // calculate player's hands now!
-        int p1_score = p1.calculateScore();
-        int p2_score = p2.calculateScore();
-
-        System.out.println("***********************************");
-        System.out.println("\n\nPlayer 1 scored " + p1_score);
-        System.out.println("Player 2 scored " + p2_score);
     }
 }

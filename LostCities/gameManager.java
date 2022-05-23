@@ -43,12 +43,17 @@ public class gameManager {
 
     // Play the game!!!
     public void playGame() {
-
         while (!undealt.isEmpty()) {
             // Player 1's Turn
             playPlayer(p1);
             playPlayer(p2);
         }
+        int p1_score = p1.calculateScore();
+        int p2_score = p2.calculateScore();
+        
+        System.out.println("***********************************");
+        System.out.println("\n\nPlayer 1 scored " + p1_score);
+        System.out.println("Player 2 scored " + p2_score);
     }
 
     // Player 1's actions
