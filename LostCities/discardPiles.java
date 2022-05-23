@@ -27,6 +27,17 @@ public class discardPiles {
         return discard_piles.get(getDiscardPileIndex(col)).getCard();
     }
 
+    // removes the top card
+    public void removeCard(Color col) {
+        discard_piles.get(getDiscardPileIndex(col)).removeCard(getCard(col));
+    }
+
+    // OVERLOADED FUNCTION to verify and remove the top card
+    public void removeCard(card c) {
+        if (isTopCard(c))
+            removeCard(c.getCardColor());
+    }
+
     public card getCard(String picked_color) {
         if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
             return getCard(Color.yellow);
@@ -58,6 +69,10 @@ public class discardPiles {
         discard_piles.get(getDiscardPileIndex(Color.green)).display();
         System.out.print("Red: ");
         discard_piles.get(getDiscardPileIndex(Color.red)).display();
+    }
+
+    private boolean isTopCard(card c) {
+        return c == getCard(c.getCardColor()) ? true : false;
     }
 
     // Return the index of the discard pile according to its color

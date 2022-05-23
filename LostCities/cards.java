@@ -87,9 +87,8 @@ public class cards {
         cards.remove(c);
     }
 
-    // overloaded function to take in a color and number to create a card and then
-    // remove
-    // Remove a specific card from the cards
+    // OVERLOADED FUNCTION to take in a color and number to create a card and then
+    // remove a specific card from the cards
     public void removeCard(Color col, int n) {
         cards.remove(new card(n, col));
     }
