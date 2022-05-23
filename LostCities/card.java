@@ -6,7 +6,7 @@ import java.awt.*;
 Holds:
     array of colors possible
     array of numbers possible (0 for handshake card)
-    
+
     card number
     card color
 */
@@ -51,7 +51,7 @@ public class card {
 
     /** Output card to console */
     public void display() {
-        System.out.print(getColorName(card_color) + card_number);
+        System.out.print(getColorName(card_color).charAt(0) + card_number);
     }
 
     /** Return card color in string type */
