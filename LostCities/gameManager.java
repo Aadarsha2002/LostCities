@@ -128,9 +128,12 @@ public class gameManager {
 
         if (discard_or_place == "D" || discard_or_place == "d") {
             discards.addCard(outgoing_card); // if player wants to discard, add to discard pile
+            System.out.print("You chose to discard ");
         } else {
             p.placeCard(outgoing_card); // if player wants to place, add to player's placed cards
+            System.out.print("You chose to place ");
         }
+        outgoing_card.display();
 
         // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
         // (why you ask? I don't know!)
