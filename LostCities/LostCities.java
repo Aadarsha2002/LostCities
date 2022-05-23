@@ -9,7 +9,6 @@ public class LostCities {
         // GamePlay!
         while (!undealt.isEmpty()) {
             // Player 1's turn
-
             System.out.print("\nWhich card do you want to place [index of card 0-7]? ");
             placing_card_index = in.nextInt();
             in.reset();

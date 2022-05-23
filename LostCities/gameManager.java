@@ -43,9 +43,6 @@ public class gameManager {
 
     // Play the game!!!
     public void playGame() {
-        Scanner in = new Scanner(System.in);
-        card placing_card = new card();
-        card picking_card = new card();
         String discard_or_undealt;
         String discard_or_place;
         String picked_color;
@@ -64,8 +61,8 @@ public class gameManager {
 
     // Player 1's actions
     private void playPlayer(player p) {
+        Scanner in = new Scanner(System.in);
         int player_number = (p == p1) ? 1 : 2;
-        int outgoing_card_index = Integer.MIN_VALUE;
         card outgoing_card = new card();
         card incoming_card = new card();
 
@@ -74,5 +71,7 @@ public class gameManager {
         System.out.print("Player " + player_number + "'s Hand: ");
         p.display();
 
+        System.out.print("\nWhich card do you want to place [index of card 0-7]? ");
+        int outgoing_card_index = in.nextInt();
     }
 }
