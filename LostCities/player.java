@@ -94,8 +94,4 @@ public class player {
         }
         return total;
     }
-
-    public int displayScore() {
-        System.out.println("Player's Score: " + calculateScore());
-    }
 }
