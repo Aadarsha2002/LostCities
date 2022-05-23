@@ -5,6 +5,7 @@ import java.awt.*;
 
 public class discardPiles {
     ArrayList<cards> discard_piles = new ArrayList<>();
+    Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     /*
      * discard_piles[0] = yellow
      * discard_piles[0] = blue
@@ -26,8 +27,19 @@ public class discardPiles {
         return discard_piles.get(getDiscardPileIndex(col)).getCard();
     }
 
-    public card getCard(String col) {
-        
+    public card getCard(String picked_color) {
+        if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
+            return getCard(Color.yellow);
+        } else if (picked_color.charAt(0) == getColorName(col[1]).charAt(0)) {
+            return getCard(Color.blue);
+        } else if (picked_color.charAt(0) == getColorName(col[2]).charAt(0)) {
+            return getCard(Color.white);
+        } else if (picked_color.charAt(0) == getColorName(col[3]).charAt(0)) {
+            return getCard(Color.green);
+        } else if (picked_color.charAt(0) == getColorName(col[4]).charAt(0)) {
+            return getCard(Color.red);
+        }
+        return new card();
     }
 
     public void addCard(card c) {
@@ -62,5 +74,20 @@ public class discardPiles {
             return 4;
         }
         return -1;
+    }
+
+    private String getColorName(Color c) {
+        if (c == col[0]) {
+            return "Yellow";
+        } else if (c == col[1]) {
+            return "Blue";
+        } else if (c == col[2]) {
+            return "White";
+        } else if (c == col[3]) {
+            return "Green";
+        } else if (c == col[4]) {
+            return "Red";
+        }
+        return "";
     }
 }

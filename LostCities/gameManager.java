@@ -95,28 +95,12 @@ public class gameManager {
             String picked_color = in.nextLine();
 
             incoming_card = discards.getCard(picked_color);
-
-            if (picked_color.charAt(0) == getColorName(col[0]).charAt(0)) {
-                picking_card = yellow_discard.getCard();
-                yellow_discard.removeCard(picking_card);
-            } else if (picked_color.charAt(0) == getColorName(col[1]).charAt(0)) {
-                picking_card = blue_discard.getCard();
-                blue_discard.removeCard(picking_card);
-            } else if (picked_color.charAt(0) == getColorName(col[2]).charAt(0)) {
-                picking_card = white_discard.getCard();
-                white_discard.removeCard(picking_card);
-            } else if (picked_color.charAt(0) == getColorName(col[3]).charAt(0)) {
-                picking_card = green_discard.getCard();
-                green_discard.removeCard(picking_card);
-            } else if (picked_color.charAt(0) == getColorName(col[4]).charAt(0)) {
-                picking_card = red_discard.getCard();
-                red_discard.removeCard(picking_card);
-            }
-            p1.addCard(picking_card);
+            discards.removeCard(incoming_card);
+            p1.addCard(incoming_card);
         } else {
-            picking_card = undealt.getCard();
-            undealt.removeCard(picking_card);
-            p1.addCard(picking_card);
+            incoming_card = undealt.getCard();
+            undealt.removeCard(incoming_card);
+            p.addCard(incoming_card);
         }
     }
 }

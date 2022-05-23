@@ -140,19 +140,4 @@ public class LostCities {
         System.out.println("Player 2 scored " + p2_score);
     }
 
-    private static String getColorName(Color c) {
-        Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-        if (c == col[0]) {
-            return "Yellow";
-        } else if (c == col[1]) {
-            return "Blue";
-        } else if (c == col[2]) {
-            return "White";
-        } else if (c == col[3]) {
-            return "Green";
-        } else if (c == col[4]) {
-            return "Red";
-        }
-        return "";
-    }
 }
