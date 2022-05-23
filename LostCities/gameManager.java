@@ -49,7 +49,8 @@ public class gameManager {
         displayPlayerHand(p2);
     }
 
-    /**Play the game!!
+    /**
+     * Play the game!!
      * Until undealt pile is empty, play players
      * Oncce undealt pile is empty, calculate score
      */
@@ -70,7 +71,13 @@ public class gameManager {
         System.out.println("Player 2 scored " + p2_score);
     }
 
-    // Player 1's actions
+    /**
+     * A Player's turn
+     * - Display pre-turn statistics
+     * - Play outgoing card part of turn
+     * - Play incoming card part of turn
+     * - Display post-turn statistics
+     */
     private void playPlayer(player p) {
 
         /**
@@ -95,26 +102,33 @@ public class gameManager {
         discards.displayPiles();
     }
 
-    // Output player's hand to console
+    /** Output player's hand to console */
     private void displayPlayerHand(player p) {
         p.display();
     }
 
+    /**
+     * Outgoing card part of player's turn
+     * - Ask whether player wants to place or discard
+     * - Ask which card player wants to play
+     * - Do appropriate actions
+     */
     private void outgoingPlay(player p) {
         Scanner in = new Scanner(System.in);
-        /** Ask which card player wants to place */
-        System.out.print("\nWhich card do you want to place [index of card 0-7]? ");
-        int outgoing_card_index = in.nextInt(); // index of card in hand
-        card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
-        p.removeCard(outgoing_card);// remove that card from the hand
+        /** Ash whether player wants to discard or place card */
+        System.out.print("\nWant to discard [D] or place [P]? ");
+        String discard_or_place = in.nextLine(); // get choice
 
         // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
         // (why you ask? I don't know!)
         in.nextLine();
 
-        /** Ash whether player wants to discard or place card */
-        System.out.print("\nWant to discard [D] or place [P]? ");
-        String discard_or_place = in.nextLine(); // get choice
+        /** Ask which card player wants to place */
+        System.out.print("\nWhich card do you want to play [index of card 0-7]? ");
+        int outgoing_card_index = in.nextInt(); // index of card in hand
+        card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
+        p.removeCard(outgoing_card);// remove that card from the hand
+
         if (discard_or_place == "D" || discard_or_place == "d") {
             discards.addCard(outgoing_card); // if player wants to discard, add to discard pile
         } else {
@@ -125,6 +139,11 @@ public class gameManager {
         in.nextLine();
     }
 
+    /**
+     * Incoming card part of player's turn
+     * - Ask whether player wants to pick card from discard pile or undealt pile
+     * - Do appropriate actions
+     */
     private void incomingPlay(player p) {
         Scanner in = new Scanner(System.in);
 
