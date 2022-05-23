@@ -56,7 +56,7 @@ public class gameManager {
 
     // Output player's hand to console
     private void displayPlayerHand(player p) {
-        p.display();z
+        p.display();
     }
 
     // Player 1's actions
