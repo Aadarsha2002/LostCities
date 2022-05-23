@@ -6,14 +6,6 @@ import java.awt.*;
 public class LostCities {
     public static void main(String args[]) {
 
-        Scanner in = new Scanner(System.in);
-        int placing_card_index = 0;
-        card placing_card = new card();
-        card picking_card = new card();
-        String discard_or_undealt;
-        String discard_or_place;
-        String picked_color;
-
         // GamePlay!
         while (!undealt.isEmpty()) {
             // Player 1's turn
