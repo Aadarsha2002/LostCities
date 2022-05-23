@@ -6,7 +6,7 @@ import java.awt.*;
 Holds:
     array of colors possible
     array of numbers possible (0 for handshake card)
-    
+
     cards in hand
     piles of cards placed down (outside of board)
 */
@@ -31,6 +31,19 @@ public class player {
      */
     public player() {
         hand = new cards();
+        placed_down = new ArrayList<>();
+
+        for (int i = 0; i < 5; i++) {
+            placed_down.add(new cards());
+        }
+    }
+
+    /**
+     * CONSTRUCTOR
+     * Make a custom hand based on given cards
+     */
+    public player(cards c) {
+        hand = c;
         placed_down = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {

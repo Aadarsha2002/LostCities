@@ -29,12 +29,82 @@ public class gameManager {
      * - Play the game
      */
     public gameManager() {
-        dealCards();
+        // dealCards();
+        makeCustomCardsPile();
         playGame();
     }
 
+    private void makeCustomCardsPile() {
+        // P1 Cards
+        cards ac = new cards();
+        ac.addCard(new card(7, Color.yellow));
+        ac.addCard(new card(6, Color.yellow));
+        ac.addCard(new card(4, Color.yellow));
+        ac.addCard(new card(3, Color.yellow));
+        ac.addCard(new card(0, Color.yellow));
+        ac.addCard(new card(10, Color.blue));
+        ac.addCard(new card(9, Color.blue));
+        ac.addCard(new card(5, Color.blue));
+        p1 = new player(ac);
+        ac = new cards();
+        ac.addCard(new card(9, Color.yellow));
+        ac.addCard(new card(3, Color.red));
+        ac.addCard(new card(6, Color.blue));
+        ac.addCard(new card(0, Color.white));
+        ac.addCard(new card(0, Color.white));
+        ac.addCard(new card(0, Color.white));
+        ac.addCard(new card(4, Color.white));
+        ac.addCard(new card(2, Color.white));
+        p2 = new player(ac);
+        ac = new cards();
+        ac.addCard(new card(5, Color.white));
+        ac.addCard(new card(8, Color.blue));
+        ac.addCard(new card(3, Color.white));
+        ac.addCard(new card(0, Color.green));
+        ac.addCard(new card(6, Color.white));
+        ac.addCard(new card(8, Color.green));
+        ac.addCard(new card(7, Color.white));
+        ac.addCard(new card(7, Color.green));
+        ac.addCard(new card(8, Color.white));
+        ac.addCard(new card(9, Color.red));
+        ac.addCard(new card(9, Color.white));
+        ac.addCard(new card(8, Color.red));
+        ac.addCard(new card(10, Color.white));
+        ac.addCard(new card(4, Color.blue));
+        ac.addCard(new card(3, Color.green));
+        ac.addCard(new card(3, Color.blue));
+        ac.addCard(new card(7, Color.blue));
+        ac.addCard(new card(0, Color.red));
+        ac.addCard(new card(0, Color.yellow));
+        ac.addCard(new card(5, Color.red));
+        ac.addCard(new card(0, Color.red));
+        ac.addCard(new card(4, Color.red));
+        ac.addCard(new card(0, Color.red));
+        ac.addCard(new card(2, Color.blue));
+        ac.addCard(new card(0, Color.blue));
+        ac.addCard(new card(10, Color.green));
+        ac.addCard(new card(0, Color.green));
+        ac.addCard(new card(10, Color.red));
+        ac.addCard(new card(7, Color.red));
+        ac.addCard(new card(0, Color.yellow));
+        ac.addCard(new card(0, Color.blue));
+        ac.addCard(new card(9, Color.green));
+        ac.addCard(new card(6, Color.green));
+        ac.addCard(new card(5, Color.yellow));
+        ac.addCard(new card(2, Color.yellow));
+        ac.addCard(new card(0, Color.blue));
+        ac.addCard(new card(5, Color.green));
+        ac.addCard(new card(0, Color.green));
+        ac.addCard(new card(10, Color.yellow));
+        ac.addCard(new card(4, Color.green));
+        ac.addCard(new card(6, Color.red));
+        ac.addCard(new card(2, Color.green));
+        ac.addCard(new card(2, Color.red));
+        ac.addCard(new card(8, Color.yellow));
+    }
+
     /** Deal cards to both players from undealt cards pile */
-    public void dealCards() {
+    private void dealCards() {
         for (int i = 0; i < 8 * 2; i++) {
             card c = undealt.getTopCard();
             undealt.removeCard(c);
@@ -54,7 +124,7 @@ public class gameManager {
      * Until undealt pile is empty, play players
      * Oncce undealt pile is empty, calculate score
      */
-    public void playGame() {
+    private void playGame() {
         while (!undealt.isEmpty()) {
             // Player 1's Turn
             playPlayer(p1);
