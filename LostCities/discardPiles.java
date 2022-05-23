@@ -14,7 +14,7 @@ public class discardPiles {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    ArrayList<cards> discard_piles = new ArrayList<>(5);
+    ArrayList<cards> discard_piles = new ArrayList<>();
     /*
      * discard_piles[0] = yellow
      * discard_piles[0] = blue
@@ -28,10 +28,13 @@ public class discardPiles {
      * Make discard piles (5 piles)
      */
     public discardPiles() {
-        discard_piles = new ArrayList<>(5);
-        for (cards c : discard_piles) {
-            c = new cards('D');
-        }
+
+        discard_piles = new ArrayList<>();
+        discard_piles.add(new cards());// yellow
+        discard_piles.add(new cards());// blue
+        discard_piles.add(new cards());// white
+        discard_piles.add(new cards());// green
+        discard_piles.add(new cards());// red
     }
 
     /** Return topmost card */
@@ -83,8 +86,8 @@ public class discardPiles {
     /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
+        System.out.println(discard_piles.size());
         System.out.print("Yellow: ");
-        System.out.println(discard_piles.get(getDiscardPileIndex(Color.yellow)).size());
         discard_piles.get(getDiscardPileIndex(Color.yellow)).display();
         System.out.print("Blue: ");
         discard_piles.get(getDiscardPileIndex(Color.blue)).display();
