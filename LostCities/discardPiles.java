@@ -86,7 +86,6 @@ public class discardPiles {
     /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
-        System.out.println(discard_piles.size());
         System.out.print("Yellow: ");
         discard_piles.get(getDiscardPileIndex(Color.yellow)).display();
         System.out.print("Blue: ");
