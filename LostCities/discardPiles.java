@@ -15,10 +15,10 @@ public class discardPiles {
     ArrayList<cards> discard_piles = new ArrayList<>();
     /*
      * discard_piles[0] = yellow
-     * discard_piles[0] = blue
-     * discard_piles[0] = white
-     * discard_piles[0] = green
-     * discard_piles[0] = red
+     * discard_piles[1] = blue
+     * discard_piles[2] = white
+     * discard_piles[3] = green
+     * discard_piles[4] = red
      */
 
     /**
@@ -28,11 +28,9 @@ public class discardPiles {
     public discardPiles() {
 
         discard_piles = new ArrayList<>();
-        discard_piles.add(new cards());// yellow
-        discard_piles.add(new cards());// blue
-        discard_piles.add(new cards());// white
-        discard_piles.add(new cards());// green
-        discard_piles.add(new cards());// red
+        for (int i = 0; i < 5; i++) {
+            discard_piles.add(new cards());
+        }
     }
 
     /** Return topmost card */

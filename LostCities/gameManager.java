@@ -43,9 +43,9 @@ public class gameManager {
                 p2.addCard(c);
         }
         System.out.println("Player 1's Hand: ");
-        displayPlayerHand(p1);
+        p1.display();
         System.out.println("Player 2's Hand: ");
-        displayPlayerHand(p2);
+        p2.display();
     }
 
     /**
@@ -114,11 +114,6 @@ public class gameManager {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
         System.out.println("There are " + undealt.size() + " undealt cards left");
-    }
-
-    /** Output player's hand to console */
-    private void displayPlayerHand(player p) {
-        p.display();
     }
 
     /**
