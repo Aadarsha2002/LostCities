@@ -19,7 +19,7 @@ public class gameManager {
     int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     player p1;
-    player p2 ;
+    player p2;
     cards undealt;
     discardPiles discards;
 
@@ -28,13 +28,13 @@ public class gameManager {
      */
     public gameManager() {
         System.out.println("1");
-    //    p1 = new player();
+        // p1 = new player();
         System.out.println("2");
-    //    p2 = new player();
+        // p2 = new player();
         System.out.println("3");
-    //    undealt = new cards('U');
+        // undealt = new cards('U');
         System.out.println("4");
-    //    discards = new discardPiles();
+        // discards = new discardPiles();
     }
 
     /** Deal cards to both players from undealt cards pile */
