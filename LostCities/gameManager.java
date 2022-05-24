@@ -90,9 +90,9 @@ public class gameManager {
         System.out.println("Pre Turn Statistics: ");
         System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
         ((p == p1) ? p1 : p2).displayPlacedDownCards();
+        discards.displayPiles();
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
-        discards.displayPiles();
         System.out.println("There are " + undealt.size() + " undealt cards left");
         System.out.print("\nPlayer " + ((p == p1) ? 1 : 2) + "'s Hand: ");
         p.display();
@@ -110,9 +110,9 @@ public class gameManager {
         System.out.println("Post Turn Statistics: ");
         System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
         ((p == p1) ? p1 : p2).displayPlacedDownCards();
+        discards.displayPiles();
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
-        discards.displayPiles();
         System.out.println("There are " + undealt.size() + " undealt cards left");
     }
 
