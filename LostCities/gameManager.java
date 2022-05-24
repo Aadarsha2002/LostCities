@@ -8,8 +8,8 @@ Holds:
     array of colors possible
     array of numbers possible (0 for handshake card)
 
-    Player 1 object
-    Player 2 object
+    Player 1
+    Player 2
     Undealt Cards Pile
     Discard Piles
 */
