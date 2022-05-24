@@ -156,21 +156,14 @@ public class player {
      * higher than the topmost placed card of its color
      */
     private boolean isValidCardtoPlace(card c) {
-        return placed_down.isEmpty() || c.getCardNumber()>getTopPlacedCard(c.getCardColor()).getCardNumber();
+        return placed_down.isEmpty() || c.getCardNumber() > getTopPlacedCard(c.getCardColor()).getCardNumber();
     }
 
     /** Return index of placed cards pile according to given color */
     private int getIndex(Color col) {
-        if (col == Color.yellow) {
-            return 0;
-        } else if (col == Color.blue) {
-            return 1;
-        } else if (col == Color.white) {
-            return 2;
-        } else if (col == Color.green) {
-            return 3;
-        } else if (col == Color.red) {
-            return 4;
+        for (int i = 0; i < 5; i++) {
+            if (player.col[i] == col)
+                return i;
         }
         return -1;
     }

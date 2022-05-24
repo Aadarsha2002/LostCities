@@ -90,10 +90,10 @@ public class gameManager {
         System.out.println("It's player " + ((p == p1) ? 1 : 2) + "'s turn:");
         System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
         System.out.println("Pre Turn Statistics: ");
-        System.out.println("Player 1's Placed Down cards:");
-        p1.displayPlacedDownCards();
-        System.out.println("Player 2's Placed Down cards:");
-        p2.displayPlacedDownCards();
+        System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
+        ((p == p1) ? p1 : p2).displayPlacedDownCards();
+        System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
+        ((p == p1) ? p2 : p1).displayPlacedDownCards();
         discards.displayPiles();
         System.out.println("There are " + undealt.size() + " undealt cards left");
         System.out.print("\nPlayer " + ((p == p1) ? 1 : 2) + "'s Hand: ");
@@ -110,10 +110,10 @@ public class gameManager {
 
         System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
         System.out.println("Post Turn Statistics: ");
-        System.out.println("Player 1's Placed Down cards:");
-        p1.displayPlacedDownCards();
-        System.out.println("Player 2's Placed Down cards:");
-        p2.displayPlacedDownCards();
+        System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
+        ((p == p1) ? p1 : p2).displayPlacedDownCards();
+        System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
+        ((p == p1) ? p2 : p1).displayPlacedDownCards();
         discards.displayPiles();
         System.out.println("There are " + undealt.size() + " undealt cards left");
     }
