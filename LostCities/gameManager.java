@@ -29,12 +29,15 @@ public class gameManager {
      * - Play the game
      */
     public gameManager() {
-        dealCards();
-        playGame();
+
+        player p1 = new player();
+        player p2 = new player();
+        cards undealt = new cards('U');
+        discardPiles discards = new discardPiles();
     }
 
     /** Deal cards to both players from undealt cards pile */
-    private void dealCards() {
+    public void dealCards() {
         for (int i = 0; i < 8 * 2; i++) {
             card c = undealt.getTopCard();
             undealt.removeCard(c);
@@ -54,7 +57,7 @@ public class gameManager {
      * Until undealt pile is empty, play players
      * Oncce undealt pile is empty, calculate score
      */
-    private void playGame() {
+    public void playGame() {
         while (!undealt.isEmpty()) {
             // Player 1's Turn
             playPlayer(p1);
