@@ -25,6 +25,7 @@ public class gameManager {
 
     /**
      * CONSTRUCTOR
+     * - initializes the internal variables
      */
     public gameManager() {
         System.out.println("1");
