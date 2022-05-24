@@ -89,12 +89,12 @@ public class gameManager {
         System.out.println("\n**********************************");
         System.out.println("\nIt's player " + ((p == p1) ? 1 : 2) + "'s turn: ");
         System.out.print("\nPre Turn Statistics: ");
-        System.out.print("\nPlayer " + ((p == p1) ? 1 : 2) + "'s Hand: ");
-        p.display();
-        System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: \n");
+        System.out.print("\nPlayer " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: \n");
         p.displayPlacedDownCards();
         discards.displayPiles();
         System.out.println("There are " + undealt.size() + " undealt cards left");
+        System.out.print("\nPlayer " + ((p == p1) ? 1 : 2) + "'s Hand: ");
+        p.display();
 
         outgoingPlay(p); // placing/discarding card from hand
         incomingPlay(p); // taking card from undealt pile/discard piles
