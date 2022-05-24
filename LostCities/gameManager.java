@@ -108,8 +108,8 @@ public class gameManager {
         System.out.println("\n*_*_*_*_*_*_*_*_*_*_\nPost Turn Statistics: ");
         p.displayPlacedDownCards();
         System.out.print("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards: \n");
-        System.out.println("There are " + undealt.size() + " undealt cards left");
         discards.displayPiles();
+        System.out.println("There are " + undealt.size() + " undealt cards left");
     }
 
     /** Output player's hand to console */
