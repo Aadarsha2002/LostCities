@@ -162,7 +162,7 @@ public class cards {
 
     /** If not discard pile, sort cards according to numbers in each color */
     public void sort() {
-        ArrayList<card> sorted_cards = new ArrayList<card>();
+        ArrayList<card> sorted_cards = new ArrayList<>();
         for (int x = 0; x < col.length && !is_discard_pile; x++) {
             ArrayList<card> c = getCardsbyColor(col[x]);
             // sort c

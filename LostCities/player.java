@@ -32,11 +32,9 @@ public class player {
     public player() {
         hand = new cards();
         placed_down = new ArrayList<>();
-        placed_down.add(new cards());
-        placed_down.add(new cards());
-        placed_down.add(new cards());
-        placed_down.add(new cards());
-        placed_down.add(new cards());
+        for (int i = 0; i < 5; i++) {
+            placed_down.add(new cards());
+        }
     }
 
     /**
@@ -59,16 +57,10 @@ public class player {
 
     /** Output placed down cards of player */
     public void displayPlacedDownCards() {
-        System.out.print("Yellow:\t");
-        placed_down.get(0).display();
-        System.out.print("Blue:\t");
-        placed_down.get(1).display();
-        System.out.print("White:\t");
-        placed_down.get(2).display();
-        System.out.print("Green:\t");
-        placed_down.get(3).display();
-        System.out.print("Red:\t");
-        placed_down.get(4).display();
+        for (Color c : col) {
+            System.out.print(getColorName(c) + ":\t");
+            placed_down.get(getIndex(c)).display();
+        }
     }
 
     /** Return hand */
@@ -140,7 +132,7 @@ public class player {
                     sum += c.getCardNumber();
                 }
             }
-            if (cards.size() != 0)// cost
+            if (!cards.isEmpty())// cost
                 sum -= 20;
             sum *= multiplier;// multiplier
             if (cards.size() >= 8)// bonus points
@@ -166,5 +158,21 @@ public class player {
                 return i;
         }
         return -1;
+    }
+
+    /** Return string form of color passed as parameter */
+    private String getColorName(Color c) {
+        if (c == col[0]) {
+            return "Yellow";
+        } else if (c == col[1]) {
+            return "Blue";
+        } else if (c == col[2]) {
+            return "White";
+        } else if (c == col[3]) {
+            return "Green";
+        } else if (c == col[4]) {
+            return "Red";
+        }
+        return "";
     }
 }
