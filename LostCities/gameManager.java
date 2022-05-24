@@ -30,7 +30,6 @@ public class gameManager {
      */
     public gameManager() {
         dealCards();
-        // makeCustomCardsPile();
         playGame();
     }
 
