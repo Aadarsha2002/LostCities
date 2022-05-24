@@ -8,8 +8,10 @@ public class LostCities {
             System.out.println("**********************************");
             gameManager gm = new gameManager();
 
-            gm.dealCards();
-            gm.playGame();
+            System.out.println("**********************************");
+        //    gm.dealCards();
+            System.out.println("**********************************");
+        //    gm.playGame();
 
             System.out.println("**********************************");
             System.out.println("\n\nPlay again [Y/N]?");

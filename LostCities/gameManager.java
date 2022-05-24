@@ -18,22 +18,23 @@ public class gameManager {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    player p1 = new player();
-    player p2 = new player();
-    cards undealt = new cards('U');
-    discardPiles discards = new discardPiles();
+    player p1;
+    player p2 ;
+    cards undealt;
+    discardPiles discards;
 
     /**
      * CONSTRUCTOR
-     * - Deal cards
-     * - Play the game
      */
     public gameManager() {
-
-        player p1 = new player();
-        player p2 = new player();
-        cards undealt = new cards('U');
-        discardPiles discards = new discardPiles();
+        System.out.println("1");
+    //    p1 = new player();
+        System.out.println("2");
+    //    p2 = new player();
+        System.out.println("3");
+    //    undealt = new cards('U');
+        System.out.println("4");
+    //    discards = new discardPiles();
     }
 
     /** Deal cards to both players from undealt cards pile */
