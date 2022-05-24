@@ -49,9 +49,7 @@ public class discardPiles {
      */
     public card getCard(String picked_color) {
         for (Color c : col) {
-            if (!discard_piles.get(
-                    getIndex(c)).isEmpty()
-                    && picked_color.charAt(0) == getColorName(c).charAt(0))
+            if (!discard_piles.get(getIndex(c)).isEmpty() && picked_color.charAt(0) == getColorName(c).charAt(0))
                 return getCard(c);
         }
         return new card();
