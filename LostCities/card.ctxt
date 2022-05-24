@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=card
+comment0.text=\r\nHolds\:\r\n\ \ \ \ array\ of\ colors\ possible\r\n\ \ \ \ array\ of\ numbers\ possible\ (0\ for\ handshake\ card)\r\n\r\n\ \ \ \ card\ number\r\n\ \ \ \ card\ color\r\n
+comment1.params=
+comment1.target=card()
+comment1.text=\r\n\ CONSTRUCTOR\r\n\ Set\ defalut\ values\r\n
+comment2.params=num\ col
+comment2.target=card(int,\ java.awt.Color)
+comment2.text=Set\ internal\ variables\ to\ parameters
+comment3.params=
+comment3.target=int\ getCardNumber()
+comment3.text=Return\ card\ number
+comment4.params=
+comment4.target=java.awt.Color\ getCardColor()
+comment4.text=Return\ card\ color
+comment5.params=
+comment5.target=void\ display()
+comment5.text=Output\ card\ to\ console
+comment6.params=
+comment6.target=java.lang.String\ getCardColorName()
+comment6.text=Return\ card\ color\ in\ string\ type
+comment7.params=col
+comment7.target=java.lang.String\ getColorName(java.awt.Color)
+comment7.text=Return\ string\ form\ of\ color\ passed\ as\ parameter
+numComments=8
