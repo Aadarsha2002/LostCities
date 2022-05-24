@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class LostCities {
     public static void main(String args[]) {
         while (true) {// keep looping until user says enough
-            gameManager gm = new gameManager();
+            new gameManager();
 
             System.out.println("**********************************");
             System.out.println("\n\nPlay again [Y/N]?");
