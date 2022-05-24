@@ -1,5 +1,3 @@
-package LostCities;
-
 import java.awt.*;
 import java.util.Scanner;
 
@@ -28,14 +26,10 @@ public class gameManager {
      * - initializes the internal variables
      */
     public gameManager() {
-        System.out.println("1");
-        // p1 = new player();
-        System.out.println("2");
-        // p2 = new player();
-        System.out.println("3");
-        // undealt = new cards('U');
-        System.out.println("4");
-        // discards = new discardPiles();
+        p1 = new player();
+        p2 = new player();
+        undealt = new cards('U');
+        discards = new discardPiles();
     }
 
     /** Deal cards to both players from undealt cards pile */

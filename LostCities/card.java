@@ -1,5 +1,3 @@
-package LostCities;
-
 import java.awt.*;
 
 /*
