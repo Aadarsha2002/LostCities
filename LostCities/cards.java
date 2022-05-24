@@ -148,12 +148,9 @@ public class cards {
                 addCard(new card(num[0], c));
             }
         }
-        shuffleCards();
-        shuffleCards();
-        shuffleCards();
-        shuffleCards();
-        shuffleCards();
-        shuffleCards();
+        for (int i = 0; i < 6; i++) {
+            shuffleCards();
+        }
     }
 
     public void MakeCustomPile(ArrayList<card> c) {
