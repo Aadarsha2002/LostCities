@@ -135,7 +135,7 @@ public class gameManager {
         card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
         p.removeCard(outgoing_card);// remove that card from the hand
 
-        if (discard_or_place == "D" || discard_or_place == "d") {
+        if (discard_or_place.equalsIgnoreCase("d")) {
             discards.addCard(outgoing_card); // if player wants to discard, add to discard pile
             System.out.print("You chose to discard ");
         } else {
@@ -165,7 +165,7 @@ public class gameManager {
         String discard_or_undealt = in.next();
         card incoming_card;
 
-        if (discard_or_undealt == "D" || discard_or_undealt == "d") {
+        if (discard_or_undealt.equalsIgnoreCase("d")) {
             discards.displayPiles(); // if player wants a discarded card, display the discard piles
 
             System.out.print("You chose discard pile. Which color do you want to pick [Y, B, W, G, R]? ");
