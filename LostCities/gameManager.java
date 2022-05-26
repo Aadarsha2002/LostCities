@@ -121,7 +121,7 @@ public class gameManager {
          * - discard piles
          */
 
-        System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
+        System.out.println("\n_*_*_*_*_*_*_*_*_*_*");
         System.out.println("Post Turn Statistics: ");
         System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
         ((p == p1) ? p1 : p2).displayPlacedDownCards();
@@ -129,7 +129,7 @@ public class gameManager {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
         System.out.print("There are " + undealt.size() + " undealt cards left");
-        System.out.println("\n_*_*_*_*_*_*_*_*_*_*");
+        System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
     }
 
     /**
