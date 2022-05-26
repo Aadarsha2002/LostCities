@@ -115,11 +115,11 @@ public class player {
      * Return total
      */
     public int calculateScore() {
-        hand.sort();
         int total = 0;
-        for (Color color : col) {
+        for (int i = 0; i < col.length; i++) {
+            placed_down.get(i).sort();
             ArrayList<card> cards;
-            cards = hand.getCardsbyColor(color);
+            cards = placed_down.get(i).getCardsbyColor(col[i]);
             int multiplier = 1;
             int sum = 0;
             // count multipliers and sum of numbered cards
@@ -132,7 +132,7 @@ public class player {
             }
             if (!cards.isEmpty())// cost
                 sum -= 20;
-            System.out.println(getColorName(color) + " Sum\t\t= " + sum);
+            System.out.println(getColorName(col[i]) + " Sum\t\t= " + sum);
             System.out.println("\tMultiplier\t= " + multiplier);
             sum *= multiplier;// multiplier
             if (cards.size() >= 8) {// bonus points
