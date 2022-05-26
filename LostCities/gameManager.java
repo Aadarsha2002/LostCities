@@ -153,15 +153,15 @@ public class gameManager {
         } else {
             p.placeCard(outgoing_card); // if player wants to place, add to player's placed cards
             System.out.print("You chose to place ");
-
-            // // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
-            // // (why you ask? I don't know!)
-            in.nextLine();
         }
         outgoing_card.display();
 
         System.out.print("\nYour hand is now ");
         p.display();
+
+        // // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
+        // // (why you ask? I don't know!)
+        getNextString();
     }
 
     /**
