@@ -78,9 +78,10 @@ public class gameManager {
         int p2_score = p2.calculateScore();
 
         // Output Scores
-        System.out.println("***********************************");
+        System.out.println("\n***********************************");
         System.out.println("\n\nPlayer 1 scored " + p1_score);
         System.out.println("Player 2 scored " + p2_score);
+        System.out.println(((p1_score > p2_score) ? "Player 1 won!" : "Player 2 won!"));
     }
 
     /**
