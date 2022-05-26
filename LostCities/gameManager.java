@@ -137,8 +137,7 @@ public class gameManager {
      * - Do appropriate actions
      */
     private void outgoingPlay(player p) {
-        // Scanner in = new Scanner(System.in);
-        /** Ash whether player wants to discard or place card */
+        /** Ask whether player wants to discard or place card */
         System.out.print("\nWant to discard [D] or place [P]? ");
         String discard_or_place = getNextString(); // get choice
 
@@ -162,7 +161,6 @@ public class gameManager {
 
         // // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
         // // (why you ask? I don't know!)
-        // in.nextLine();
         in.nextLine();
     }
 
@@ -172,8 +170,6 @@ public class gameManager {
      * - Do appropriate actions
      */
     private void incomingPlay(player p) {
-        // Scanner in = new Scanner(System.in);
-
         card incoming_card;
 
         if (discards.isEmpty()) {
@@ -218,7 +214,7 @@ public class gameManager {
         String s;
         if (in.hasNextLine()) {
             s = in.nextLine();
-            System.out.println("got " + s);
+            System.out.println(s);
             return s;
         } else {
             System.out.println("No next line");
