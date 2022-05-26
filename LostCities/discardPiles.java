@@ -52,6 +52,9 @@ public class discardPiles {
         return new card();
     }
 
+    /**
+     * Return true if the given string form of the color matches the given color
+     */
     private boolean isColorsMatching(String picked_color, Color col) {
         return Character.toLowerCase(picked_color.charAt(0)) == Character.toLowerCase(getColorName(col).charAt(0));
     }

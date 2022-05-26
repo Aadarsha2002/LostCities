@@ -159,6 +159,8 @@ public class gameManager {
     private void incomingPlay(player p) {
         Scanner in = new Scanner(System.in);
 
+        
+
         /** Ask whether player wants to take card from discard pile or undealt pile */
         System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
         String discard_or_undealt = in.next();
