@@ -185,7 +185,6 @@ public class gameManager {
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 discards.displayPiles(); // if player wants a discarded card, display the discard piles
-                in.nextLine();
                 System.out.print("You chose discard pile. Which color do you want to pick [Y, B, W, G, R]? ");
                 String picked_color = getNextString(); // input which color's card player wants
 
@@ -217,7 +216,6 @@ public class gameManager {
             System.out.println(s);
             return s;
         } else {
-            System.out.println("No next line");
             return in2.nextLine();
         }
     }
