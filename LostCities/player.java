@@ -132,8 +132,8 @@ public class player {
             }
             if (!cards.isEmpty())// cost
                 sum -= 20;
-            System.out.println(getColorName(color) + " Sum\t= " + sum);
-            System.out.println("Multiplier\t= " + multiplier);
+            System.out.println(getColorName(color) + " Sum\t\t= " + sum);
+            System.out.println("\tMultiplier\t= " + multiplier);
             sum *= multiplier;// multiplier
             if (cards.size() >= 8) {// bonus points
                 sum += 20;
