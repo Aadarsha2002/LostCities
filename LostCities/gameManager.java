@@ -107,7 +107,7 @@ public class gameManager {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
         System.out.println("There are " + undealt.size() + " undealt cards left");
-        System.out.print("\ns Hand: ");
+        System.out.print("\nHand: ");
         p.display();
         System.out.println("_*_*_*_*_*_*_*_*_*_*");
 
@@ -128,7 +128,7 @@ public class gameManager {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
         System.out.print("There are " + undealt.size() + " undealt cards left");
-        System.out.print("\ns Hand: ");
+        System.out.print("\nHand: ");
         p.display();
         System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
     }
