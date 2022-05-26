@@ -135,9 +135,11 @@ public class player {
             System.out.println(getColorName(col[i]) + " Sum\t\t= " + sum);
             System.out.println("\tMultiplier\t= " + multiplier);
             sum *= multiplier;// multiplier
+            System.out.println("\tSum Now\t= " + sum);
             if (cards.size() >= 8) {// bonus points
                 sum += 20;
                 System.out.println("Bonus Points\t= 20");
+                System.out.println("\tSum after bonus points\t= " + sum);
             }
             total += sum;// add to total
         }
