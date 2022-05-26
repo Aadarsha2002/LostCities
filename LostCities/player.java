@@ -118,7 +118,7 @@ public class player {
         hand.sort();
         int total = 0;
         for (Color color : col) {
-            ArrayList<card> cards = new ArrayList<>();
+            ArrayList<card> cards;
             cards = hand.getCardsbyColor(color);
             int multiplier = 1;
             int sum = 0;

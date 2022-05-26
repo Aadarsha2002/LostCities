@@ -19,7 +19,7 @@ public class cards {
 
     Random rnd = new Random(0);
 
-    private ArrayList<card> cards = new ArrayList<>(); // just holds a list of cards
+    private ArrayList<card> pile = new ArrayList<>(); // just holds a list of cards
     private boolean is_discard_pile; // holds whether the pile is a discard pile or not
     private boolean is_undealtCards; // holds whether the pile is undealt cards pile or not
 
@@ -54,12 +54,12 @@ public class cards {
 
     /** Return size of cards */
     public int size() {
-        return cards.size();
+        return pile.size();
     }
 
     /** Display cards to console */
     public void display() {
-        if (cards.isEmpty()) {
+        if (pile.isEmpty()) {
             System.out.println("[]");
             return;
         }
@@ -67,9 +67,9 @@ public class cards {
         if (is_discard_pile)
             getTopCard().display();
         else
-            for (card c : cards) {
+            for (card c : pile) {
                 c.display();
-                if (c != cards.get(cards.size() - 1))
+                if (c != getTopCard())
                     System.out.print(", ");
             }
         System.out.println("]");
@@ -78,28 +78,28 @@ public class cards {
     /** Add card passed as parameter to cards */
     public void addCard(card c) {
         if (is_discard_pile) {
-            cards.add(c);
+            pile.add(c);
         } else if (is_undealtCards) {
-            cards.add(c);
+            pile.add(c);
         } else {
-            cards.add(c);
+            pile.add(c);
             sort();
         }
     }
 
     /** Return topmost card */
     public card getTopCard() {
-        return cards.get(cards.size() - 1);
+        return pile.get(pile.size() - 1);
     }
 
     /** Return specific card from index */
     public card getCardAt(int index) {
-        return cards.get(index);
+        return pile.get(index);
     }
 
     /** Remove a specific card */
     public void removeCard(card c) {
-        cards.remove(c);
+        pile.remove(c);
     }
 
     /**
@@ -108,23 +108,23 @@ public class cards {
      * Creates a card using parameters and removes that card from cards
      */
     public void removeCard(Color col, int n) {
-        cards.remove(new card(n, col));
+        pile.remove(new card(n, col));
     }
 
     /** Returns true if a card exists in the cards */
     public boolean hasCard(card c) {
-        return cards.indexOf(c) != -1;
+        return pile.indexOf(c) != -1;
     }
 
     /** Returns true if empty */
     public boolean isEmpty() {
-        return (size() == 0) ? true : false;
+        return (size() == 0);
     }
 
     /** Return cards of a specific color as ArrayList */
     public ArrayList<card> getCardsbyColor(Color col) {
         ArrayList<card> c1 = new ArrayList<>();
-        for (card c : cards) {
+        for (card c : pile) {
             if (c.getCardColor() == col) {
                 c1.add(c);
             }
@@ -134,11 +134,6 @@ public class cards {
 
     /** Make a pile of Undealt Cards and shuffle it */
     public void makeUndealtCardsPile() {
-        /*
-         * Reference:
-         * col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-         * num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-         */
         for (Color c : col) {
             // add normal number cards
             for (int n : num) {
@@ -175,18 +170,7 @@ public class cards {
             // append c to sorted_cards
             appendCards(sorted_cards, c);
         }
-        cards = sorted_cards;
-    }
-
-    /** Return true if all cards are same color */
-    private boolean checkAllSameColor() {
-        Color col = cards.get(0).getCardColor();
-        for (card c : cards) {
-            if (c.getCardColor() != col) {
-                return false;
-            }
-        }
-        return true;
+        pile = sorted_cards;
     }
 
     /**
@@ -203,7 +187,7 @@ public class cards {
     /** Shuffle cards */
     private void shuffleCards() {
         if (!is_discard_pile) {
-            Collections.shuffle(cards, rnd);
+            Collections.shuffle(pile, rnd);
         }
     }
 }
