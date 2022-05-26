@@ -29,7 +29,7 @@ public class discardPiles {
 
         discard_piles = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            discard_piles.add(new cards());
+            discard_piles.add(new cards('d'));
         }
     }
 

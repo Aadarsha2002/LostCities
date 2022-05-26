@@ -77,7 +77,7 @@ public class cards {
 
     /** Add card passed as parameter to cards */
     public void addCard(card c) {
-        if (is_discard_pile && c.getCardColor() == cards.get(0).getCardColor()) {
+        if (is_discard_pile) {
             cards.add(c);
         } else if (is_undealtCards) {
             cards.add(c);
