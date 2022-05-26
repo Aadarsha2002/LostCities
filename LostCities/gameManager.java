@@ -127,7 +127,7 @@ public class gameManager {
         discards.displayPiles();
         System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
         ((p == p1) ? p1 : p2).displayPlacedDownCards();
-        System.out.print("There are " + undealt.size() + " undealt cards left");
+        System.out.print("There " + (undealt.size() == 1 ? "is " : "are ") + undealt.size() + " undealt cards left");
         System.out.print("\nHand: ");
         p.display();
         System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
