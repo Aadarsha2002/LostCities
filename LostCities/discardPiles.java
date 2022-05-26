@@ -85,7 +85,7 @@ public class discardPiles {
         System.out.println("Discard Piles: ");
         for (Color c : col) {
             System.out.print(getColorName(c) + ":\t");
-            discard_piles.get(getIndex(c)).getTopCard().display();
+            discard_piles.get(getIndex(c)).display();
         }
     }
 
