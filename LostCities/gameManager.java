@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /*
@@ -21,6 +23,9 @@ public class gameManager {
     cards undealt;
     discardPiles discards;
 
+    File file;
+    Scanner in;
+
     /**
      * CONSTRUCTOR
      * - initializes the internal variables
@@ -30,6 +35,13 @@ public class gameManager {
         p2 = new player();
         undealt = new cards('U');
         discards = new discardPiles();
+        file = new File("testCases.txt");
+        try {
+            in = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     /** Deal cards to both players from undealt cards pile */
@@ -194,4 +206,9 @@ public class gameManager {
         System.out.print("\nYour hand is now ");
         p.display();
     }
+
+    private String getNext() {
+        
+    }
+
 }
