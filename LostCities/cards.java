@@ -151,10 +151,6 @@ public class cards {
         }
     }
 
-    public void MakeCustomPile(ArrayList<card> c) {
-        cards = c;
-    }
-
     /** If not discard pile, sort cards according to numbers in each color */
     public void sort() {
         ArrayList<card> sorted_cards = new ArrayList<>();

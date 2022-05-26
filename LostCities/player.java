@@ -146,7 +146,7 @@ public class player {
      * higher than the topmost placed card of its color
      */
     private boolean isValidCardtoPlace(card c) {
-        return placed_down.isEmpty() || c.getCardNumber() > getTopPlacedCard(c.getCardColor()).getCardNumber();
+        return placed_down.isEmpty() || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber();
     }
 
     /** Return index of placed cards pile according to given color */
