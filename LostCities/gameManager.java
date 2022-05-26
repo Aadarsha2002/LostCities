@@ -25,6 +25,7 @@ public class gameManager {
 
     File file;
     Scanner in;
+    Scanner in2;
 
     /**
      * CONSTRUCTOR
@@ -42,6 +43,7 @@ public class gameManager {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        in2 = new Scanner(System.in);
     }
 
     /** Deal cards to both players from undealt cards pile */
@@ -135,14 +137,14 @@ public class gameManager {
      * - Do appropriate actions
      */
     private void outgoingPlay(player p) {
-        Scanner in = new Scanner(System.in);
+        // Scanner in = new Scanner(System.in);
         /** Ash whether player wants to discard or place card */
         System.out.print("\nWant to discard [D] or place [P]? ");
-        String discard_or_place = in.nextLine(); // get choice
+        String discard_or_place = getNextString(); // get choice
 
         /** Ask which card player wants to place */
         System.out.print("Which card do you want to play [index of card 0-7]? ");
-        int outgoing_card_index = in.nextInt(); // index of card in hand
+        int outgoing_card_index = getNextInt(); // index of card in hand
         card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
         p.removeCard(outgoing_card);// remove that card from the hand
 
@@ -158,8 +160,9 @@ public class gameManager {
         System.out.print("\nYour hand is now ");
         p.display();
 
-        // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
-        // (why you ask? I don't know!)
+        // // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
+        // // (why you ask? I don't know!)
+        // in.nextLine();
         in.nextLine();
     }
 
@@ -169,7 +172,7 @@ public class gameManager {
      * - Do appropriate actions
      */
     private void incomingPlay(player p) {
-        Scanner in = new Scanner(System.in);
+        // Scanner in = new Scanner(System.in);
 
         card incoming_card;
 
@@ -182,13 +185,13 @@ public class gameManager {
 
             /** Ask whether player wants to take card from discard pile or undealt pile */
             System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
-            String discard_or_undealt = in.next();
+            String discard_or_undealt = getNextString();
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 discards.displayPiles(); // if player wants a discarded card, display the discard piles
                 in.nextLine();
                 System.out.print("You chose discard pile. Which color do you want to pick [Y, B, W, G, R]? ");
-                String picked_color = in.nextLine(); // input which color's card player wants
+                String picked_color = getNextString(); // input which color's card player wants
 
                 incoming_card = discards.getCard(picked_color); // get the card that player chose
                 discards.removeCard(incoming_card); // remove the card from the discard piles
@@ -207,8 +210,35 @@ public class gameManager {
         p.display();
     }
 
-    private String getNext() {
-        
+    /**
+     * If the file has another line, reads it and returns it
+     * If not, takes input from user and returns it
+     */
+    private String getNextString() {
+        String s;
+        if (in.hasNextLine()) {
+            s = in.nextLine();
+            System.out.println("got " + s);
+            return s;
+        } else {
+            System.out.println("No next line");
+            return in2.nextLine();
+        }
+    }
+
+    /**
+     * If the file has another line, reads it and returns it
+     * If not, takes input from user and returns it
+     */
+    private int getNextInt() {
+        int i;
+        if (in.hasNextLine()) {
+            i = in.nextInt();
+            System.out.println(i);
+            return i;
+        } else {
+            return in2.nextInt();
+        }
     }
 
 }
