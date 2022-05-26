@@ -163,7 +163,7 @@ public class gameManager {
 
         if (discards.isEmpty()) {
             /** if player can take a card from undealt pile only */
-            System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only");
+            System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
         } else {
