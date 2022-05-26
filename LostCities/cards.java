@@ -65,7 +65,7 @@ public class cards {
         }
         System.out.print("[");
         if (is_discard_pile)
-            cards.get(cards.size() - 1);
+            cards.get(cards.size() - 1).display();
         else
             for (card c : cards) {
                 c.display();
