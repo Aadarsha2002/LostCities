@@ -132,9 +132,13 @@ public class player {
             }
             if (!cards.isEmpty())// cost
                 sum -= 20;
+            System.out.println("Sum\t= " + sum);
+            System.out.println("Multiplier\t= " + multiplier);
             sum *= multiplier;// multiplier
-            if (cards.size() >= 8)// bonus points
+            if (cards.size() >= 8) {// bonus points
                 sum += 20;
+                System.out.println("Bonus Points\t= 20");
+            }
             total += sum;// add to total
         }
         return total;
