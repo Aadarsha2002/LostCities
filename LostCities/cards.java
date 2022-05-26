@@ -64,11 +64,14 @@ public class cards {
             return;
         }
         System.out.print("[");
-        for (card c : cards) {
-            c.display();
-            if (c != cards.get(cards.size() - 1))
-                System.out.print(", ");
-        }
+        if (is_discard_pile)
+            cards.get(cards.size() - 1);
+        else
+            for (card c : cards) {
+                c.display();
+                if (c != cards.get(cards.size() - 1))
+                    System.out.print(", ");
+            }
         System.out.println("]");
     }
 
