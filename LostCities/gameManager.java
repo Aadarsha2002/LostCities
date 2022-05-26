@@ -160,11 +160,12 @@ public class gameManager {
         Scanner in = new Scanner(System.in);
 
         card incoming_card;
+
         if (discards.isEmpty()) {
-            System.out.println("Discard piles are empty. You can only take a card from Undealt Pile");
+            /** if player can take a card from undealt pile only */
+            System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
-            System.out.print("You chose undealt pile\n");
         } else {
 
             /** Ask whether player wants to take card from discard pile or undealt pile */
