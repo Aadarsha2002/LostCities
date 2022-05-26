@@ -110,7 +110,7 @@ public class gameManager {
         System.out.println("There are " + undealt.size() + " undealt cards left");
         System.out.print("\nPlayer " + ((p == p1) ? 1 : 2) + "'s Hand: ");
         p.display();
-        System.out.println("\n_*_*_*_*_*_*_*_*_*_*");
+        System.out.println("_*_*_*_*_*_*_*_*_*_*");
 
         outgoingPlay(p); // placing/discarding card from hand
         incomingPlay(p); // taking card from undealt pile/discard piles
@@ -128,7 +128,7 @@ public class gameManager {
         discards.displayPiles();
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
-        System.out.println("There are " + undealt.size() + " undealt cards left");
+        System.out.print("There are " + undealt.size() + " undealt cards left");
         System.out.println("\n_*_*_*_*_*_*_*_*_*_*");
     }
 
