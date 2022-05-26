@@ -45,10 +45,15 @@ public class discardPiles {
      */
     public card getCard(String picked_color) {
         for (Color c : col) {
-            if (!discard_piles.get(getIndex(c)).isEmpty() && picked_color.charAt(0) == getColorName(c).charAt(0))
+            if (!discard_piles.get(getIndex(c)).isEmpty()
+                    && isColorsMatching(picked_color, c))
                 return getCard(c);
         }
         return new card();
+    }
+
+    private boolean isColorsMatching(String picked_color, Color col) {
+        return Character.toLowerCase(picked_color.charAt(0)) == Character.toLowerCase(getColorName(col).charAt(0));
     }
 
     /** Remove topmost card from given color's discard pile */
@@ -83,7 +88,7 @@ public class discardPiles {
 
     /** Return true if given card is topmost card */
     private boolean isTopCard(card c) {
-        return c == getCard(c.getCardColor()) ? true : false;
+        return c == getCard(c.getCardColor());
     }
 
     /** Return index of discard pile according to given color */
