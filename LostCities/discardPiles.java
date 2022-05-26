@@ -89,6 +89,17 @@ public class discardPiles {
         }
     }
 
+    /**
+     * Return true if all discard piles are empty
+     */
+    public boolean isEmpty() {
+        for (cards c : discard_piles) {
+            if (!c.isEmpty())
+                return false;
+        }
+        return true;
+    }
+
     /** Return true if given card is topmost card */
     private boolean isTopCard(card c) {
         return c == getCard(c.getCardColor());

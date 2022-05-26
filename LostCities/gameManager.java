@@ -159,26 +159,32 @@ public class gameManager {
     private void incomingPlay(player p) {
         Scanner in = new Scanner(System.in);
 
-        
-
-        /** Ask whether player wants to take card from discard pile or undealt pile */
-        System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
-        String discard_or_undealt = in.next();
         card incoming_card;
-
-        if (discard_or_undealt.equalsIgnoreCase("d")) {
-            discards.displayPiles(); // if player wants a discarded card, display the discard piles
-            in.nextLine();
-            System.out.print("You chose discard pile. Which color do you want to pick [Y, B, W, G, R]? ");
-            String picked_color = in.nextLine(); // input which color's card player wants
-
-            incoming_card = discards.getCard(picked_color); // get the card that player chose
-            discards.removeCard(incoming_card); // remove the card from the discard piles
-        } else {
-            // if player chose to take undealt card, get the card from undealt pile
+        if (discards.isEmpty()) {
+            System.out.println("Discard piles are empty. You can only take a card from Undealt Pile");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
             System.out.print("You chose undealt pile\n");
+        } else {
+
+            /** Ask whether player wants to take card from discard pile or undealt pile */
+            System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
+            String discard_or_undealt = in.next();
+
+            if (discard_or_undealt.equalsIgnoreCase("d")) {
+                discards.displayPiles(); // if player wants a discarded card, display the discard piles
+                in.nextLine();
+                System.out.print("You chose discard pile. Which color do you want to pick [Y, B, W, G, R]? ");
+                String picked_color = in.nextLine(); // input which color's card player wants
+
+                incoming_card = discards.getCard(picked_color); // get the card that player chose
+                discards.removeCard(incoming_card); // remove the card from the discard piles
+            } else {
+                // if player chose to take undealt card, get the card from undealt pile
+                incoming_card = undealt.getTopCard();
+                undealt.removeCard(incoming_card); // remove the card from the undealt pile
+                System.out.print("You chose undealt pile\n");
+            }
         }
         System.out.print("You're getting ");
         incoming_card.display();
