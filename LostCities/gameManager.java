@@ -72,7 +72,7 @@ public class gameManager {
             playPlayer(p1);
             playPlayer(p2);
         }
-
+ 
         // Calculate scores
         System.out.println("\nPlayer 1 Score Calculation: ");
         int p1_score = p1.calculateScore();
