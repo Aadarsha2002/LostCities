@@ -72,7 +72,7 @@ public class gameManager {
             playPlayer(p1);
             playPlayer(p2);
         }
- 
+
         // Calculate scores
         System.out.println("\nPlayer 1 Score Calculation: ");
         int p1_score = p1.calculateScore();
@@ -212,7 +212,13 @@ public class gameManager {
         p.display();
     }
 
-    
+    private String askColor() {
+        System.out.println("Pick a Color [Y, B, W, G, R]: ");
+        while (true) {
+            String picked_color = getNextString();
+            picked_color=String.toLowerCase(picked_color);
+        }
+    }
 
     /**
      * If the file has another line, reads it and returns it
