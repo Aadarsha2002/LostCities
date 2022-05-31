@@ -33,10 +33,15 @@ public class discardPiles {
         }
     }
 
+    /** Return the corresponding color's discard pile */
     public cards getPile(Color col) {
         return discard_piles.get(getIndex(col));
     }
 
+    /**
+     * OVERLOAD FUNCTION
+     * Return the corresponding color's discard pile (color passed as String)
+     */
     public cards getPile(String picked_color) {
         for (Color c : col) {
             if (isColorsMatching(picked_color, c))

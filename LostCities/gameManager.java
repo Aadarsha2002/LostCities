@@ -118,7 +118,7 @@ public class gameManager {
         incomingPlay(p); // taking card from undealt pile/discard piles
 
         /*
-         * display post-turn statistics
+         * Display post-turn statistics
          * - number of undealt cards left
          * - discard piles
          */
@@ -170,7 +170,9 @@ public class gameManager {
 
     /**
      * Incoming card part of player's turn
-     * - Ask whether player wants to pick card from discard pile or undealt pile
+     * - If all discard piles are empty, automatically deal from undealt pile
+     * - If not, Ask whether player wants to pick card from discard pile or undealt
+     * pile
      * - Do appropriate actions
      */
     private void incomingPlay(player p) {
@@ -196,8 +198,9 @@ public class gameManager {
                 while (true) {
                     discards.displayPiles(); // if player wants a discarded card, display the discard piles
                     char[] ybwgr = { 'y', 'b', 'w', 'g', 'r' };
-                    picked_color = ask("Pick a color", ybwgr); // input which color's card player wants
-                    if (discards.getPile(picked_color).isEmpty())
+                    picked_color = ask("Pick a color", ybwgr); // ask which color card player wants
+                    if (discards.getPile(picked_color).isEmpty())// if that discard pile is empty, then tell it's empty
+                                                                 // and ask again
                         System.out.println("Discard Pile chosen is empty");
                     else
                         break;
@@ -219,6 +222,11 @@ public class gameManager {
         p.display();
     }
 
+    /**
+     * Ask user for an input corresponding to the options shown. Keep asking until
+     * user enters something in the given options.
+     * Return the string form of that choice
+     */
     private String ask(String s, char[] c) {
         System.out.print(s);
         displayChoices(c);
@@ -239,6 +247,9 @@ public class gameManager {
         }
     }
 
+    /**
+     * Output to console the choices user has to choose from in above ask() function
+     */
     private void displayChoices(char[] c) {
         System.out.print(" [");
         for (int i = 0; i < c.length; i++) {
@@ -263,20 +274,4 @@ public class gameManager {
             return in2.nextLine();
         }
     }
-
-    /**
-     * If the file has another line, reads it and returns it
-     * If not, takes input from user and returns it
-     */
-    private int getNextInt() {
-        int i;
-        if (in.hasNextLine()) {
-            i = in.nextInt();
-            System.out.println(i);
-            return i;
-        } else {
-            return in2.nextInt();
-        }
-    }
-
 }
