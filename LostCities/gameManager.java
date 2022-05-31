@@ -187,13 +187,14 @@ public class gameManager {
         } else {
 
             /** Ask whether player wants to take card from discard pile or undealt pile */
-            System.out.print("\nWant to pick from Discard Pile [D] or Undealt Pile [U]? ");
-            String discard_or_undealt = getNextString();
+            char[] choices = { 'u', 'd' };
+            String discard_or_undealt = ask("\n Pick from Discard or Undealt? ", choices);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 discards.displayPiles(); // if player wants a discarded card, display the discard piles
                 System.out.print("You chose discard pile.");
-                String picked_color = askColor(); // input which color's card player wants
+                char[] choices = { 'y', 'b', 'w', 'g', 'r' };
+                String picked_color = ask("Pick a color", choices); // input which color's card player wants
 
                 incoming_card = discards.getCard(picked_color); // get the card that player chose
                 discards.removeCard(incoming_card); // remove the card from the discard piles
@@ -212,8 +213,8 @@ public class gameManager {
         p.display();
     }
 
-    private String askColor(String s, char[] c) {
-        System.out.println(s);
+    private String ask(String s, char[] c) {
+        System.out.print(s);
         displayChoices(c);
         while (true) {
             String picked_color = getNextString();
@@ -227,7 +228,7 @@ public class gameManager {
             }
             if (match)
                 return picked_color;
-            System.out.println("Wrong input!" + s + " again ");
+            System.out.print("Wrong input!" + s + " again ");
             displayChoices(c);
         }
     }
@@ -239,17 +240,6 @@ public class gameManager {
                 System.out.println(c[i] + "]: ");
             else
                 System.out.println(c[i] + ", ");
-        }
-    }
-
-    private String discardUndealt() {
-        System.out.println("Pick a Color [Y, B, W, G, R]: ");
-        while (true) {
-            String picked_color = getNextString();
-            char c = Character.toLowerCase(picked_color.charAt(0));
-            if (c == 'y' || c == 'b' || c == 'w' || c == 'g' || c == 'r')
-                return Character.toString(c);
-            System.out.println("Wrong input! Pick a color agin [Y, B, W, G, R]: ");
         }
     }
 
