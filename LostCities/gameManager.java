@@ -146,7 +146,7 @@ public class gameManager {
     private void outgoingPlay(player p) {
         /** Ask whether player wants to discard or place card */
         char[] dp = { 'd', 'p' };
-        String discard_or_place = ask("\n Discard or Place? ", dp);
+        String discard_or_place = ask("\nDiscard or Place", dp);
 
         /** Ask which card player wants to place */
         char[] choices = { '0', '1', '2', '3', '4', '5', '6', '7' };
@@ -181,7 +181,10 @@ public class gameManager {
         card incoming_card;
 
         if (discards.isEmpty()) {
-            /** if player can take a card from undealt pile only */
+            /**
+             * if player can take a card from undealt pile only because there are no cards
+             * in discard pile
+             */
             System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
@@ -189,7 +192,7 @@ public class gameManager {
 
             /** Ask whether player wants to take card from discard pile or undealt pile */
             char[] ud = { 'u', 'd' };
-            String discard_or_undealt = ask("\n Pick from Discard or Undealt? ", ud);
+            String discard_or_undealt = ask("\nPick from Discard or Undealt", ud);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 discards.displayPiles(); // if player wants a discarded card, display the discard piles
@@ -229,18 +232,18 @@ public class gameManager {
             }
             if (match)
                 return picked_color;
-            System.out.print("Wrong input!" + s + " again ");
+            System.out.print("Wrong input! " + s + " again");
             displayChoices(c);
         }
     }
 
     private void displayChoices(char[] c) {
-        System.out.println(" [");
+        System.out.print(" [");
         for (int i = 0; i < c.length; i++) {
             if (i == c.length - 1)
-                System.out.println(c[i] + "]: ");
+                System.out.print(c[i] + "]: ");
             else
-                System.out.println(c[i] + ", ");
+                System.out.print(c[i] + ", ");
         }
     }
 
