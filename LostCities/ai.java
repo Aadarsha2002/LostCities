@@ -4,4 +4,7 @@ public class ai {
     ai() {
         ai_player = new player();
     }
+
+    public getColorsScores(){
+    }
 }
