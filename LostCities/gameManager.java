@@ -134,7 +134,7 @@ public class gameManager {
                 .size() == 1 ? "" : "s") + " left");
         System.out.print("\nHand: ");
         p.display();
-        System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
+        System.out.println("*_*_*_*_*_*_*_*_*_*_");
     }
 
     /**
@@ -166,10 +166,6 @@ public class gameManager {
 
         System.out.print("\nYour hand is now ");
         p.display();
-
-        // // NEED THIS FOR SCANNER TO WORK PROPERLY: clear scanner
-        // // (why you ask? I don't know!)
-        getNextString();
     }
 
     /**
