@@ -145,12 +145,13 @@ public class gameManager {
      */
     private void outgoingPlay(player p) {
         /** Ask whether player wants to discard or place card */
-        System.out.print("\nWant to discard [D] or place [P]? ");
-        String discard_or_place = getNextString(); // get choice
+        char[] dp = { 'd', 'p' };
+        String discard_or_place = ask("\n Discard or Place? ", dp);
 
         /** Ask which card player wants to place */
-        System.out.print("Which card do you want to play [index of card 0-7]? ");
-        int outgoing_card_index = getNextInt(); // index of card in hand
+        char[] choices = { '0', '1', '2', '3', '4', '5', '6', '7' };
+        String outgoing_card_index_string = ask("Pick a card to play", choices);
+        int outgoing_card_index = Integer.parseInt(outgoing_card_index_string); // convert string into integer
         card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
         p.removeCard(outgoing_card);// remove that card from the hand
 
@@ -187,14 +188,14 @@ public class gameManager {
         } else {
 
             /** Ask whether player wants to take card from discard pile or undealt pile */
-            char[] choices = { 'u', 'd' };
-            String discard_or_undealt = ask("\n Pick from Discard or Undealt? ", choices);
+            char[] ud = { 'u', 'd' };
+            String discard_or_undealt = ask("\n Pick from Discard or Undealt? ", ud);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 discards.displayPiles(); // if player wants a discarded card, display the discard piles
                 System.out.print("You chose discard pile.");
-                char[] choices = { 'y', 'b', 'w', 'g', 'r' };
-                String picked_color = ask("Pick a color", choices); // input which color's card player wants
+                char[] ybwgr = { 'y', 'b', 'w', 'g', 'r' };
+                String picked_color = ask("Pick a color", ybwgr); // input which color's card player wants
 
                 incoming_card = discards.getCard(picked_color); // get the card that player chose
                 discards.removeCard(incoming_card); // remove the card from the discard piles
