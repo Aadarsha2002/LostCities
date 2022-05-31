@@ -213,19 +213,22 @@ public class gameManager {
     }
 
     private String askColor(String s, char[] c) {
-        System.out.println(s + " [");
-        for (int i = 0; i < c.length; i++) {
-            if (i == c.length - 1)
-                System.out.println(c[i] + "]: ");
-            else
-                System.out.println(c[i] + ", ");
-        }
+        System.out.println(s);
+        displayChoices(c);
         while (true) {
             String picked_color = getNextString();
-            char c = Character.toLowerCase(picked_color.charAt(0));
-            if (c == 'y' || c == 'b' || c == 'w' || c == 'g' || c == 'r')
-                return Character.toString(c);
-            System.out.println("Wrong input!" + s + " again "+displayChoices(c););
+            char color = Character.toLowerCase(picked_color.charAt(0));
+            boolean match = false;
+            for (char ch : c) {
+                if (color == ch) {
+                    match = true;
+                    break;
+                }
+            }
+            if (match)
+                return picked_color;
+            System.out.println("Wrong input!" + s + " again ");
+            displayChoices(c);
         }
     }
 
