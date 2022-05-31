@@ -191,11 +191,17 @@ public class gameManager {
             String discard_or_undealt = ask("\nPick from Discard or Undealt", ud);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
-                discards.displayPiles(); // if player wants a discarded card, display the discard piles
-                System.out.print("You chose discard pile.");
-                char[] ybwgr = { 'y', 'b', 'w', 'g', 'r' };
-                String picked_color = ask("Pick a color", ybwgr); // input which color's card player wants
-
+                System.out.print("You chose discard pile.\n");
+                String picked_color;
+                while (true) {
+                    discards.displayPiles(); // if player wants a discarded card, display the discard piles
+                    char[] ybwgr = { 'y', 'b', 'w', 'g', 'r' };
+                    picked_color = ask("Pick a color", ybwgr); // input which color's card player wants
+                    if (discards.getPile(picked_color).isEmpty())
+                        System.out.println("Discard Pile chosen is empty");
+                    else
+                        break;
+                }
                 incoming_card = discards.getCard(picked_color); // get the card that player chose
                 discards.removeCard(incoming_card); // remove the card from the discard piles
             } else {
