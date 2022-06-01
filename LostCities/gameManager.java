@@ -223,8 +223,8 @@ public class gameManager {
     }
 
     /**
-     * Ask user for an input corresponding to the options shown. Keep asking until
-     * user enters something in the given options.
+     * Ask player for an input corresponding to the options shown. Keep asking until
+     * player enters something in the given options.
      * Return the string form of that choice
      */
     private String ask(String s, char[] c) {
@@ -248,7 +248,7 @@ public class gameManager {
     }
 
     /**
-     * Output to console the choices user has to choose from in above ask() function
+     * Output to console the choices player has to choose from in above ask() function
      */
     private void displayChoices(char[] c) {
         System.out.print(" [");
@@ -262,7 +262,7 @@ public class gameManager {
 
     /**
      * If the file has another line, reads it and returns it
-     * If not, takes input from user and returns it
+     * If not, takes input from player and returns it
      */
     private String getNextString() {
         String s;

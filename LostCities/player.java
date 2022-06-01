@@ -128,6 +128,8 @@ public class player {
             placed_down.get(getIndex(c.getCardColor())).addCard(c);
     }
 
+    
+
     /**
      * Return the score of player
      * -> In each color
