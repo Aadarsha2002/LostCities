@@ -97,8 +97,8 @@ public class cards {
         return pile.get(index);
     }
 
-    public card getSmallestCard() {
-        return pile.get(index);
+    public card getSmallestCard(Color col) {
+        return getCardsbyColor(col).get(0);
     }
 
     /** Remove a specific card */

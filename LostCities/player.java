@@ -18,8 +18,6 @@ public class player {
     private cards hand;
     private ArrayList<cards> placed_down;
 
-    private boolean is_ai;
-
     // File file;
     // Scanner in;
     Scanner in2;
@@ -163,10 +161,8 @@ public class player {
     public String ask(String s, char[] c) {
         System.out.print(s);
         displayChoices(c);
-        String input;
-        if (is_ai) {
-        }
-        while (!is_ai) {
+        String input = "";
+        while (true) {
             input = getNextString();
             char input_char = Character.toLowerCase(input.charAt(0));
             boolean match = false;
@@ -179,6 +175,8 @@ public class player {
             if (!match) {
                 System.out.print("Wrong input! " + s + " again");
                 displayChoices(c);
+            } else {
+                break;
             }
         }
         return input;
