@@ -1,10 +1,12 @@
+import java.util.ArrayList;
+
 public class human extends player {
     /**
      * Ask player for an input corresponding to the options shown. Keep asking until
      * player enters something in the given options.
      * Return the string form of that choice
      */
-    public String ask(String s, char[] c) {
+    public String ask(String s, char[] c, ArrayList<cards> opponent__placed_down) {
         System.out.print(s);
         displayChoices(c);
         String input = "";

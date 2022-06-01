@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class LostCities {
     public static void main(String[] args) {
         while (true) {// keep looping until player says enough
-            gameManager gm = new gameManager();
+            gameManager gm = new gameManager("human", "human");
             gm.dealCards();
             gm.playGame();
 
