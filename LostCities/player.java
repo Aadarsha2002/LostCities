@@ -20,8 +20,8 @@ public class player {
 
     private boolean is_ai;
 
-    File file;
-    Scanner in;
+    // File file;
+    // Scanner in;
     Scanner in2;
     /*
      * placed_down[0] = yellow
@@ -41,13 +41,13 @@ public class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        is_ai = false;
-        file = new File("testCases.txt");
-        try {
-            in = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        // is_ai = false;
+        // file = new File("testCases.txt");
+        // try {
+        // in = new Scanner(file);
+        // } catch (FileNotFoundException e) {
+        // e.printStackTrace();
+        // }
         in2 = new Scanner(System.in);
     }
 
@@ -61,13 +61,13 @@ public class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        is_ai = true;
-        file = new File("testCases.txt");
-        try {
-            in = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        // is_ai = true;
+        // file = new File("testCases.txt");
+        // try {
+        // in = new Scanner(file);
+        // } catch (FileNotFoundException e) {
+        // e.printStackTrace();
+        // }
         in2 = new Scanner(System.in);
     }
 
@@ -82,13 +82,13 @@ public class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        is_ai = false;
-        file = new File("testCases.txt");
-        try {
-            in = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        // is_ai = false;
+        // file = new File("testCases.txt");
+        // try {
+        // in = new Scanner(file);
+        // } catch (FileNotFoundException e) {
+        // e.printStackTrace();
+        // }
         in2 = new Scanner(System.in);
     }
 
@@ -163,21 +163,25 @@ public class player {
     public String ask(String s, char[] c) {
         System.out.print(s);
         displayChoices(c);
-        while (true) {
-            String picked_color = getNextString();
-            char color = Character.toLowerCase(picked_color.charAt(0));
+        String input;
+        if (is_ai) {
+        }
+        while (!is_ai) {
+            input = getNextString();
+            char input_char = Character.toLowerCase(input.charAt(0));
             boolean match = false;
             for (char ch : c) {
-                if (color == ch) {
+                if (ch == input_char) {
                     match = true;
                     break;
                 }
             }
-            if (match)
-                return picked_color;
-            System.out.print("Wrong input! " + s + " again");
-            displayChoices(c);
+            if (!match) {
+                System.out.print("Wrong input! " + s + " again");
+                displayChoices(c);
+            }
         }
+        return input;
     }
 
     /**
@@ -200,13 +204,13 @@ public class player {
      */
     private String getNextString() {
         String s;
-        if (in.hasNextLine()) {
-            s = in.nextLine();
-            System.out.println(s);
-            return s;
-        } else {
-            return in2.nextLine();
-        }
+        // if (in.hasNextLine()) {
+        // s = in.nextLine();
+        // System.out.println(s);
+        // return s;
+        // } else {
+        return in2.nextLine();
+        // }
     }
 
     /**

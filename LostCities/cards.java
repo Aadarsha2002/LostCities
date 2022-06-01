@@ -97,6 +97,10 @@ public class cards {
         return pile.get(index);
     }
 
+    public card getSmallestCard() {
+        return pile.get(index);
+    }
+
     /** Remove a specific card */
     public void removeCard(card c) {
         pile.remove(c);
