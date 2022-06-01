@@ -36,13 +36,6 @@ public class gameManager {
         p2 = new player();
         undealt = new cards('U');
         discards = new discardPiles();
-        file = new File("testCases.txt");
-        try {
-            in = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        in2 = new Scanner(System.in);
     }
 
     /** Deal cards to both players from undealt cards pile */
@@ -146,11 +139,11 @@ public class gameManager {
     private void outgoingPlay(player p) {
         /** Ask whether player wants to discard or place card */
         char[] dp = { 'd', 'p' };
-        String discard_or_place = ask("\nDiscard or Place", dp);
+        String discard_or_place = p.ask("\nDiscard or Place", dp);
 
         /** Ask which card player wants to place */
         char[] choices = { '0', '1', '2', '3', '4', '5', '6', '7' };
-        String outgoing_card_index_string = ask("Pick a card to play", choices);
+        String outgoing_card_index_string = p.ask("Pick a card to play", choices);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_string); // convert string into integer
         card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
         p.removeCard(outgoing_card);// remove that card from the hand
@@ -190,7 +183,7 @@ public class gameManager {
 
             /** Ask whether player wants to take card from discard pile or undealt pile */
             char[] ud = { 'u', 'd' };
-            String discard_or_undealt = ask("\nPick from Discard or Undealt", ud);
+            String discard_or_undealt = p.ask("\nPick from Discard or Undealt", ud);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");
@@ -198,7 +191,7 @@ public class gameManager {
                 while (true) {
                     discards.displayPiles(); // if player wants a discarded card, display the discard piles
                     char[] ybwgr = { 'y', 'b', 'w', 'g', 'r' };
-                    picked_color = ask("Pick a color", ybwgr); // ask which color card player wants
+                    picked_color = p.ask("Pick a color", ybwgr); // ask which color card player wants
                     if (discards.getPile(picked_color).isEmpty())// if that discard pile is empty, then tell it's empty
                                                                  // and ask again
                         System.out.println("Discard Pile chosen is empty");
@@ -220,58 +213,5 @@ public class gameManager {
 
         System.out.print("\nYour hand is now ");
         p.display();
-    }
-
-    /**
-     * Ask player for an input corresponding to the options shown. Keep asking until
-     * player enters something in the given options.
-     * Return the string form of that choice
-     */
-    private String ask(String s, char[] c) {
-        System.out.print(s);
-        displayChoices(c);
-        while (true) {
-            String picked_color = getNextString();
-            char color = Character.toLowerCase(picked_color.charAt(0));
-            boolean match = false;
-            for (char ch : c) {
-                if (color == ch) {
-                    match = true;
-                    break;
-                }
-            }
-            if (match)
-                return picked_color;
-            System.out.print("Wrong input! " + s + " again");
-            displayChoices(c);
-        }
-    }
-
-    /**
-     * Output to console the choices player has to choose from in above ask() function
-     */
-    private void displayChoices(char[] c) {
-        System.out.print(" [");
-        for (int i = 0; i < c.length; i++) {
-            if (i == c.length - 1)
-                System.out.print(c[i] + "]: ");
-            else
-                System.out.print(c[i] + ", ");
-        }
-    }
-
-    /**
-     * If the file has another line, reads it and returns it
-     * If not, takes input from player and returns it
-     */
-    private String getNextString() {
-        String s;
-        if (in.hasNextLine()) {
-            s = in.nextLine();
-            System.out.println(s);
-            return s;
-        } else {
-            return in2.nextLine();
-        }
     }
 }
