@@ -11,7 +11,11 @@ public class ai {
         ai_player = new player();
     }
 
-    public ArrayList<int> getEachColorsScores(){
-        
+    public ArrayList<Integer> getEachColorsScores() {
+        ArrayList<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < col.length; i++) {
+            scores.add(ai_player.getColorScore(i));
+        }
+        return scores;
     }
 }
