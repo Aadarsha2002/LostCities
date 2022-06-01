@@ -15,6 +15,8 @@ public class player {
 
     private cards hand;
     private ArrayList<cards> placed_down;
+
+    private boolean is_ai;
     /*
      * placed_down[0] = yellow
      * placed_down[1] = blue
@@ -25,7 +27,7 @@ public class player {
 
     /**
      * CONSTRUCTOR
-     * Make new hand and placed down card list
+     * Make new hand and placed down card list for human
      */
     public player() {
         hand = new cards();
@@ -33,10 +35,24 @@ public class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
+        is_ai = false;
     }
 
     /**
-     * CONSTRUCTOR
+     * OVERLOAD CONSTRUCTOR
+     * Make a new hand and placed down card list for ai
+     */
+    public player(String s) {
+        hand = new cards();
+        placed_down = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            placed_down.add(new cards());
+        }
+        is_ai = true;
+    }
+
+    /**
+     * OVERLOAD CONSTRUCTOR
      * Make a custom hand based on given cards
      */
     public player(cards c) {
@@ -46,6 +62,7 @@ public class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
+        is_ai = false;
     }
 
     /** Output hand to console */
@@ -74,6 +91,15 @@ public class player {
     /** Return topmost card in a specific color of placed piles */
     public card getTopPlacedCard(Color col) {
         return placed_down.get(getIndex(col)).getTopCard();
+    }
+
+    /** Return scores of placed down cards color-wise in ArrayList */
+    public ArrayList<Integer> getEachColorsScores() {
+        ArrayList<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < col.length; i++) {
+            scores.add(getColorScore(i));
+        }
+        return scores;
     }
 
     /** Insert a card into hand */
