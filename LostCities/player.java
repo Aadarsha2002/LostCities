@@ -105,48 +105,55 @@ public class player {
     /**
      * Return the score of player
      * -> In each color
+     * - get score, and add to total
+     * Return total
+     */
+    public int calculateScore() {
+        int total = 0;
+        for (int i = 0; i < col.length; i++) {
+            total += getColorScore(i);// add to total
+        }
+        return total;
+    }
+
+    /**
+     * Return the score of the placed cards of a specific color
      * - count multipliers (multiplier++)
      * - sum numbered cards (sum+=c.getCardNumber())
      * - deduct 20 (sum-=20)
      * - multiply sum and multipliers (sum*=multiplier)
      * - add 20 bonus if more than 8 cards are placed down (sum+=20)
      * - add sum to total
-     * 
-     * Return total
      */
-    public int calculateScore() {
-        int total = 0;
-        for (int i = 0; i < col.length; i++) {
-            placed_down.get(i).sort();
-            ArrayList<card> cards;
-            cards = placed_down.get(i).getCardsbyColor(col[i]);
-            int multiplier = 1;
-            int sum = 0;
-            // count multipliers and sum of numbered cards
-            for (card c : cards) {
-                if (c.getCardNumber() == 0) {
-                    multiplier++;
-                } else {
-                    sum += c.getCardNumber();
-                }
+    public int getColorScore(int i) {
+        placed_down.get(i).sort();
+        ArrayList<card> cards;
+        cards = placed_down.get(i).getCardsbyColor(col[i]);
+        int multiplier = 1;
+        int sum = 0;
+        // count multipliers and sum of numbered cards
+        for (card c : cards) {
+            if (c.getCardNumber() == 0) {
+                multiplier++;
+            } else {
+                sum += c.getCardNumber();
             }
-            if (!cards.isEmpty())// cost
-                sum -= 20;
-            if (i == col.length - 1)
-                System.out.println(getColorName(col[i]) + " Sum\t\t\t= " + sum);
-            else
-                System.out.println(getColorName(col[i]) + " Sum\t\t= " + sum);
-            System.out.println("\tMultiplier\t= " + multiplier);
-            sum *= multiplier;// multiplier
-            System.out.println("\tSum Now\t\t= " + sum);
-            if (cards.size() >= 8) {// bonus points
-                sum += 20;
-                System.out.println("Bonus Points\t= 20");
-                System.out.println("\tSum after bonus points\t= " + sum);
-            }
-            total += sum;// add to total
         }
-        return total;
+        if (!cards.isEmpty())// cost
+            sum -= 20;
+        if (i == col.length - 1)
+            System.out.println(getColorName(col[i]) + " Sum\t\t\t= " + sum);
+        else
+            System.out.println(getColorName(col[i]) + " Sum\t\t= " + sum);
+        System.out.println("\tMultiplier\t= " + multiplier);
+        sum *= multiplier;// multiplier
+        System.out.println("\tSum Now\t\t= " + sum);
+        if (cards.size() >= 8) {// bonus points
+            sum += 20;
+            System.out.println("Bonus Points\t= 20");
+            System.out.println("\tSum after bonus points\t= " + sum);
+        }
+        return sum;
     }
 
     /**
