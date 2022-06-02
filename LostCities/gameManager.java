@@ -188,7 +188,6 @@ public class gameManager {
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card); // remove the card from the undealt pile
         } else {
-
             /** Ask whether player wants to take card from discard pile or undealt pile */
             char[] ud = { 'u', 'd' };
             String discard_or_undealt = p.ask("\nPick from Discard or Undealt", ud,
