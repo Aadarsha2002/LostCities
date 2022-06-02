@@ -6,7 +6,7 @@ public class ai extends player {
     int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     @Override
-    public String ask(String s, char[] c, ArrayList<cards> opponent__placed_down) {
+    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down) {
 
         return null;
     }
