@@ -32,26 +32,18 @@ public class gameManager {
      */
     public gameManager(String one, String two) {
         if (one == "human") {
-            p1 = new human();
+            p1 = new human("testCasesp1.txt");
         } else {
             p1 = new ai();
         }
 
         if (two == "human") {
-            p1 = new human();
+            p2 = new human("testCasesp2.txt");
         } else {
-            p1 = new ai();
+            p2 = new ai();
         }
         undealt = new cards('U');
         discards = new discardPiles();
-
-        file = new File("testCases.txt");
-        try {
-            in = new Scanner(file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        in2 = new Scanner(System.in);
     }
 
     /** Deal cards to both players from undealt cards pile */

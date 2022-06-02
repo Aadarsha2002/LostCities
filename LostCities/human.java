@@ -10,15 +10,14 @@ public class human extends player {
     Scanner in;
     Scanner in2;
 
-    public human() {
-        file = new File("testCases.txt");
+    public human(String file_name) {
+        file = new File(file_name);
         try {
             in = new Scanner(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         in2 = new Scanner(System.in);
-
     }
 
     /**
