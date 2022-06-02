@@ -1,7 +1,6 @@
-import java.io.File;
+import java.io.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class human extends player {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
@@ -10,6 +9,17 @@ public class human extends player {
     File file;
     Scanner in;
     Scanner in2;
+
+    public human() {
+        file = new File("testCases.txt");
+        try {
+            in = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        in2 = new Scanner(System.in);
+
+    }
 
     /**
      * Ask player for an input corresponding to the options shown. Keep asking until

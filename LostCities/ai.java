@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+import java.io.*;
 import java.awt.*;
+import java.util.*;
 
 public class ai extends player {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };

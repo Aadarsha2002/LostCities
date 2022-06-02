@@ -1,5 +1,6 @@
-import java.util.ArrayList;
+import java.io.*;
 import java.awt.*;
+import java.util.*;
 /*
 Holds:
     array of colors possible
