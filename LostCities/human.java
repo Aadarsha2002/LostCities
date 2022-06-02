@@ -1,6 +1,16 @@
+import java.io.File;
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class human extends player {
+    Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+    File file;
+    Scanner in;
+    Scanner in2;
+
     /**
      * Ask player for an input corresponding to the options shown. Keep asking until
      * player enters something in the given options.
@@ -50,12 +60,12 @@ public class human extends player {
      */
     private String getNextString() {
         String s;
-        // if (in.hasNextLine()) {
-        // s = in.nextLine();
-        // System.out.println(s);
-        // return s;
-        // } else {
-        return in2.nextLine();
-        // }
+        if (in.hasNextLine()) {
+            s = in.nextLine();
+            System.out.println(s);
+            return s;
+        } else {
+            return in2.nextLine();
+        }
     }
 }

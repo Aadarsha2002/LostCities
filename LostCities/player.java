@@ -17,10 +17,6 @@ public abstract class player {
 
     private cards hand;
     private ArrayList<cards> placed_down;
-
-    // File file;
-    // Scanner in;
-    Scanner in2;
     /*
      * placed_down[0] = yellow
      * placed_down[1] = blue
@@ -28,6 +24,10 @@ public abstract class player {
      * placed_down[3] = green
      * placed_down[4] = red
      */
+
+    // File file;
+    // Scanner in;
+    Scanner in2;
 
     /**
      * CONSTRUCTOR
