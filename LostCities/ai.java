@@ -1,6 +1,5 @@
 import java.awt.*;
 import java.util.*;
-import java.lang.*;
 
 public class ai extends player {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
