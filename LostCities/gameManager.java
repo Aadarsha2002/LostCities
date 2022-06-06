@@ -156,7 +156,7 @@ public class gameManager {
                 discards);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_str); // convert string into integer
         card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
-        p.removeCard(outgoing_card);// remove that card from the hand
+        p.removeCard(outgoing_card); // remove that card from the hand
 
         if (discard_or_place.equalsIgnoreCase("d")) {
             discards.addCard(outgoing_card); // if player wants to discard, add to discard pile

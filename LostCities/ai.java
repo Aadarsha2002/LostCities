@@ -32,6 +32,7 @@ public class ai extends player {
     }
 
     private String pickDiscardOrPlace(ArrayList<cards> opponent_placed_down) {
+        
         return null;
     }
 
