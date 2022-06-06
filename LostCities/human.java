@@ -20,6 +20,11 @@ public class human extends player {
         in2 = new Scanner(System.in);
     }
 
+    //Returns true because player is human
+    boolean isHuman() {
+        return true;
+    }
+
     /**
      * Ask player for an input corresponding to the options shown. Keep asking until
      * player enters something in the given options.

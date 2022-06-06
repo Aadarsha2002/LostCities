@@ -115,7 +115,7 @@ public class gameManager {
         p.display();
         System.out.println("_*_*_*_*_*_*_*_*_*_*");
 
-        outgoingPlay(p); // placing/discarding card from hand
+        Play(p); // placing/discarding card from hand
         incomingPlay(p); // taking card from undealt pile/discard piles
 
         /*
@@ -138,13 +138,9 @@ public class gameManager {
         System.out.println("*_*_*_*_*_*_*_*_*_*_");
     }
 
-    /**
-     * Outgoing card part of player's turn
-     * - Ask whether player wants to place or discard
-     * - Ask which card player wants to play
-     * - Do appropriate actions
-     */
-    private void outgoingPlay(player p) {
+    private void Play(player p) {
+        // outgoing
+
         /** Ask whether player wants to discard or place card */
         char[] choices1 = { 'd', 'p' };
         String discard_or_place = p.ask("\nDiscard or Place", choices1,
@@ -169,16 +165,8 @@ public class gameManager {
 
         System.out.print("\nYour hand is now ");
         p.display();
-    }
 
-    /**
-     * Incoming card part of player's turn
-     * - If all discard piles are empty, automatically deal from undealt pile
-     * - If not, Ask whether player wants to pick card from discard pile or undealt
-     * pile
-     * - Do appropriate actions
-     */
-    private void incomingPlay(player p) {
+        // incoming
         card incoming_card;
 
         if (discards.isEmpty()) {
