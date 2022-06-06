@@ -6,7 +6,7 @@ public class ai extends player {
     int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     @Override
-    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down) {
+    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down, discardPiles discards) {
         char ch = c[0];
         switch (ch) {
             // choices: d or p - incomingPlay
@@ -19,11 +19,11 @@ public class ai extends player {
             }
             // choices: u or d - outgoingPlay
             case 'u': {
-                return pickUndealtOrDiscard();
+                return pickUndealtOrDiscard(opponent_placed_down);
             }
             // choices: y, b, w, g, r - outgoingPlay
             case 'y': {
-                return pickColors();
+                return pickColors(opponent_placed_down);
             }
             default: {
                 throw new java.lang.Error("Wrong Choice [internal error]");
@@ -39,11 +39,11 @@ public class ai extends player {
         return null;
     }
 
-    private String pickUndealtOrDiscard() {
+    private String pickUndealtOrDiscard(ArrayList<cards> opponent_placed_down) {
         return null;
     }
 
-    private String pickColors() {
+    private String pickColors(ArrayList<cards> opponent_placed_down) {
         return null;
     }
 }

@@ -147,11 +147,13 @@ public class gameManager {
     private void outgoingPlay(player p) {
         /** Ask whether player wants to discard or place card */
         char[] choices1 = { 'd', 'p' };
-        String discard_or_place = p.ask("\nDiscard or Place", choices1, ((p == p1) ? p2 : p1).getPlacedCards());
+        String discard_or_place = p.ask("\nDiscard or Place", choices1,
+                ((p == p1) ? p2 : p1).getPlacedCards(), discards);
 
         /** Ask which card player wants to place */
         char[] choices2 = { '0', '1', '2', '3', '4', '5', '6', '7' };
-        String outgoing_card_index_str = p.ask("Pick a card to play", choices2, ((p == p1) ? p2 : p1).getPlacedCards());
+        String outgoing_card_index_str = p.ask("Pick a card to play", choices2, ((p == p1) ? p2 : p1).getPlacedCards(),
+                discards);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_str); // convert string into integer
         card outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
         p.removeCard(outgoing_card);// remove that card from the hand
@@ -191,7 +193,7 @@ public class gameManager {
             /** Ask whether player wants to take card from discard pile or undealt pile */
             char[] choices1 = { 'u', 'd' };
             String discard_or_undealt = p.ask("\nPick from Discard or Undealt", choices1,
-                    ((p == p1) ? p2 : p1).getPlacedCards());
+                    ((p == p1) ? p2 : p1).getPlacedCards(), discards);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");
@@ -199,10 +201,10 @@ public class gameManager {
                 while (true) {
                     discards.displayPiles(); // if player wants a discarded card, display the discard piles
                     char[] choices2 = { 'y', 'b', 'w', 'g', 'r' };
-                    picked_color = p.ask("Pick a color", choices2, ((p == p1) ? p2 : p1).getPlacedCards());
-                    // ask whichcolor cardplayer wants
-                    if (discards.getPile(picked_color).isEmpty())// if that discard pile is empty, then tell it's empty
-                                                                 // and ask again
+                    picked_color = p.ask("Pick a color", choices2,
+                            ((p == p1) ? p2 : p1).getPlacedCards(), discards); // ask which color card player wants
+                    if (discards.getPile(picked_color).isEmpty())
+                        // if that discard pile is empty, then tell it's empty and ask again
                         System.out.println("Discard Pile chosen is empty");
                     else
                         break;

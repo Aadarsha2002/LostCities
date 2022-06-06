@@ -25,7 +25,7 @@ public class human extends player {
      * player enters something in the given options.
      * Return the string form of that choice
      */
-    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down) {
+    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down, discardPiles discards) {
         System.out.print(s);
         displayChoices(c);
         String input = "";

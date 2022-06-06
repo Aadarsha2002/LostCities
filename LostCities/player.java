@@ -141,7 +141,7 @@ public abstract class player {
 
     }
 
-    public abstract String ask(String s, char[] c, ArrayList<cards> opponent__placed_down);
+    public abstract String ask(String s, char[] c, ArrayList<cards> opponent__placed_down, discardPiles discards);
 
     /**
      * Remove specific card from hand
