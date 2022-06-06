@@ -20,9 +20,15 @@ public class human extends player {
         in2 = new Scanner(System.in);
     }
 
-    //Returns true because player is human
+    // Returns true because player is human
     boolean isHuman() {
         return true;
+    }
+
+    @Override
+    public void play(player opponent) {
+        // TODO Auto-generated method stub
+
     }
 
     /**

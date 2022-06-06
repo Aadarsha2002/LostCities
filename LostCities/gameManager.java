@@ -115,7 +115,7 @@ public class gameManager {
         p.display();
         System.out.println("_*_*_*_*_*_*_*_*_*_*");
 
-        Play(p); // execute player's turn
+        p.play(((p == p1) ? p2 : p1)); // execute player's turn
 
         /*
          * Display post-turn statistics
@@ -151,15 +151,15 @@ public class gameManager {
         char[] choices2 = { '0', '1', '2', '3', '4', '5', '6', '7' };
         String outgoing_card_index_str = p.ask("Pick a card to play", choices2, ((p == p1) ? p2 : p1).getPlacedCards(),
                 discards);
-        int outgoing_card_index = Integer.parseInt(outgoing_card_index_str); // convert string into integer
-        outgoing_card = p.getCardAt(outgoing_card_index); // get the card at index
-        p.removeCard(outgoing_card); // remove that card from the hand
+        int outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
+        outgoing_card = p.getCardAt(outgoing_card_index);
+        p.removeCard(outgoing_card);
 
         if (discard_or_place.equalsIgnoreCase("d")) {
-            discards.addCard(outgoing_card); // if player wants to discard, add to discard pile
+            discards.addCard(outgoing_card);
             System.out.print("You chose to discard ");
         } else {
-            p.placeCard(outgoing_card); // if player wants to place, add to player's placed cards
+            p.placeCard(outgoing_card);
             System.out.print("You chose to place ");
         }
         outgoing_card.display();
@@ -176,7 +176,7 @@ public class gameManager {
              */
             System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
             incoming_card = undealt.getTopCard();
-            undealt.removeCard(incoming_card); // remove the card from the undealt pile
+            undealt.removeCard(incoming_card);
         } else {
             /** Ask whether player wants to take card from discard pile or undealt pile */
             char[] choices3 = { 'u', 'd' };
@@ -187,22 +187,20 @@ public class gameManager {
                 System.out.print("You chose discard pile.\n");
                 String picked_color;
                 while (true) {
-                    discards.displayPiles(); // if player wants a discarded card, display the discard piles
+                    discards.displayPiles();
                     char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
                     picked_color = p.ask("Pick a color", choices4,
-                            ((p == p1) ? p2 : p1).getPlacedCards(), discards); // ask which color card player wants
+                            ((p == p1) ? p2 : p1).getPlacedCards(), discards);
                     if (discards.getPile(picked_color).isEmpty())
-                        // if that discard pile is empty, then tell it's empty and ask again
                         System.out.println("Discard Pile chosen is empty");
                     else
                         break;
                 }
-                incoming_card = discards.getCard(picked_color); // get the card that player chose
-                discards.removeCard(incoming_card); // remove the card from the discard piles
+                incoming_card = discards.getCard(picked_color);
+                discards.removeCard(incoming_card);
             } else {
-                // if player chose to take undealt card, get the card from undealt pile
                 incoming_card = undealt.getTopCard();
-                undealt.removeCard(incoming_card); // remove the card from the undealt pile
+                undealt.removeCard(incoming_card);
                 System.out.print("You chose undealt pile\n");
             }
         }

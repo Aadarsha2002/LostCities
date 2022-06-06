@@ -65,6 +65,10 @@ public abstract class player {
         in2 = new Scanner(System.in);
     }
 
+    public abstract String ask(String s, char[] c, ArrayList<cards> opponent__placed_down, discardPiles discards);
+
+    public abstract void play(player opponent);
+
     /** Output hand to console */
     public void display() {
         hand.display();
@@ -117,8 +121,6 @@ public abstract class player {
         return hand.getCardAt(index);
 
     }
-
-    public abstract String ask(String s, char[] c, ArrayList<cards> opponent__placed_down, discardPiles discards);
 
     /**
      * Remove specific card from hand
