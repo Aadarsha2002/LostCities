@@ -13,6 +13,8 @@ public abstract class player {
     static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
+    Scanner in2;
+
     private cards hand;
     private ArrayList<cards> placed_down;
     /*
@@ -23,27 +25,16 @@ public abstract class player {
      * placed_down[4] = red
      */
 
-    // File file;
-    // Scanner in;
-    Scanner in2;
-
     /**
      * CONSTRUCTOR
      * Make new hand and placed down card list for human
      */
-    public player() {
+    player() {
         hand = new cards();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        // is_ai = false;
-        // file = new File("testCases.txt");
-        // try {
-        // in = new Scanner(file);
-        // } catch (FileNotFoundException e) {
-        // e.printStackTrace();
-        // }
         in2 = new Scanner(System.in);
     }
 
@@ -51,19 +42,12 @@ public abstract class player {
      * OVERLOAD CONSTRUCTOR
      * Make a new hand and placed down card list for ai
      */
-    public player(String s) {
+    player(String s) {
         hand = new cards();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        // is_ai = true;
-        // file = new File("testCases.txt");
-        // try {
-        // in = new Scanner(file);
-        // } catch (FileNotFoundException e) {
-        // e.printStackTrace();
-        // }
         in2 = new Scanner(System.in);
     }
 
@@ -71,20 +55,13 @@ public abstract class player {
      * OVERLOAD CONSTRUCTOR
      * Make a custom hand based on given cards
      */
-    public player(cards c) {
+    player(cards c) {
         hand = c;
         placed_down = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        // is_ai = false;
-        // file = new File("testCases.txt");
-        // try {
-        // in = new Scanner(file);
-        // } catch (FileNotFoundException e) {
-        // e.printStackTrace();
-        // }
         in2 = new Scanner(System.in);
     }
 
