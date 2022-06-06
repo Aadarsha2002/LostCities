@@ -9,19 +9,19 @@ public class ai extends player {
     public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down) {
         char ch = c[0];
         switch (ch) {
-            // choices: d or p
+            // choices: d or p - incomingPlay
             case 'd': {
-                return pickDiscardOrPlace();
+                return pickDiscardOrPlace(opponent_placed_down);
             }
-            // choices: 0, 1, 2, 3, 4, 5, 6, 7
+            // choices: 0, 1, 2, 3, 4, 5, 6, 7 - incomingPlay
             case '0': {
-                return pickHandIndex();
+                return pickHandIndex(opponent_placed_down);
             }
-            // choices: u or d
+            // choices: u or d - outgoingPlay
             case 'u': {
                 return pickUndealtOrDiscard();
             }
-            // choices: y, b, w, g, r
+            // choices: y, b, w, g, r - outgoingPlay
             case 'y': {
                 return pickColors();
             }
@@ -31,11 +31,11 @@ public class ai extends player {
         }
     }
 
-    private String pickDiscardOrPlace() {
+    private String pickDiscardOrPlace(ArrayList<cards> opponent_placed_down) {
         return null;
     }
 
-    private String pickHandIndex() {
+    private String pickHandIndex(ArrayList<cards> opponent_placed_down) {
         return null;
     }
 
