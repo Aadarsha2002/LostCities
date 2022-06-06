@@ -11,19 +11,19 @@ public class ai extends player {
         switch (ch) {
             // choices: d or p - incomingPlay
             case 'd': {
-                return pickDiscardOrPlace(opponent_placed_down);
+                return pickDiscardOrPlace(opponent_placed_down, discards);
             }
             // choices: 0, 1, 2, 3, 4, 5, 6, 7 - incomingPlay
             case '0': {
-                return pickHandIndex(opponent_placed_down);
+                return pickHandIndex(opponent_placed_down, discards);
             }
             // choices: u or d - outgoingPlay
             case 'u': {
-                return pickUndealtOrDiscard(opponent_placed_down);
+                return pickUndealtOrDiscard(opponent_placed_down, discards);
             }
             // choices: y, b, w, g, r - outgoingPlay
             case 'y': {
-                return pickColors(opponent_placed_down);
+                return pickColors(opponent_placed_down, discards);
             }
             default: {
                 throw new java.lang.Error("Wrong Choice [internal error]");
@@ -31,20 +31,20 @@ public class ai extends player {
         }
     }
 
-    private String pickDiscardOrPlace(ArrayList<cards> opponent_placed_down) {
+    private String pickDiscardOrPlace(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         
         return null;
     }
 
-    private String pickHandIndex(ArrayList<cards> opponent_placed_down) {
+    private String pickHandIndex(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         return null;
     }
 
-    private String pickUndealtOrDiscard(ArrayList<cards> opponent_placed_down) {
+    private String pickUndealtOrDiscard(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         return null;
     }
 
-    private String pickColors(ArrayList<cards> opponent_placed_down) {
+    private String pickColors(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         return null;
     }
 }
