@@ -115,7 +115,7 @@ public class gameManager {
         p.display();
         System.out.println("_*_*_*_*_*_*_*_*_*_*");
 
-        p.play(((p == p1) ? p2 : p1)); // execute player's turn
+        p.play(((p == p1) ? p2 : p1), discards, undealt); // execute player's turn
 
         /*
          * Display post-turn statistics
@@ -149,8 +149,8 @@ public class gameManager {
 
         /** Ask which card player wants to place */
         char[] choices2 = { '0', '1', '2', '3', '4', '5', '6', '7' };
-        String outgoing_card_index_str = p.ask("Pick a card to play", choices2, ((p == p1) ? p2 : p1).getPlacedCards(),
-                discards);
+        String outgoing_card_index_str = p.ask("Pick a card to play", choices2,
+                ((p == p1) ? p2 : p1).getPlacedCards(), discards);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
         outgoing_card = p.getCardAt(outgoing_card_index);
         p.removeCard(outgoing_card);

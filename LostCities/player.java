@@ -65,9 +65,7 @@ public abstract class player {
         in2 = new Scanner(System.in);
     }
 
-    public abstract String ask(String s, char[] c, ArrayList<cards> opponent__placed_down, discardPiles discards);
-
-    public abstract void play(player opponent);
+    public abstract void play(player opponent, discardPiles discards, cards undealt);
 
     /** Output hand to console */
     public void display() {

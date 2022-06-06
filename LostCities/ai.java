@@ -11,12 +11,11 @@ public class ai extends player {
     }
 
     @Override
-    public void play(player opponent) {
+    public void play(player opponent, discardPiles discards, cards undealt) {
         // TODO Auto-generated method stub
 
     }
 
-    @Override
     public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down, discardPiles discards) {
         char ch = c[0];
         switch (ch) {
