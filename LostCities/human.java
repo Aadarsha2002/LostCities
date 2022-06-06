@@ -7,17 +7,17 @@ public class human extends player {
     int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     File file;
-    Scanner in;
     Scanner in2;
+    Scanner in3;
 
     public human(String file_name) {
         file = new File(file_name);
         try {
-            in = new Scanner(file);
+            in2 = new Scanner(file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        in2 = new Scanner(System.in);
+        in3 = new Scanner(System.in);
     }
 
     // Returns true because player is human
@@ -66,7 +66,7 @@ public class human extends player {
         if (discards.isEmpty()) {
             /**
              * if player can take a card from undealt pile only because there are no cards
-             * in discard pile
+             * in2 discard pile
              */
             System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
             incoming_card = undealt.getTopCard();
@@ -106,10 +106,10 @@ public class human extends player {
 
     /**
      * Ask player for an input corresponding to the options shown. Keep asking until
-     * player enters something in the given options (character array).
+     * player enters something in2 the given options (character array).
      * Return the string form of that choice
      */
-    public String ask(String s, char[] c) {
+    private String ask(String s, char[] c) {
         System.out.print(s);
         displayChoices(c);
         String input = "";
@@ -134,7 +134,7 @@ public class human extends player {
     }
 
     /**
-     * Output to console the choices player has to choose from in above ask()
+     * Output to console the choices player has to choose from in2 above ask()
      * function
      */
     private void displayChoices(char[] c) {
@@ -153,12 +153,12 @@ public class human extends player {
      */
     private String getNextString() {
         String s;
-        if (in.hasNextLine()) {
-            s = in.nextLine();
+        if (in2.hasNextLine()) {
+            s = in2.nextLine();
             System.out.println(s);
             return s;
         } else {
-            return in2.nextLine();
+            return in3.nextLine();
         }
     }
 }

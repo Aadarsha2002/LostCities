@@ -13,7 +13,7 @@ public abstract class player {
     static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    Scanner in2;
+    Scanner in;
 
     private cards hand;
     private ArrayList<cards> placed_down;
@@ -35,7 +35,7 @@ public abstract class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        in2 = new Scanner(System.in);
+        in = new Scanner(System.in);
     }
 
     /**
@@ -48,7 +48,7 @@ public abstract class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        in2 = new Scanner(System.in);
+        in = new Scanner(System.in);
     }
 
     /**
@@ -62,7 +62,7 @@ public abstract class player {
         for (int i = 0; i < 5; i++) {
             placed_down.add(new cards());
         }
-        in2 = new Scanner(System.in);
+        in = new Scanner(System.in);
     }
 
     public abstract void play(player opponent, discardPiles discards, cards undealt);

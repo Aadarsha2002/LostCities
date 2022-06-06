@@ -15,8 +15,4 @@ public class ai extends player {
         // TODO Auto-generated method stub
 
     }
-
-    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down, discardPiles discards) {
-        return null;
-    }
 }
