@@ -138,7 +138,7 @@ public class gameManager {
     }
 
     private void Play(player p) {
-        // outgoing
+        // outgoing part
 
         card outgoing_card, incoming_card;
 
@@ -166,6 +166,8 @@ public class gameManager {
 
         System.out.print("\nYour hand is now ");
         p.display();
+
+        // incoming part
 
         if (discards.isEmpty()) {
             /**
