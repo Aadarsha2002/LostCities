@@ -38,13 +38,11 @@ public class human extends player {
 
         /** Ask whether player wants to discard or place card */
         char[] choices1 = { 'd', 'p' };
-        String discard_or_place = ask("\nDiscard or Place", choices1,
-                opponent.getPlacedCards(), discards);
+        String discard_or_place = ask("\nDiscard or Place", choices1);
 
         /** Ask which card player wants to place */
         char[] choices2 = { '0', '1', '2', '3', '4', '5', '6', '7' };
-        String outgoing_card_index_str = ask("Pick a card to play", choices2,
-                opponent.getPlacedCards(), discards);
+        String outgoing_card_index_str = ask("Pick a card to play", choices2);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
         outgoing_card = getCardAt(outgoing_card_index);
         removeCard(outgoing_card);
@@ -76,8 +74,7 @@ public class human extends player {
         } else {
             /** Ask whether player wants to take card from discard pile or undealt pile */
             char[] choices3 = { 'u', 'd' };
-            String discard_or_undealt = ask("\nPick from Discard or Undealt", choices3,
-                    opponent.getPlacedCards(), discards);
+            String discard_or_undealt = ask("\nPick from Discard or Undealt", choices3);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");
@@ -85,8 +82,7 @@ public class human extends player {
                 while (true) {
                     discards.displayPiles();
                     char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
-                    picked_color = ask("Pick a color", choices4,
-                            opponent.getPlacedCards(), discards);
+                    picked_color = ask("Pick a color", choices4);
                     if (discards.getPile(picked_color).isEmpty())
                         System.out.println("Discard Pile chosen is empty");
                     else
@@ -110,10 +106,10 @@ public class human extends player {
 
     /**
      * Ask player for an input corresponding to the options shown. Keep asking until
-     * player enters something in the given options.
+     * player enters something in the given options (character array).
      * Return the string form of that choice
      */
-    public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down, discardPiles discards) {
+    public String ask(String s, char[] c) {
         System.out.print(s);
         displayChoices(c);
         String input = "";
