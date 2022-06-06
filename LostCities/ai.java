@@ -9,21 +9,21 @@ public class ai extends player {
     public String ask(String s, char[] c, ArrayList<cards> opponent_placed_down, discardPiles discards) {
         char ch = c[0];
         switch (ch) {
-            // choices: d or p - incomingPlay
+            // choices: d or p - outgoingPlay
             case 'd': {
-                return pickDiscardOrPlace(opponent_placed_down, discards);
+                return toDiscardOrPlace(opponent_placed_down, discards);
             }
-            // choices: 0, 1, 2, 3, 4, 5, 6, 7 - incomingPlay
+            // choices: 0, 1, 2, 3, 4, 5, 6, 7 - outgoingPlay
             case '0': {
-                return pickHandIndex(opponent_placed_down, discards);
+                return fromHandIndex(opponent_placed_down, discards);
             }
-            // choices: u or d - outgoingPlay
+            // choices: u or d - incomingPlay
             case 'u': {
-                return pickUndealtOrDiscard(opponent_placed_down, discards);
+                return fromUndealtOrDiscard(opponent_placed_down, discards);
             }
-            // choices: y, b, w, g, r - outgoingPlay
+            // choices: y, b, w, g, r - incomingPlay
             case 'y': {
-                return pickColors(opponent_placed_down, discards);
+                return toDiscardsColors(opponent_placed_down, discards);
             }
             default: {
                 throw new java.lang.Error("Wrong Choice [internal error]");
@@ -31,20 +31,20 @@ public class ai extends player {
         }
     }
 
-    private String pickDiscardOrPlace(ArrayList<cards> opponent_placed_down, discardPiles discards) {
-        
+    private String toDiscardOrPlace(ArrayList<cards> opponent_placed_down, discardPiles discards) {
+
         return null;
     }
 
-    private String pickHandIndex(ArrayList<cards> opponent_placed_down, discardPiles discards) {
+    private String fromHandIndex(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         return null;
     }
 
-    private String pickUndealtOrDiscard(ArrayList<cards> opponent_placed_down, discardPiles discards) {
+    private String fromUndealtOrDiscard(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         return null;
     }
 
-    private String pickColors(ArrayList<cards> opponent_placed_down, discardPiles discards) {
+    private String toDiscardsColors(ArrayList<cards> opponent_placed_down, discardPiles discards) {
         return null;
     }
 }
