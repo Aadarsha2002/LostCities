@@ -13,29 +13,23 @@ public class ai extends player {
             // choices: d or p
             case 'd': {
                 return pickDiscardOrPlace();
-                break;
             }
             // choices: 0, 1, 2, 3, 4, 5, 6, 7
             case '0': {
                 return pickHandIndex();
-                break;
             }
             // choices: u or d
             case 'u': {
                 return pickUndealtOrDiscard();
-                break;
             }
             // choices: y, b, w, g, r
             case 'y': {
                 return pickColors();
-                break;
             }
             default: {
-                throw new java.lang.Error();
+                throw new java.lang.Error("Wrong Choice [internal error]");
             }
-
         }
-        return null;
     }
 
     private String pickDiscardOrPlace() {
@@ -43,14 +37,14 @@ public class ai extends player {
     }
 
     private String pickHandIndex() {
-
+        return null;
     }
 
     private String pickUndealtOrDiscard() {
-
+        return null;
     }
 
     private String pickColors() {
-
+        return null;
     }
 }
