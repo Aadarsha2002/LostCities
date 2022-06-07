@@ -17,7 +17,12 @@ public class ai extends player {
         for (Color color : col) {
             ArrayList<card> cards = hand.getCardsbyColor(color);
             if (cards.size() > 1) {
-                
+                placeable.set(getCardIndex(cards.get(0)), true);
+            }
+            for (card c : cards) {
+                if (c == cards.get(0))
+                    continue;
+                placeable.set(getCardIndex(cards.get(0)), true);
             }
         }
         for (int i = 0; i < scores.size(); i++) {

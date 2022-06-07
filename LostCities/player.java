@@ -104,6 +104,15 @@ public abstract class player {
         return scores;
     }
 
+    /** Returns the index of the requested card in the hand */
+    public int getCardIndex(card c) {
+        for (int i = 0; i < hand.size(); i++) {
+            if (c == hand.getCardAt(i))
+                return i;
+        }
+        return -1;
+    }
+
     /** Insert a card into hand */
     public void addCard(card c) {
         hand.addCard(c);
