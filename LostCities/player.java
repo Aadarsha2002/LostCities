@@ -126,7 +126,9 @@ public abstract class player {
      */
     public void placeCard(card c) {
         hand.removeCard(c);
-        if (placed_down.get(getIndex(c.getCardColor())).isEmpty() || isValidCardtoPlace(c))
+        if (placed_down.get(getIndex(c.getCardColor())).isEmpty()
+                || (placed_down.isEmpty()
+                        || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber()))
             placed_down.get(getIndex(c.getCardColor())).addCard(c);
     }
 
@@ -182,15 +184,6 @@ public abstract class player {
             System.out.println("\tSum after bonus points\t= " + sum);
         }
         return sum;
-    }
-
-    /**
-     * Returns true if the given card is either
-     * handshake card (0), or
-     * higher than the topmost placed card of its color
-     */
-    private boolean isValidCardtoPlace(card c) {
-        return placed_down.isEmpty() || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber();
     }
 
     /** Return index of placed cards pile according to given color */
