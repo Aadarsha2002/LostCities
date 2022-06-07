@@ -11,8 +11,9 @@ public class ai extends player {
 
     @Override
     public void play(player opponent, discardPiles discards, cards undealt) {
+        ArrayList<Integer> 
         for (int i = 0; i < hand.size(); i++) {
-            
+
         }
     }
 }
