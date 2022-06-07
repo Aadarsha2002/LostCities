@@ -14,6 +14,7 @@ public class ai extends player {
     public void play(player opponent, discardPiles discards, cards undealt) {
         ArrayList<Boolean> placeable = new ArrayList<>(hand.size());
         ArrayList<Integer> scores = new ArrayList<>(hand.size());
+        // set the lowest number card in each color as placeable
         for (Color color : col) {
             ArrayList<card> cards = hand.getCardsbyColor(color);
             if (cards.size() > 1) {
@@ -26,7 +27,12 @@ public class ai extends player {
             }
         }
         for (int i = 0; i < scores.size(); i++) {
-
+            if (placeable.get(i).equals(false))
+                scores.set(i, Integer.MIN_VALUE);
+            else {
+                placeCard(hand.getCardAt(i));
+                scores.set(i, getColorScore(getIndex(hand.getCardAt(i).getCardColor())));
+            }
         }
     }
 }

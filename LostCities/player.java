@@ -95,15 +95,6 @@ public abstract class player {
         return placed_down.get(getIndex(col)).getTopCard();
     }
 
-    /** Return scores of placed down cards color-wise in ArrayList */
-    public ArrayList<Integer> getEachColorsScores() {
-        ArrayList<Integer> scores = new ArrayList<>();
-        for (int i = 0; i < col.length; i++) {
-            scores.add(getColorScore(i));
-        }
-        return scores;
-    }
-
     /** Returns the index of the requested card in the hand */
     public int getCardIndex(card c) {
         for (int i = 0; i < hand.size(); i++) {
@@ -111,6 +102,15 @@ public abstract class player {
                 return i;
         }
         return -1;
+    }
+
+    /** Return scores of placed down cards color-wise in ArrayList */
+    public ArrayList<Integer> getEachColorsScores() {
+        ArrayList<Integer> scores = new ArrayList<>();
+        for (int i = 0; i < col.length; i++) {
+            scores.add(getColorScore(i));
+        }
+        return scores;
     }
 
     /** Insert a card into hand */
@@ -196,7 +196,7 @@ public abstract class player {
     }
 
     /** Return index of placed cards pile according to given color */
-    private int getIndex(Color col) {
+    protected int getIndex(Color col) {
         for (int i = 0; i < 5; i++) {
             if (player.col[i] == col)
                 return i;
@@ -205,7 +205,7 @@ public abstract class player {
     }
 
     /** Return string form of color passed as parameter */
-    private String getColorName(Color c) {
+    protected String getColorName(Color c) {
         if (c == col[0]) {
             return "Yellow";
         } else if (c == col[1]) {
