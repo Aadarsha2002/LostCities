@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.util.*;
 
 public class ai extends player {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
@@ -12,6 +11,8 @@ public class ai extends player {
 
     @Override
     public void play(player opponent, discardPiles discards, cards undealt) {
-        
+        for (int i = 0; i < hand.size(); i++) {
+            
+        }
     }
 }

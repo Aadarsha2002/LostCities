@@ -15,8 +15,8 @@ public abstract class player {
 
     Scanner in;
 
-    private cards hand;
-    private ArrayList<cards> placed_down;
+    protected cards hand;
+    protected ArrayList<cards> placed_down;
     /*
      * placed_down[0] = yellow
      * placed_down[1] = blue
