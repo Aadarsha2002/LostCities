@@ -12,7 +12,6 @@ public class ai extends player {
 
     @Override
     public void play(player opponent, discardPiles discards, cards undealt) {
-        // TODO Auto-generated method stub
-
+        
     }
 }
