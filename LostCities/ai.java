@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ai extends player {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
@@ -11,8 +12,15 @@ public class ai extends player {
 
     @Override
     public void play(player opponent, discardPiles discards, cards undealt) {
-        ArrayList<Integer> 
-        for (int i = 0; i < hand.size(); i++) {
+        ArrayList<Boolean> placeable = new ArrayList<>(hand.size());
+        ArrayList<Integer> scores = new ArrayList<>(hand.size());
+        for (Color color : col) {
+            ArrayList<card> cards = hand.getCardsbyColor(color);
+            if (cards.size() > 1) {
+                
+            }
+        }
+        for (int i = 0; i < scores.size(); i++) {
 
         }
     }
