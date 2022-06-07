@@ -146,8 +146,11 @@ public class cards {
                 addCard(new card(num[0], c));
             }
         }
+
         for (int i = 0; i < 6; i++) {
-            shuffleCards();
+            if (!is_discard_pile) {
+                Collections.shuffle(pile, rnd);
+            }
         }
     }
 
@@ -184,12 +187,5 @@ public class cards {
             to.add(c);
         }
         return to;
-    }
-
-    /** Shuffle cards */
-    private void shuffleCards() {
-        if (!is_discard_pile) {
-            Collections.shuffle(pile, rnd);
-        }
     }
 }
