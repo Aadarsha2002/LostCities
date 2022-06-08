@@ -9,8 +9,8 @@ Holds:
 */
 
 public class discardPiles {
-    Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static Color[] colors  = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] numbers  = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     ArrayList<CardsCollection> discard_piles = new ArrayList<>();
     /*
@@ -43,7 +43,7 @@ public class discardPiles {
      * Return the corresponding color's discard pile (color passed as String)
      */
     public CardsCollection getPile(String picked_color) {
-        for (Color c : col) {
+        for (Color c : colors) {
             if (isColorsMatching(picked_color, c))
                 return discard_piles.get(getIndex(c));
         }
@@ -63,7 +63,7 @@ public class discardPiles {
      * (color passed as String)
      */
     public Card getCard(String picked_color) {
-        for (Color c : col) {
+        for (Color c : colors) {
             if (!discard_piles.get(getIndex(c)).isEmpty()
                     && isColorsMatching(picked_color, c))
                 return getCard(c);
@@ -95,7 +95,7 @@ public class discardPiles {
     /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
-        for (Color c : col) {
+        for (Color c : colors) {
             System.out.print(getColorName(c) + ":\t");
             discard_piles.get(getIndex(c)).display();
         }
@@ -127,7 +127,7 @@ public class discardPiles {
     /** Return index of discard pile according to given color */
     private int getIndex(Color col) {
         for (int i = 0; i < 5; i++) {
-            if (this.col[i] == col)
+            if (this.colors[i] == col)
                 return i;
         }
         return -1;
@@ -135,15 +135,15 @@ public class discardPiles {
 
     /** Return string form of color passed as parameter */
     private String getColorName(Color c) {
-        if (c == col[0]) {
+        if (c == colors[0]) {
             return "Yellow";
-        } else if (c == col[1]) {
+        } else if (c == colors[1]) {
             return "Blue";
-        } else if (c == col[2]) {
+        } else if (c == colors[2]) {
             return "White";
-        } else if (c == col[3]) {
+        } else if (c == colors[3]) {
             return "Green";
-        } else if (c == col[4]) {
+        } else if (c == colors[4]) {
             return "Red";
         }
         return "";

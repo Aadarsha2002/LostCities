@@ -9,9 +9,9 @@ Holds:
     piles of cards placed down (outside of board)
 */
 
-public abstract class player {
-    static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+public abstract class Player {
+    static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     Scanner in;
 
@@ -29,7 +29,7 @@ public abstract class player {
      * CONSTRUCTOR
      * Make new hand and placed down card list for human
      */
-    player() {
+    Player() {
         hand = new CardsCollection();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -42,7 +42,7 @@ public abstract class player {
      * OVERLOAD CONSTRUCTOR
      * Make a new hand and placed down card list for ai
      */
-    player(String s) {
+    Player(String s) {
         hand = new CardsCollection();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
@@ -55,7 +55,7 @@ public abstract class player {
      * OVERLOAD CONSTRUCTOR
      * Make a custom hand based on given cards
      */
-    player(CardsCollection c) {
+    Player(CardsCollection c) {
         hand = c;
         placed_down = new ArrayList<>();
 
@@ -65,7 +65,7 @@ public abstract class player {
         in = new Scanner(System.in);
     }
 
-    public abstract void play(player opponent, discardPiles discards, CardsCollection undealt);
+    public abstract void play(Player opponent, discardPiles discards, CardsCollection undealt);
 
     /** Output hand to console */
     public void display() {
@@ -74,7 +74,7 @@ public abstract class player {
 
     /** Output placed down cards of player */
     public void displayPlacedDownCards() {
-        for (Color c : col) {
+        for (Color c : colors) {
             System.out.print(getColorName(c) + ":\t");
             placed_down.get(getIndex(c)).display();
         }
@@ -107,7 +107,7 @@ public abstract class player {
     /** Return scores of placed down cards color-wise in ArrayList */
     public ArrayList<Integer> getEachColorsScores() {
         ArrayList<Integer> scores = new ArrayList<>();
-        for (int i = 0; i < col.length; i++) {
+        for (int i = 0; i < colors.length; i++) {
             scores.add(getColorScore(i));
         }
         return scores;
@@ -149,7 +149,7 @@ public abstract class player {
      */
     public int calculateScore() {
         int total = 0;
-        for (int i = 0; i < col.length; i++) {
+        for (int i = 0; i < colors.length; i++) {
             total += getColorScore(i);// add to total
         }
         return total;
@@ -167,7 +167,7 @@ public abstract class player {
     public int getColorScore(int i) {
         placed_down.get(i).sort();
         ArrayList<Card> cards;
-        cards = placed_down.get(i).getCardsbyColor(col[i]);
+        cards = placed_down.get(i).getCardsbyColor(colors[i]);
         int multiplier = 1;
         int sum = 0;
         // count multipliers and sum of numbered cards
@@ -180,10 +180,10 @@ public abstract class player {
         }
         if (!cards.isEmpty())// cost
             sum -= 20;
-        if (i == col.length - 1)
-            System.out.println(getColorName(col[i]) + " Sum\t\t\t= " + sum);
+        if (i == colors.length - 1)
+            System.out.println(getColorName(colors[i]) + " Sum\t\t\t= " + sum);
         else
-            System.out.println(getColorName(col[i]) + " Sum\t\t= " + sum);
+            System.out.println(getColorName(colors[i]) + " Sum\t\t= " + sum);
         System.out.println("\tMultiplier\t= " + multiplier);
         sum *= multiplier;// multiplier
         System.out.println("\tSum Now\t\t= " + sum);
@@ -196,8 +196,8 @@ public abstract class player {
     }
 
     protected ArrayList<Integer> getCardCountsByColor() {
-        ArrayList<Integer> counts = new ArrayList<>(col.length);
-        for (Color color : col) {
+        ArrayList<Integer> counts = new ArrayList<>(colors.length);
+        for (Color color : colors) {
             counts.add(hand.getCardsbyColor(color).size());
         }
         return counts;
@@ -206,7 +206,7 @@ public abstract class player {
     /** Return index of placed cards pile according to given color */
     protected int getIndex(Color col) {
         for (int i = 0; i < 5; i++) {
-            if (player.col[i] == col)
+            if (Player.colors[i] == col)
                 return i;
         }
         return -1;
@@ -214,15 +214,15 @@ public abstract class player {
 
     /** Return string form of color passed as parameter */
     protected String getColorName(Color c) {
-        if (c == col[0]) {
+        if (c == colors[0]) {
             return "Yellow";
-        } else if (c == col[1]) {
+        } else if (c == colors[1]) {
             return "Blue";
-        } else if (c == col[2]) {
+        } else if (c == colors[2]) {
             return "White";
-        } else if (c == col[3]) {
+        } else if (c == colors[3]) {
             return "Green";
-        } else if (c == col[4]) {
+        } else if (c == colors[4]) {
             return "Red";
         }
         return "";

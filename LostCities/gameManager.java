@@ -14,11 +14,11 @@ Holds:
 */
 
 public class gameManager {
-    Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    player p1;
-    player p2;
+    Player p1;
+    Player p2;
     CardsCollection undealt;
     discardPiles discards;
 
@@ -94,7 +94,7 @@ public class gameManager {
      * - Play incoming card part of turn
      * - Display post-turn statistics
      */
-    private void playPlayer(player p) {
+    private void playPlayer(plaPlayerer p) {
 
         /**
          * Display pre-turn statistics
@@ -121,7 +121,7 @@ public class gameManager {
     }
 
     // Outputs to console the current statistics of the games
-    private void displayStatistics(player p) {
+    private void displayStatistics(Player p) {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
         discards.displayPiles();

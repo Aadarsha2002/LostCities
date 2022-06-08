@@ -10,8 +10,8 @@ Holds:
 */
 
 public class Card {
-    Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     public int card_number;
     public Color card_color;

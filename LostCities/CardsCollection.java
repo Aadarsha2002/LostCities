@@ -12,8 +12,8 @@ Holds
 */
 
 public class CardsCollection {
-    static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     Random rnd = new Random(0);
 
@@ -136,14 +136,14 @@ public class CardsCollection {
 
     /** Make a pile of Undealt Cards and shuffle it */
     public void makeUndealtCardsPile() {
-        for (Color c : col) {
+        for (Color c : colors) {
             // add normal number cards
-            for (int n : num) {
+            for (int n : numbers) {
                 addCard(new Card(n, c));
             }
             // add 2 more handshake cards (1 was added in above loop)
             for (int j = 0; j < 2; j++) {
-                addCard(new Card(num[0], c));
+                addCard(new Card(numbers[0], c));
             }
         }
 
@@ -157,8 +157,8 @@ public class CardsCollection {
     /** If not discard pile, sort cards according to numbers in each color */
     public void sort() {
         ArrayList<Card> sorted_cards = new ArrayList<>();
-        for (int x = 0; x < col.length && !is_discard_pile; x++) {
-            ArrayList<Card> c = getCardsbyColor(col[x]);
+        for (int x = 0; x < colors.length && !is_discard_pile; x++) {
+            ArrayList<Card> c = getCardsbyColor(colors[x]);
             // sort c
             for (int i = 0; i < c.size() - 1; i++) {
                 int min_card_index = i;
