@@ -26,15 +26,15 @@ public class human extends player {
     }
 
     @Override
-    public void play(player opponent, discardPiles discards, cards undealt) {
+    public void play(player opponent, discardPiles discards, CardsCollection undealt) {
         outgoingPlay(opponent, discards, undealt);
         incomingPlay(opponent, discards, undealt);
     }
 
-    private void outgoingPlay(player opponent, discardPiles discards, cards undealt) {
+    private void outgoingPlay(player opponent, discardPiles discards, CardsCollection undealt) {
         // outgoing part
 
-        card outgoing_card;
+        Card outgoing_card;
 
         /** Ask whether player wants to discard or place card */
         char[] choices1 = { 'd', 'p' };
@@ -61,8 +61,8 @@ public class human extends player {
 
     }
 
-    private void incomingPlay(player opponent, discardPiles discards, cards undealt) {
-        card incoming_card;
+    private void incomingPlay(player opponent, discardPiles discards, CardsCollection undealt) {
+        Card incoming_card;
         if (discards.isEmpty()) {
             /**
              * if player can take a card from undealt pile only because there are no cards

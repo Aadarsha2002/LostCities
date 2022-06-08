@@ -9,9 +9,9 @@ Holds:
     card color
 */
 
-public class card {
-    static Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+public class Card {
+    Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     public int card_number;
     public Color card_color;
@@ -20,18 +20,18 @@ public class card {
      * CONSTRUCTOR
      * Set defalut values
      */
-    
-    public card() {
+
+    public Card() {
         card_number = Integer.MIN_VALUE;
         card_color = Color.black;
     }
 
     /** Set internal variables to parameters */
-    public card(int num, Color col) {
-        for (int i = 0; i < card.col.length; i++) {
-            if (card.col[i] == col)
+    public Card(int num, Color col) {
+        for (int i = 0; i < colors.length; i++) {
+            if (colors[i] == col)
                 break;
-            else if (card.col[i] != col && i == card.col.length - 1)
+            else if (colors[i] != col && i == colors.length - 1)
                 throw new java.lang.Error("Invalid Color input");
         }
         card_number = num;
@@ -61,15 +61,15 @@ public class card {
 
     /** Return string form of color passed as parameter */
     private String getColorName(Color col) {
-        if (col == card.col[0]) {
+        if (col == colors[0]) {
             return "Yellow";
-        } else if (col == card.col[1]) {
+        } else if (col == colors[1]) {
             return "Blue";
-        } else if (col == card.col[2]) {
+        } else if (col == colors[2]) {
             return "White";
-        } else if (col == card.col[3]) {
+        } else if (col == colors[3]) {
             return "Green";
-        } else if (col == card.col[4]) {
+        } else if (col == colors[4]) {
             return "Red";
         }
         return "";

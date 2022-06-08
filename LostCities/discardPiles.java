@@ -12,7 +12,7 @@ public class discardPiles {
     Color[] col = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] num = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    ArrayList<cards> discard_piles = new ArrayList<>();
+    ArrayList<CardsCollection> discard_piles = new ArrayList<>();
     /*
      * discard_piles[0] = yellow
      * discard_piles[1] = blue
@@ -29,12 +29,12 @@ public class discardPiles {
 
         discard_piles = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            discard_piles.add(new cards('d'));
+            discard_piles.add(new CardsCollection('d'));
         }
     }
 
     /** Return the corresponding color's discard pile */
-    public cards getPile(Color col) {
+    public CardsCollection getPile(Color col) {
         return discard_piles.get(getIndex(col));
     }
 
@@ -42,19 +42,19 @@ public class discardPiles {
      * OVERLOAD FUNCTION
      * Return the corresponding color's discard pile (color passed as String)
      */
-    public cards getPile(String picked_color) {
+    public CardsCollection getPile(String picked_color) {
         for (Color c : col) {
             if (isColorsMatching(picked_color, c))
                 return discard_piles.get(getIndex(c));
         }
-        return new cards();
+        return new CardsCollection();
     }
 
     /** Return topmost card */
-    public card getCard(Color col) {
+    public Card getCard(Color col) {
         if (!discard_piles.get(getIndex(col)).isEmpty())
             return discard_piles.get(getIndex(col)).getTopCard();
-        return new card();
+        return new Card();
     }
 
     /**
@@ -62,13 +62,13 @@ public class discardPiles {
      * Returns the topmost card from the given color's discard pile
      * (color passed as String)
      */
-    public card getCard(String picked_color) {
+    public Card getCard(String picked_color) {
         for (Color c : col) {
             if (!discard_piles.get(getIndex(c)).isEmpty()
                     && isColorsMatching(picked_color, c))
                 return getCard(c);
         }
-        return new card();
+        return new Card();
     }
 
     /** Remove topmost card from given color's discard pile */
@@ -82,13 +82,13 @@ public class discardPiles {
      * Verifies it's the topmost card
      * if it is, removes it
      */
-    public void removeCard(card c) {
+    public void removeCard(Card c) {
         if (isTopCard(c))
             removeCard(c.getCardColor());
     }
 
     /** Insert card into the appropriate discard pile */
-    public void addCard(card c) {
+    public void addCard(Card c) {
         discard_piles.get(getIndex(c.getCardColor())).addCard(c);
     }
 
@@ -105,7 +105,7 @@ public class discardPiles {
      * Return true if all discard piles are empty
      */
     public boolean isEmpty() {
-        for (cards c : discard_piles) {
+        for (CardsCollection c : discard_piles) {
             if (!c.isEmpty())
                 return false;
         }
@@ -113,7 +113,7 @@ public class discardPiles {
     }
 
     /** Return true if given card is topmost card */
-    private boolean isTopCard(card c) {
+    private boolean isTopCard(Card c) {
         return c == getCard(c.getCardColor());
     }
 

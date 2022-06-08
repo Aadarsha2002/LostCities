@@ -15,8 +15,8 @@ public abstract class player {
 
     Scanner in;
 
-    protected cards hand;
-    protected ArrayList<cards> placed_down;
+    protected CardsCollection hand;
+    protected ArrayList<CardsCollection> placed_down;
     /*
      * placed_down[0] = yellow
      * placed_down[1] = blue
@@ -30,10 +30,10 @@ public abstract class player {
      * Make new hand and placed down card list for human
      */
     player() {
-        hand = new cards();
+        hand = new CardsCollection();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            placed_down.add(new cards());
+            placed_down.add(new CardsCollection());
         }
         in = new Scanner(System.in);
     }
@@ -43,10 +43,10 @@ public abstract class player {
      * Make a new hand and placed down card list for ai
      */
     player(String s) {
-        hand = new cards();
+        hand = new CardsCollection();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            placed_down.add(new cards());
+            placed_down.add(new CardsCollection());
         }
         in = new Scanner(System.in);
     }
@@ -55,17 +55,17 @@ public abstract class player {
      * OVERLOAD CONSTRUCTOR
      * Make a custom hand based on given cards
      */
-    player(cards c) {
+    player(CardsCollection c) {
         hand = c;
         placed_down = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
-            placed_down.add(new cards());
+            placed_down.add(new CardsCollection());
         }
         in = new Scanner(System.in);
     }
 
-    public abstract void play(player opponent, discardPiles discards, cards undealt);
+    public abstract void play(player opponent, discardPiles discards, CardsCollection undealt);
 
     /** Output hand to console */
     public void display() {
@@ -81,22 +81,22 @@ public abstract class player {
     }
 
     /** Return hand */
-    public cards getHand() {
+    public CardsCollection getHand() {
         return hand;
     }
 
     /** Return placed cards */
-    public ArrayList<cards> getPlacedCards() {
+    public ArrayList<CardsCollection> getPlacedCards() {
         return placed_down;
     }
 
     /** Return topmost card in a specific color of placed piles */
-    public card getTopPlacedCard(Color col) {
+    public Card getTopPlacedCard(Color col) {
         return placed_down.get(getIndex(col)).getTopCard();
     }
 
     /** Returns the index of the requested card in the hand */
-    public int getCardIndex(card c) {
+    public int getCardIndex(Card c) {
         for (int i = 0; i < hand.size(); i++) {
             if (c == hand.getCardAt(i))
                 return i;
@@ -114,17 +114,17 @@ public abstract class player {
     }
 
     /** Insert a card into hand */
-    public void addCard(card c) {
+    public void addCard(Card c) {
         hand.addCard(c);
     }
 
     /** Remove a card from hand */
-    public void removeCard(card c) {
+    public void removeCard(Card c) {
         hand.removeCard(c);
     }
 
     /** Return card at specific index in hand */
-    public card getCardAt(int index) {
+    public Card getCardAt(int index) {
         return hand.getCardAt(index);
 
     }
@@ -133,7 +133,7 @@ public abstract class player {
      * Remove specific card from hand
      * Add it to placed cards list appropriately
      */
-    public void placeCard(card c) {
+    public void placeCard(Card c) {
         hand.removeCard(c);
         if (placed_down.get(getIndex(c.getCardColor())).isEmpty()
                 || (placed_down.isEmpty()
@@ -166,12 +166,12 @@ public abstract class player {
      */
     public int getColorScore(int i) {
         placed_down.get(i).sort();
-        ArrayList<card> cards;
+        ArrayList<Card> cards;
         cards = placed_down.get(i).getCardsbyColor(col[i]);
         int multiplier = 1;
         int sum = 0;
         // count multipliers and sum of numbered cards
-        for (card c : cards) {
+        for (Card c : cards) {
             if (c.getCardNumber() == 0) {
                 multiplier++;
             } else {

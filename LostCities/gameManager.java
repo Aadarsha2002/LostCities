@@ -19,7 +19,7 @@ public class gameManager {
 
     player p1;
     player p2;
-    cards undealt;
+    CardsCollection undealt;
     discardPiles discards;
 
     File file;
@@ -42,14 +42,14 @@ public class gameManager {
         } else {
             p2 = new ai();
         }
-        undealt = new cards('U');
+        undealt = new CardsCollection('U');
         discards = new discardPiles();
     }
 
     /** Deal cards to both players from undealt cards pile */
     public void dealCards() {
         for (int i = 0; i < 8 * 2; i++) {
-            card c = undealt.getTopCard();
+            Card c = undealt.getTopCard();
             undealt.removeCard(c);
             if (i % 2 == 0)
                 p1.addCard(c);

@@ -20,7 +20,7 @@ public class ai extends player {
     }
 
     @Override
-    public void play(player opponent, discardPiles discards, cards undealt) {
+    public void play(player opponent, discardPiles discards, CardsCollection undealt) {
 
     }
 }
