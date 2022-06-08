@@ -8,9 +8,9 @@ Holds:
     List of discard piles
 */
 
-public class discardPiles {
-    static Color[] colors  = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers  = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+public class DiscardPiles {
+    static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
+    static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     ArrayList<CardsCollection> discard_piles = new ArrayList<>();
     /*
@@ -25,7 +25,7 @@ public class discardPiles {
      * CONSTRUCTOR
      * Make discard piles (5 piles)
      */
-    public discardPiles() {
+    public DiscardPiles() {
 
         discard_piles = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

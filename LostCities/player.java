@@ -65,7 +65,7 @@ public abstract class Player {
         in = new Scanner(System.in);
     }
 
-    public abstract void play(Player opponent, discardPiles discards, CardsCollection undealt);
+    public abstract void play(Player opponent, DiscardPiles discards, CardsCollection undealt);
 
     /** Output hand to console */
     public void display() {

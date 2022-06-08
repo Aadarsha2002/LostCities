@@ -13,14 +13,14 @@ Holds:
     Discard Piles
 */
 
-public class gameManager {
+public class GameManager {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     Player p1;
     Player p2;
     CardsCollection undealt;
-    discardPiles discards;
+    DiscardPiles discards;
 
     File file;
     Scanner in;
@@ -30,20 +30,20 @@ public class gameManager {
      * CONSTRUCTOR
      * - initializes the internal variables
      */
-    public gameManager(String one, String two) {
+    public GameManager(String one, String two) {
         if (one == "human") {
-            p1 = new human("testCasesp1.txt");
+            p1 = new Human("testCasesp1.txt");
         } else {
-            p1 = new ai();
+            p1 = new Ai();
         }
 
         if (two == "human") {
-            p2 = new human("testCasesp2.txt");
+            p2 = new Human("testCasesp2.txt");
         } else {
-            p2 = new ai();
+            p2 = new Ai();
         }
         undealt = new CardsCollection('U');
-        discards = new discardPiles();
+        discards = new DiscardPiles();
     }
 
     /** Deal cards to both players from undealt cards pile */
@@ -94,7 +94,7 @@ public class gameManager {
      * - Play incoming card part of turn
      * - Display post-turn statistics
      */
-    private void playPlayer(plaPlayerer p) {
+    private void playPlayer(Player p) {
 
         /**
          * Display pre-turn statistics

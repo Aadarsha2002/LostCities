@@ -2,7 +2,7 @@ import java.io.*;
 import java.awt.*;
 import java.util.*;
 
-public class human extends Player {
+public class Human extends Player {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
@@ -10,7 +10,7 @@ public class human extends Player {
     Scanner in2;
     Scanner in3;
 
-    public human(String file_name) {
+    public Human(String file_name) {
         file = new File(file_name);
         try {
             in2 = new Scanner(file);
@@ -26,12 +26,12 @@ public class human extends Player {
     }
 
     @Override
-    public void play(Player opponent, discardPiles discards, CardsCollection undealt) {
+    public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
         outgoingPlay(opponent, discards, undealt);
         incomingPlay(opponent, discards, undealt);
     }
 
-    private void outgoingPlay(Player opponent, discardPiles discards, CardsCollection undealt) {
+    private void outgoingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
         // outgoing part
 
         Card outgoing_card;
@@ -61,7 +61,7 @@ public class human extends Player {
 
     }
 
-    private void incomingPlay(Player opponent, discardPiles discards, CardsCollection undealt) {
+    private void incomingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
         Card incoming_card;
         if (discards.isEmpty()) {
             /**
