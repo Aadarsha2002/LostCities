@@ -30,7 +30,6 @@ public abstract class player {
      * Make new hand and placed down card list for human
      */
     player() {
-        System.out.println("SUPERCLASS CONSTRUCTOR");
         hand = new cards();
         placed_down = new ArrayList<>();
         for (int i = 0; i < 5; i++) {

@@ -11,7 +11,6 @@ public class human extends player {
     Scanner in3;
 
     public human(String file_name) {
-        System.out.println("SUBCLASS CONSTRUCTOR");
         file = new File(file_name);
         try {
             in2 = new Scanner(file);
