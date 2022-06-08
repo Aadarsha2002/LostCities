@@ -35,6 +35,6 @@ public class ai extends player {
             }
         }
         ArrayList<Integer> cards_color_counts = getCardCountsByColor();
-        
+
     }
 }
