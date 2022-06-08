@@ -21,6 +21,6 @@ public class Ai extends Player {
 
     @Override
     public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
-
+        // TODO document why this method is empty
     }
 }

@@ -30,14 +30,14 @@ public class GameManager {
      * CONSTRUCTOR
      * - initializes the internal variables
      */
-    public GameManager(String one, String two) {
-        if (one == "human") {
+    public GameManager(String s1, String s2) {
+        if (s1 == "human") {
             p1 = new Human("testCasesp1.txt");
         } else {
             p1 = new Ai();
         }
 
-        if (two == "human") {
+        if (s2 == "human") {
             p2 = new Human("testCasesp2.txt");
         } else {
             p2 = new Ai();
@@ -95,7 +95,6 @@ public class GameManager {
      * - Display post-turn statistics
      */
     private void playPlayer(Player p) {
-
         /**
          * Display pre-turn statistics
          * - indicate Player's turn

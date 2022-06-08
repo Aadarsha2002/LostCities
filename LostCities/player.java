@@ -40,19 +40,6 @@ public abstract class Player {
 
     /**
      * OVERLOAD CONSTRUCTOR
-     * Make a new hand and placed down card list for ai
-     */
-    Player(String s) {
-        hand = new CardsCollection();
-        placed_down = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            placed_down.add(new CardsCollection());
-        }
-        in = new Scanner(System.in);
-    }
-
-    /**
-     * OVERLOAD CONSTRUCTOR
      * Make a custom hand based on given cards
      */
     Player(CardsCollection c) {
@@ -74,9 +61,9 @@ public abstract class Player {
 
     /** Output placed down cards of player */
     public void displayPlacedDownCards() {
-        for (Color c : colors) {
-            System.out.print(getColorName(c) + ":\t");
-            placed_down.get(getIndex(c)).display();
+        for (Color col : colors) {
+            System.out.print(getColorName(col) + ":\t");
+            placed_down.get(getIndex(col)).display();
         }
     }
 
@@ -213,16 +200,16 @@ public abstract class Player {
     }
 
     /** Return string form of color passed as parameter */
-    protected String getColorName(Color c) {
-        if (c == colors[0]) {
+    protected String getColorName(Color col) {
+        if (col == colors[0]) {
             return "Yellow";
-        } else if (c == colors[1]) {
+        } else if (col == colors[1]) {
             return "Blue";
-        } else if (c == colors[2]) {
+        } else if (col == colors[2]) {
             return "White";
-        } else if (c == colors[3]) {
+        } else if (col == colors[3]) {
             return "Green";
-        } else if (c == colors[4]) {
+        } else if (col == colors[4]) {
             return "Red";
         }
         return "";

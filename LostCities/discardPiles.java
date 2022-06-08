@@ -43,9 +43,9 @@ public class DiscardPiles {
      * Return the corresponding color's discard pile (color passed as String)
      */
     public CardsCollection getPile(String picked_color) {
-        for (Color c : colors) {
-            if (isColorsMatching(picked_color, c))
-                return discard_piles.get(getIndex(c));
+        for (Color col : colors) {
+            if (isColorsMatching(picked_color, col))
+                return discard_piles.get(getIndex(col));
         }
         return new CardsCollection();
     }
@@ -63,10 +63,10 @@ public class DiscardPiles {
      * (color passed as String)
      */
     public Card getCard(String picked_color) {
-        for (Color c : colors) {
-            if (!discard_piles.get(getIndex(c)).isEmpty()
-                    && isColorsMatching(picked_color, c))
-                return getCard(c);
+        for (Color col : colors) {
+            if (!discard_piles.get(getIndex(col)).isEmpty()
+                    && isColorsMatching(picked_color, col))
+                return getCard(col);
         }
         return new Card();
     }
@@ -95,9 +95,9 @@ public class DiscardPiles {
     /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
-        for (Color c : colors) {
-            System.out.print(getColorName(c) + ":\t");
-            discard_piles.get(getIndex(c)).display();
+        for (Color col : colors) {
+            System.out.print(getColorName(col) + ":\t");
+            discard_piles.get(getIndex(col)).display();
         }
     }
 
@@ -105,8 +105,8 @@ public class DiscardPiles {
      * Return true if all discard piles are empty
      */
     public boolean isEmpty() {
-        for (CardsCollection c : discard_piles) {
-            if (!c.isEmpty())
+        for (CardsCollection cards : discard_piles) {
+            if (!cards.isEmpty())
                 return false;
         }
         return true;
@@ -127,23 +127,23 @@ public class DiscardPiles {
     /** Return index of discard pile according to given color */
     private int getIndex(Color col) {
         for (int i = 0; i < 5; i++) {
-            if (this.colors[i] == col)
+            if (col == colors[i])
                 return i;
         }
         return -1;
     }
 
     /** Return string form of color passed as parameter */
-    private String getColorName(Color c) {
-        if (c == colors[0]) {
+    private String getColorName(Color col) {
+        if (col == colors[0]) {
             return "Yellow";
-        } else if (c == colors[1]) {
+        } else if (col == colors[1]) {
             return "Blue";
-        } else if (c == colors[2]) {
+        } else if (col == colors[2]) {
             return "White";
-        } else if (c == colors[3]) {
+        } else if (col == colors[3]) {
             return "Green";
-        } else if (c == colors[4]) {
+        } else if (col == colors[4]) {
             return "Red";
         }
         return "";

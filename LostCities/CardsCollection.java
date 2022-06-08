@@ -12,10 +12,10 @@ Holds
 */
 
 public class CardsCollection {
+    Random rand = new Random(0);
+
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
-
-    Random rnd = new Random(0);
 
     private ArrayList<Card> pile = new ArrayList<>(); // just holds a list of cards
     private boolean is_discard_pile; // holds whether the pile is a discard pile or not
@@ -26,12 +26,12 @@ public class CardsCollection {
      * Takes in a character (U/D) indicating whether pile of cards is undealt pile
      * of discard cards
      */
-    public CardsCollection(char c) {
-        if (c == 'U' || c == 'u') {// if undealt cards pile
+    public CardsCollection(char ch) {
+        if (ch == 'U' || ch == 'u') {// if undealt cards pile
             is_undealtCards = true;
             is_discard_pile = false;
             makeUndealtCardsPile();
-        } else if (c == 'D' || c == 'd') {// if discard pile
+        } else if (ch == 'D' || ch == 'd') {// if discard pile
             is_undealtCards = false;
             is_discard_pile = true;
 
@@ -109,8 +109,8 @@ public class CardsCollection {
      * Takes in a color and number
      * Creates a card using parameters and removes that card from cards
      */
-    public void removeCard(Color col, int n) {
-        pile.remove(new Card(n, col));
+    public void removeCard(Color col, int num) {
+        pile.remove(new Card(num, col));
     }
 
     /** Returns true if a card exists in the cards */
@@ -136,20 +136,20 @@ public class CardsCollection {
 
     /** Make a pile of Undealt Cards and shuffle it */
     public void makeUndealtCardsPile() {
-        for (Color c : colors) {
+        for (Color col : colors) {
             // add normal number cards
-            for (int n : numbers) {
-                addCard(new Card(n, c));
+            for (int num : numbers) {
+                addCard(new Card(num, col));
             }
             // add 2 more handshake cards (1 was added in above loop)
             for (int j = 0; j < 2; j++) {
-                addCard(new Card(numbers[0], c));
+                addCard(new Card(numbers[0], col));
             }
         }
 
         for (int i = 0; i < 6; i++) {
             if (!is_discard_pile) {
-                Collections.shuffle(pile, rnd);
+                Collections.shuffle(pile, rand);
             }
         }
     }

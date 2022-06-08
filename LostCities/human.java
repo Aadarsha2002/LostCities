@@ -58,7 +58,6 @@ public class Human extends Player {
 
         System.out.print("\nYour hand is now ");
         display();
-
     }
 
     private void incomingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
@@ -109,15 +108,15 @@ public class Human extends Player {
      * player enters something in2 the given options (character array).
      * Return the string form of that choice
      */
-    private String ask(String s, char[] c) {
+    private String ask(String s, char[] choices) {
         System.out.print(s);
-        displayChoices(c);
+        displayChoices(choices);
         String input = "";
         while (true) {
             input = getNextString();
             char input_char = Character.toLowerCase(input.charAt(0));
             boolean match = false;
-            for (char ch : c) {
+            for (char ch : choices) {
                 if (ch == input_char) {
                     match = true;
                     break;
@@ -125,7 +124,7 @@ public class Human extends Player {
             }
             if (!match) {
                 System.out.print("Wrong input! " + s + " again");
-                displayChoices(c);
+                displayChoices(choices);
             } else {
                 break;
             }
@@ -137,13 +136,13 @@ public class Human extends Player {
      * Output to console the choices player has to choose from in2 above ask()
      * function
      */
-    private void displayChoices(char[] c) {
+    private void displayChoices(char[] choices) {
         System.out.print(" [");
-        for (int i = 0; i < c.length; i++) {
-            if (i == c.length - 1)
-                System.out.print(c[i] + "]: ");
+        for (int i = 0; i < choices.length; i++) {
+            if (i == choices.length - 1)
+                System.out.print(choices[i] + "]: ");
             else
-                System.out.print(c[i] + ", ");
+                System.out.print(choices[i] + ", ");
         }
     }
 

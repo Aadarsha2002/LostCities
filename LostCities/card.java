@@ -29,9 +29,9 @@ public class Card {
     /** Set internal variables to parameters */
     public Card(int num, Color col) {
         for (int i = 0; i < colors.length; i++) {
-            if (colors[i] == col)
+            if (col == colors[i])
                 break;
-            else if (colors[i] != col && i == colors.length - 1)
+            else if (col != colors[i] && i == colors.length - 1)
                 throw new java.lang.Error("Invalid Color input");
         }
         card_number = num;
