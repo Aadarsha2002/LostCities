@@ -195,6 +195,14 @@ public abstract class player {
         return sum;
     }
 
+    protected ArrayList<Integer> getCardCountsByColor() {
+        ArrayList<Integer> counts = new ArrayList<>(col.length);
+        for (Color color : col) {
+            counts.add(hand.getCardsbyColor(color).size());
+        }
+        return counts;
+    }
+
     /** Return index of placed cards pile according to given color */
     protected int getIndex(Color col) {
         for (int i = 0; i < 5; i++) {

@@ -34,5 +34,7 @@ public class ai extends player {
                 scores.set(i, getColorScore(getIndex(hand.getCardAt(i).getCardColor())));
             }
         }
+        ArrayList<Integer> cards_color_counts = getCardCountsByColor();
+        
     }
 }
