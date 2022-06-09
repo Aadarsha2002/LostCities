@@ -101,34 +101,36 @@ public class Human extends Player {
             undealt.removeCard(incoming_card);
         } else {
             /* Ask whether player wants to take card from discard pile or undealt pile */
-            char[] choices3 = { 'u', 'd' };
-            String discard_or_undealt = ask("\nPick from Discard or Undealt", choices3);
+            char[] choices1 = { 'u', 'd' };
+            String discard_or_undealt = ask("\nPick from Discard or Undealt", choices1);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");
                 String picked_color;
                 discards.displayPiles();
-                char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
-                picked_color = ask("Pick a color", choices4);
+                char[] choices2 = { 'y', 'b', 'w', 'g', 'r' };
+                picked_color = ask("Pick a color", choices2);
                 // ask until the pile which is not empty is chosen
                 while (discards.getPile(picked_color).isEmpty()) {
                     System.out.println("Discard Pile chosen is empty");
                     discards.displayPiles();
-                    picked_color = ask("Pick a color", choices4);
+                    picked_color = ask("Pick a color", choices2);
                 }
                 incoming_card = discards.getCard(picked_color);
+
                 // if the player picked the same card as the one he just discarded
                 while (incoming_card == outgoing_card) {
                     System.out.println("You just discarded that card. Pick another card.");
                     discards.displayPiles();
-                    picked_color = ask("Pick a color", choices4);
+                    picked_color = ask("Pick a color", choices2);
                     // ask until the pile which is not empty is chosen
                     while (discards.getPile(picked_color).isEmpty()) {
                         System.out.println("Discard Pile chosen is empty");
                         discards.displayPiles();
-                        picked_color = ask("Pick a color", choices4);
+                        picked_color = ask("Pick a color", choices2);
                     }
                 }
+
                 discards.removeCard(incoming_card);
             } else {
                 incoming_card = undealt.getTopCard();
