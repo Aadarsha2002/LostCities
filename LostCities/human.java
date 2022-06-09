@@ -10,9 +10,15 @@ public class Human extends Player {
     Scanner in2;
     Scanner in3;
 
+    /* Default CONSTRUCTOR */
     public Human() {
     }
 
+    /*
+     * CONSTRUCTOR
+     * Takes in a string indicating the file name from in which moves have been
+     * written already
+     */
     public Human(String file_name) {
         file = new File(file_name);
         try {
@@ -23,7 +29,7 @@ public class Human extends Player {
         in3 = new Scanner(System.in);
     }
 
-    // Returns true because player is human
+    /* Returns true because player is human */
     boolean isHuman() {
         return true;
     }
@@ -39,11 +45,11 @@ public class Human extends Player {
 
         Card outgoing_card;
 
-        /** Ask whether player wants to discard or place card */
+        /* Ask whether player wants to discard or place card */
         char[] choices1 = { 'd', 'p' };
         String discard_or_place = ask("\nDiscard or Place", choices1);
 
-        /** Ask which card player wants to place */
+        /* Ask which card player wants to place */
         char[] choices2 = { '0', '1', '2', '3', '4', '5', '6', '7' };
         String outgoing_card_index_str = ask("Pick a card to play", choices2);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
@@ -77,7 +83,7 @@ public class Human extends Player {
     private void incomingPlay(DiscardPiles discards, CardsCollection undealt, Card outgoing_card) {
         Card incoming_card;
         if (discards.isEmpty()) {
-            /**
+            /*
              * if player can take a card from undealt pile only because there are no cards
              * in discard pile
              */
@@ -85,7 +91,7 @@ public class Human extends Player {
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else if (discards.totalSize() == 1 && discards.getOnlyCard() == outgoing_card) {
-            /**
+            /*
              * There's only one card in all discard piles together, and that card is the one
              * the player just placed
              */
@@ -94,7 +100,7 @@ public class Human extends Player {
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else {
-            /** Ask whether player wants to take card from discard pile or undealt pile */
+            /* Ask whether player wants to take card from discard pile or undealt pile */
             char[] choices3 = { 'u', 'd' };
             String discard_or_undealt = ask("\nPick from Discard or Undealt", choices3);
 
