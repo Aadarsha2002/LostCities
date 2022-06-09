@@ -23,6 +23,41 @@ public class Ai extends Player {
 
     @Override
     public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
-        
+        int random_number = 0;
+        Card outgoing_card;
+        /** Decide to discard or play */
+        random_number = getRandomNumber(0, 2);
+        if (random_number == 0) {
+            // discard
+            /** Decide which card */
+            random_number = getRandomNumber(0, 8);
+            outgoing_card = getCardAt(random_number);
+            removeCard(outgoing_card);
+            discards.addCard(outgoing_card);
+            System.out.print("AI chose to discard ");
+
+        } else {
+            // play
+            /** Decide which card */
+            random_number = getRandomNumber(0, 8);
+            outgoing_card = getCardAt(random_number);
+            removeCard(outgoing_card);
+            placeCard(outgoing_card);
+            System.out.print("AI chose to place ");
+        }
+        outgoing_card.display();
+
+        System.out.print("\nYour hand is now ");
+        display();
+        /** Decide to take from undealt or one of the discard piles */
+        /** Decide which pile if discard piles */
+    }
+
+    /** Return random number between min and max */
+    private int getRandomNumber(int min, int max) {
+        Random random = new Random();
+        return random.ints(min, max)
+                .findFirst()
+                .getAsInt();
     }
 }
