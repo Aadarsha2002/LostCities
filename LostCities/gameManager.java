@@ -32,15 +32,15 @@ public class GameManager {
      */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
-            //p1 = new Human("testCasesp1.txt");
-            p1 = new Human();
+            // p1 = new Human("testCasesp1.txt");
+            p1 = new Human("GameManager.java");
         } else {
             p1 = new Ai();
         }
 
         if (s2 == "human") {
-            //p2 = new Human("testCasesp2.txt");
-            p2 = new Human();
+            // p2 = new Human("testCasesp2.txt");
+            p2 = new Human("emptyFileForHuman.txt");
         } else {
             p2 = new Ai();
         }
@@ -111,7 +111,7 @@ public class GameManager {
         /*
          * If p is initialized as AI, Ai.play() is called
          * If p is initialized as Human, Human.play() is called
-         * Player.play() is only an abstract definition 
+         * Player.play() is only an abstract definition
          */
         p.play(((p == p1) ? p2 : p1), discards, undealt); // execute player's turn
 

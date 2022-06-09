@@ -68,6 +68,15 @@ public class Ai extends Player {
                 /** Decide which pile if discard piles */
                 random_number = getRandomNumber(0, 5);
                 incoming_card = discards.getCard(colors[random_number]);
+                while (incoming_card.getCardColor() == Color.black) {
+                    random_number = getRandomNumber(0, 5);
+                    incoming_card = discards.getCard(colors[random_number]);
+                }
+                if (incoming_card == outgoing_card) {
+                    incoming_card = undealt.getTopCard();
+                    undealt.removeCard(incoming_card);
+                    System.out.print("AI chose undealt pile\n");
+                }
                 discards.removeCard(incoming_card);
             } else {
                 incoming_card = undealt.getTopCard();
