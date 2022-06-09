@@ -47,17 +47,46 @@ public class Ai extends Player {
         }
         outgoing_card.display();
 
-        System.out.print("\nYour hand is now ");
+        System.out.print("\nAI's hand is now ");
         display();
-        /** Decide to take from undealt or one of the discard piles */
-        /** Decide which pile if discard piles */
+
+        Card incoming_card;
+        if (discards.isEmpty()) {
+            /**
+             * if AI can take a card from undealt pile only because there are no cards
+             * in discard pile
+             */
+            System.out.println("\n AI took card from undealt pile only because there are no cards in discard piles");
+            incoming_card = undealt.getTopCard();
+            undealt.removeCard(incoming_card);
+        } else {
+            /** Decide to take from undealt or one of the discard piles */
+            random_number = getRandomNumber(0, 2);
+            if (random_number == 0) {
+                System.out.print("AI chose discard pile.\n");
+
+                /** Decide which pile if discard piles */
+                random_number = getRandomNumber(0, 5);
+                incoming_card = discards.getCard(colors[random_number]);
+                discards.removeCard(incoming_card);
+            } else {
+                incoming_card = undealt.getTopCard();
+                undealt.removeCard(incoming_card);
+                System.out.print("AI chose undealt pile\n");
+            }
+
+        }
+
+        System.out.print("AI's getting ");
+        incoming_card.display();
+        addCard(incoming_card);// add the card to player's hand
+
+        System.out.print("\nAI's hand is now ");
+        display();
     }
 
     /** Return random number between min and max */
     private int getRandomNumber(int min, int max) {
-        Random random = new Random();
-        return random.ints(min, max)
-                .findFirst()
-                .getAsInt();
+        return rand.ints(min, max).findFirst().getAsInt();
     }
 }

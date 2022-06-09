@@ -32,13 +32,15 @@ public class GameManager {
      */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
-            p1 = new Human("testCasesp1.txt");
+            //p1 = new Human("testCasesp1.txt");
+            p1 = new Human();
         } else {
             p1 = new Ai();
         }
 
         if (s2 == "human") {
-            p2 = new Human("testCasesp2.txt");
+            //p2 = new Human("testCasesp2.txt");
+            p2 = new Human();
         } else {
             p2 = new Ai();
         }

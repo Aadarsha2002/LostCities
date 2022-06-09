@@ -10,6 +10,9 @@ public class Human extends Player {
     Scanner in2;
     Scanner in3;
 
+    public Human() {
+    }
+
     public Human(String file_name) {
         file = new File(file_name);
         try {
@@ -65,7 +68,7 @@ public class Human extends Player {
         if (discards.isEmpty()) {
             /**
              * if player can take a card from undealt pile only because there are no cards
-             * in2 discard pile
+             * in discard pile
              */
             System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
             incoming_card = undealt.getTopCard();
