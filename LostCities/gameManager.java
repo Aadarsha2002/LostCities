@@ -106,6 +106,11 @@ public class GameManager {
         System.out.println("Pre Turn Statistics: ");
         displayStatistics(p);
 
+        /*
+         * If p is initialized as AI, Ai.play() is called
+         * If p is initialized as Human, Human.play() is called
+         * Player.play() is only an abstract definition 
+         */
         p.play(((p == p1) ? p2 : p1), discards, undealt); // execute player's turn
 
         /*

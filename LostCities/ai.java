@@ -1,7 +1,9 @@
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Ai extends Player {
+    Random rand = new Random(0);
+
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
@@ -21,6 +23,6 @@ public class Ai extends Player {
 
     @Override
     public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
-        // TODO document why this method is empty
+
     }
 }

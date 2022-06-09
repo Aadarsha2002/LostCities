@@ -52,6 +52,7 @@ public abstract class Player {
         in = new Scanner(System.in);
     }
 
+    /** Abstract definition */
     public abstract void play(Player opponent, DiscardPiles discards, CardsCollection undealt);
 
     /** Output hand to console */
