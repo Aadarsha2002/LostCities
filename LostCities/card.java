@@ -60,18 +60,11 @@ public class Card {
     }
 
     /** Return string form of color passed as parameter */
-    private String getColorName(Color col) {
-        if (col == colors[0]) {
-            return "Yellow";
-        } else if (col == colors[1]) {
-            return "Blue";
-        } else if (col == colors[2]) {
-            return "White";
-        } else if (col == colors[3]) {
-            return "Green";
-        } else if (col == colors[4]) {
-            return "Red";
-        }
-        return "";
+    protected String getColorName(Color col) {
+        return (col == colors[0]) ? "Yellow"
+                : (col == colors[1]) ? "Blue"
+                        : (col == colors[2]) ? "White"
+                                : (col == colors[3]) ? "Green"
+                                        : (col == colors[4]) ? "Red" : "";
     }
 }
