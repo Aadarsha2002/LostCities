@@ -30,11 +30,11 @@ public class Human extends Player {
 
     @Override
     public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
-        outgoingPlay(opponent, discards, undealt);
-        incomingPlay(opponent, discards, undealt);
+        Card outgoing_card = outgoingPlay(discards);
+        incomingPlay(discards, undealt, outgoing_card);
     }
 
-    private void outgoingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
+    private Card outgoingPlay(DiscardPiles discards) {
         // outgoing part
 
         Card outgoing_card;
@@ -61,9 +61,10 @@ public class Human extends Player {
 
         System.out.print("\nYour hand is now ");
         display();
+        return outgoing_card;
     }
 
-    private void incomingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
+    private void incomingPlay(DiscardPiles discards, CardsCollection undealt, Card outgoing_card) {
         Card incoming_card;
         if (discards.isEmpty()) {
             /**
@@ -71,6 +72,15 @@ public class Human extends Player {
              * in discard pile
              */
             System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
+            incoming_card = undealt.getTopCard();
+            undealt.removeCard(incoming_card);
+        } else if (discards.totalSize() == 1 && discards.getOnlyCard() == outgoing_card) {
+            /**
+             * There's only one card in all discard piles together, and that card is the one
+             * the player just placed
+             */
+            System.out.println(
+                    "\nYou cannot pick the card you just discarded. So, you need to take a card from Undealt Pile only.");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else {
@@ -91,6 +101,19 @@ public class Human extends Player {
                         break;
                 }
                 incoming_card = discards.getCard(picked_color);
+                // if the player picked the same card as the one he just discarded
+                while (incoming_card == outgoing_card) {
+                    System.out.println("You just discarded that card. Pick another card.");
+                    while (true) {
+                        discards.displayPiles();
+                        char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
+                        picked_color = ask("Pick a color", choices4);
+                        if (discards.getPile(picked_color).isEmpty())
+                            System.out.println("Discard Pile chosen is empty");
+                        else
+                            break;
+                    }
+                }
                 discards.removeCard(incoming_card);
             } else {
                 incoming_card = undealt.getTopCard();

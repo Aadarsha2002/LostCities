@@ -56,14 +56,13 @@ public class Ai extends Player {
              * if AI can take a card from undealt pile only because there are no cards
              * in discard pile
              */
-            System.out.println("\n AI took card from undealt pile only because there are no cards in discard piles");
+            System.out.println("\nAI took card from undealt pile only because there are no cards in discard piles");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else {
             /** Decide to take from undealt or one of the discard piles */
             random_number = getRandomNumber(0, 2);
             if (random_number == 0) {
-                System.out.print("AI chose discard pile.\n");
 
                 /** Decide which pile if discard piles */
                 random_number = getRandomNumber(0, 5);
@@ -76,8 +75,10 @@ public class Ai extends Player {
                     incoming_card = undealt.getTopCard();
                     undealt.removeCard(incoming_card);
                     System.out.print("AI chose undealt pile\n");
+                } else {
+                    discards.removeCard(incoming_card);
+                    System.out.print("AI chose discard pile.\n");
                 }
-                discards.removeCard(incoming_card);
             } else {
                 incoming_card = undealt.getTopCard();
                 undealt.removeCard(incoming_card);
@@ -96,6 +97,6 @@ public class Ai extends Player {
 
     /** Return random number between min and max */
     private int getRandomNumber(int min, int max) {
-        return rand.ints(min, max).findFirst().getAsInt();
+        return rand.nextInt(max - min) + min;
     }
 }

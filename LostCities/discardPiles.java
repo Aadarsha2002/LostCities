@@ -92,6 +92,31 @@ public class DiscardPiles {
         discard_piles.get(getIndex(c.getCardColor())).addCard(c);
     }
 
+    /** Returns the total number of cards in all discard piles together */
+    public int totalSize() {
+        int sum = 0;
+        for (Color col : colors) {
+            sum += size(col);
+        }
+        return sum;
+    }
+
+    /** Returns the number of cards in the specific color's discard pile */
+    public int size(Color col) {
+        return discard_piles.get(getIndex(col)).size();
+    }
+
+    public Card getOnlyCard() {
+        if (totalSize() == 1) {
+            for (Color col : colors) {
+                if (size(col) == 1) {
+                    return getCard(col);
+                }
+            }
+        }
+        return new Card();
+    }
+
     /** Output discard piles to console */
     public void displayPiles() {
         System.out.println("Discard Piles: ");
