@@ -107,27 +107,26 @@ public class Human extends Player {
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");
                 String picked_color;
-                while (true) {
+                discards.displayPiles();
+                char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
+                picked_color = ask("Pick a color", choices4);
+                // ask until the pile which is not empty is chosen
+                while (discards.getPile(picked_color).isEmpty()) {
+                    System.out.println("Discard Pile chosen is empty");
                     discards.displayPiles();
-                    char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
                     picked_color = ask("Pick a color", choices4);
-                    if (discards.getPile(picked_color).isEmpty())
-                        System.out.println("Discard Pile chosen is empty");
-                    else
-                        break;
                 }
                 incoming_card = discards.getCard(picked_color);
                 // if the player picked the same card as the one he just discarded
                 while (incoming_card == outgoing_card) {
                     System.out.println("You just discarded that card. Pick another card.");
-                    while (true) {
+                    discards.displayPiles();
+                    picked_color = ask("Pick a color", choices4);
+                    // ask until the pile which is not empty is chosen
+                    while (discards.getPile(picked_color).isEmpty()) {
+                        System.out.println("Discard Pile chosen is empty");
                         discards.displayPiles();
-                        char[] choices4 = { 'y', 'b', 'w', 'g', 'r' };
                         picked_color = ask("Pick a color", choices4);
-                        if (discards.getPile(picked_color).isEmpty())
-                            System.out.println("Discard Pile chosen is empty");
-                        else
-                            break;
                     }
                 }
                 discards.removeCard(incoming_card);
@@ -145,7 +144,7 @@ public class Human extends Player {
         display();
     }
 
-    /**
+    /*
      * Ask player for an input corresponding to the options shown. Keep asking until
      * player enters something in2 the given options (character array).
      * Return the string form of that choice
@@ -174,7 +173,7 @@ public class Human extends Player {
         return input;
     }
 
-    /**
+    /*
      * Output to console the choices player has to choose from in2 above ask()
      * function
      */
@@ -188,7 +187,7 @@ public class Human extends Player {
         }
     }
 
-    /**
+    /*
      * If the file has another line, reads it and returns it
      * If not, takes input from player and returns it
      */
