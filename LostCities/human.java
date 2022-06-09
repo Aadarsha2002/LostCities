@@ -54,6 +54,14 @@ public class Human extends Player {
             discards.addCard(outgoing_card);
             System.out.print("You chose to discard ");
         } else {
+            if (outgoing_card.getCardNumber() < getTopPlacedCard(outgoing_card.card_color).getCardNumber()) {
+                System.out.println(
+                        "The card you chose to place is less than the last placed card in that color. Pick another card to place.");
+                outgoing_card_index_str = ask("Pick a card to play", choices2);
+                outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
+                outgoing_card = getCardAt(outgoing_card_index);
+                removeCard(outgoing_card);
+            }
             placeCard(outgoing_card);
             System.out.print("You chose to place ");
         }
