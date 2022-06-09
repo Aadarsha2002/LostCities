@@ -54,6 +54,8 @@ public class Human extends Player {
             discards.addCard(outgoing_card);
             System.out.print("You chose to discard ");
         } else {
+            // if the player chooses to place a card that is higher than the last placed
+            // card in that card's color
             if (outgoing_card.getCardNumber() < getTopPlacedCard(outgoing_card.card_color).getCardNumber()) {
                 System.out.println(
                         "The card you chose to place is less than the last placed card in that color. Pick another card to place.");
