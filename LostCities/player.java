@@ -17,19 +17,10 @@ public abstract class Player {
 
     protected CardsCollection hand;
     protected ArrayList<CardsCollection> placed_down;
-    /*
-     * placed_down[0] = yellow
-     * placed_down[1] = blue
-     * placed_down[2] = white
-     * placed_down[3] = green
-     * placed_down[4] = red
-     */
 
     /* CONSTRUCTORS */
 
-    /**
-     * Make new hand and placed down card list for human
-     */
+    /* Make new hand and placed down card list for human */
     Player() {
         hand = new CardsCollection();
         placed_down = new ArrayList<>();
@@ -39,9 +30,7 @@ public abstract class Player {
         in = new Scanner(System.in);
     }
 
-    /**
-     * Make a custom hand based on given cards
-     */
+    /* Make a custom hand based on given cards */
     Player(CardsCollection c) {
         hand = c;
         placed_down = new ArrayList<>();

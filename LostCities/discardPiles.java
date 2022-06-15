@@ -13,14 +13,7 @@ public class DiscardPiles {
     static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
     ArrayList<CardsCollection> discard_piles = new ArrayList<>();
-    /*
-     * discard_piles[0] = yellow
-     * discard_piles[1] = blue
-     * discard_piles[2] = white
-     * discard_piles[3] = green
-     * discard_piles[4] = red
-     */
-
+    
     /**
      * CONSTRUCTOR
      * Make discard piles (5 piles)

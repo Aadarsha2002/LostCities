@@ -15,20 +15,16 @@ public class Card {
 
     public int card_number;
     public Color card_color;
-    
-    /*CONSTRUCTORS */
 
-    /**
-     * CONSTRUCTOR
-     * Set defalut values
-     */
+    /* CONSTRUCTORS */
 
+    /* Set defalut values */
     public Card() {
         card_number = Integer.MIN_VALUE;
         card_color = Color.black;
     }
 
-    /** Set internal variables to parameters */
+    /* Set internal variables to parameters */
     public Card(int num, Color col) {
         for (int i = 0; i < colors.length; i++) {
             if (col == colors[i])
@@ -40,6 +36,8 @@ public class Card {
         card_color = col;
     }
 
+    /* GETTER FUNCTIONS */
+
     /** Return card number */
     public int getCardNumber() {
         return card_number;
@@ -50,16 +48,20 @@ public class Card {
         return card_color;
     }
 
+    /** Return card color in string type */
+    public String getCardColorName() {
+        return getColorName(card_color);
+    }
+
+    /* DISPLAY FUNCTIONS */
+
     /** Output card to console */
     public void display() {
         System.out.print(getColorName(card_color).charAt(0));
         System.out.print(card_number);
     }
 
-    /** Return card color in string type */
-    public String getCardColorName() {
-        return getColorName(card_color);
-    }
+    /* PROTECTED FUNCTIONS */
 
     /** Return string form of color passed as parameter */
     protected String getColorName(Color col) {

@@ -21,8 +21,9 @@ public class CardsCollection {
     private boolean is_discard_pile; // holds whether the pile is a discard pile or not
     private boolean is_undealtCards; // holds whether the pile is undealt cards pile or not
 
-    /**
-     * CONSTRUCTOR
+    /* CONSTRUCTORS */
+
+    /*
      * Takes in a character (U/D) indicating whether pile of cards is undealt pile
      * of discard cards
      */
@@ -41,10 +42,7 @@ public class CardsCollection {
         }
     }
 
-    /**
-     * CONSTRUCTOR
-     * Makes non-special pile of cards
-     */
+    /* Makes non-special pile of cards */
     public CardsCollection() {
         is_undealtCards = false;
         is_discard_pile = false;
