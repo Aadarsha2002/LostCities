@@ -25,8 +25,9 @@ public abstract class Player {
      * placed_down[4] = red
      */
 
+    /* CONSTRUCTORS */
+
     /**
-     * CONSTRUCTOR
      * Make new hand and placed down card list for human
      */
     Player() {
@@ -39,7 +40,6 @@ public abstract class Player {
     }
 
     /**
-     * OVERLOAD CONSTRUCTOR
      * Make a custom hand based on given cards
      */
     Player(CardsCollection c) {
@@ -52,38 +52,32 @@ public abstract class Player {
         in = new Scanner(System.in);
     }
 
-    /** Abstract definition */
+    /* ABSTRACT DEFINITIONS */
+
+    /*
+     * Redirects to the appropriate play() in human.java or ai.java and conducts the
+     * player's turn (incoming and outgoing card and changes the cards too)
+     */
     public abstract void play(Player opponent, DiscardPiles discards, CardsCollection undealt);
 
-    /** Output hand to console */
-    public void display() {
-        hand.display();
-    }
+    /* GETTER FUNCTIONS */
 
-    /** Output placed down cards of player */
-    public void displayPlacedDownCards() {
-        for (Color col : colors) {
-            System.out.print(getColorName(col) + ":\t");
-            placed_down.get(getIndex(col)).display();
-        }
-    }
-
-    /** Return hand */
+    /* Return hand */
     public CardsCollection getHand() {
         return hand;
     }
 
-    /** Return placed cards */
+    /* Return placed cards */
     public ArrayList<CardsCollection> getPlacedCards() {
         return placed_down;
     }
 
-    /** Return topmost card in a specific color of placed piles */
+    /* Return topmost card in a specific color of placed piles */
     public Card getTopPlacedCard(Color col) {
         return placed_down.get(getIndex(col)).getTopCard();
     }
 
-    /** Returns the index of the requested card in the hand */
+    /* Returns the index of the requested card in the hand */
     public int getCardIndex(Card c) {
         for (int i = 0; i < hand.size(); i++) {
             if (c == hand.getCardAt(i))
@@ -92,7 +86,7 @@ public abstract class Player {
         return -1;
     }
 
-    /** Return scores of placed down cards color-wise in ArrayList */
+    /* Return scores of placed down cards color-wise in ArrayList */
     public ArrayList<Integer> getEachColorsScores() {
         ArrayList<Integer> scores = new ArrayList<>();
         for (int i = 0; i < colors.length; i++) {
@@ -101,41 +95,18 @@ public abstract class Player {
         return scores;
     }
 
-    /** Insert a card into hand */
-    public void addCard(Card c) {
-        hand.addCard(c);
-    }
-
-    /** Remove a card from hand */
-    public void removeCard(Card c) {
-        hand.removeCard(c);
-    }
-
-    /** Return card at specific index in hand */
+    /* Return card at specific index in hand */
     public Card getCardAt(int index) {
         return hand.getCardAt(index);
-
     }
 
-    /**
-     * Remove specific card from hand
-     * Add it to placed cards list appropriately
-     */
-    public void placeCard(Card c) {
-        hand.removeCard(c);
-        if (placed_down.get(getIndex(c.getCardColor())).isEmpty()
-                || (placed_down.isEmpty()
-                        || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber()))
-            placed_down.get(getIndex(c.getCardColor())).addCard(c);
-    }
-
-    /**
+    /*
      * Return the score of player
      * -> In each color
      * - get score, and add to total
      * Return total
      */
-    public int calculateScore() {
+    public int getScore() {
         int total = 0;
         for (int i = 0; i < colors.length; i++) {
             total += getColorScore(i);// add to total
@@ -143,7 +114,7 @@ public abstract class Player {
         return total;
     }
 
-    /**
+    /*
      * Return the score of the placed cards of a specific color
      * - count multipliers (multiplier++)
      * - sum numbered cards (sum+=c.getCardNumber())
@@ -183,6 +154,47 @@ public abstract class Player {
         return sum;
     }
 
+    /* DISPLAY FUNCTIONS */
+
+    /* Output hand to console */
+    public void display() {
+        hand.display();
+    }
+
+    /* Output placed down cards of player */
+    public void displayPlacedDownCards() {
+        for (Color col : colors) {
+            System.out.print(getColorName(col) + ":\t");
+            placed_down.get(getIndex(col)).display();
+        }
+    }
+
+    /* AUXILIARY FUNCTIONS */
+
+    /* Insert a card into hand */
+    public void addCard(Card c) {
+        hand.addCard(c);
+    }
+
+    /* Remove a card from hand */
+    public void removeCard(Card c) {
+        hand.removeCard(c);
+    }
+
+    /*
+     * Remove specific card from hand
+     * Add it to placed cards list appropriately
+     */
+    public void placeCard(Card c) {
+        hand.removeCard(c);
+        if (placed_down.get(getIndex(c.getCardColor())).isEmpty()
+                || (placed_down.isEmpty()
+                        || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber()))
+            placed_down.get(getIndex(c.getCardColor())).addCard(c);
+    }
+
+    /* PROTECTED FUNCTIONS */
+
     protected ArrayList<Integer> getCardCountsByColor() {
         ArrayList<Integer> counts = new ArrayList<>(colors.length);
         for (Color color : colors) {
@@ -191,7 +203,7 @@ public abstract class Player {
         return counts;
     }
 
-    /** Return index of placed cards pile according to given color */
+    /* Return index of placed cards pile according to given color */
     protected int getIndex(Color col) {
         for (int i = 0; i < 5; i++) {
             if (Player.colors[i] == col)
@@ -200,7 +212,7 @@ public abstract class Player {
         return -1;
     }
 
-    /** Return string form of color passed as parameter */
+    /* Return string form of color passed as parameter */
     protected String getColorName(Color col) {
         return (col == colors[0]) ? "Yellow"
                 : (col == colors[1]) ? "Blue"

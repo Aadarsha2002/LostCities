@@ -15,6 +15,8 @@ public class Card {
 
     public int card_number;
     public Color card_color;
+    
+    /*CONSTRUCTORS */
 
     /**
      * CONSTRUCTOR

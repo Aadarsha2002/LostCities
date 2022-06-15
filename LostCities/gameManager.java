@@ -78,9 +78,9 @@ public class GameManager {
 
         // Calculate scores
         System.out.println("\nPlayer 1 Score Calculation: ");
-        int p1_score = p1.calculateScore();
+        int p1_score = p1.getScore();
         System.out.println("\nPlayer 2 Score Calculation: ");
-        int p2_score = p2.calculateScore();
+        int p2_score = p2.getScore();
 
         // Output Scores
         System.out.println("\n***********************************");
