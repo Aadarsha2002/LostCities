@@ -28,7 +28,7 @@ public class GameManager {
 
     /* CONSTRUCTORS */
 
-    /*- initializes the internal variables */
+    /* Initialize the internal variables */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
             // p1 = new Human("testCasesp1.txt");
