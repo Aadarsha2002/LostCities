@@ -26,10 +26,9 @@ public class GameManager {
     Scanner in;
     Scanner in2;
 
-    /**
-     * CONSTRUCTOR
-     * - initializes the internal variables
-     */
+    /* CONSTRUCTORS */
+
+    /*- initializes the internal variables */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
             // p1 = new Human("testCasesp1.txt");
@@ -47,6 +46,8 @@ public class GameManager {
         undealt = new CardsCollection('U');
         discards = new DiscardPiles();
     }
+
+    /* AUXILIARY FUNCTIONS */
 
     /** Deal cards to both players from undealt cards pile */
     public void dealCards() {
@@ -89,6 +90,8 @@ public class GameManager {
         System.out.println(((p1_score > p2_score) ? "Player 1 won!" : "Player 2 won!"));
     }
 
+    /* PROTECTED FUNCTIONS */
+
     /**
      * A Player's turn
      * - Display pre-turn statistics
@@ -96,7 +99,7 @@ public class GameManager {
      * - Play incoming card part of turn
      * - Display post-turn statistics
      */
-    private void playPlayer(Player p) {
+    protected void playPlayer(Player p) {
         /**
          * Display pre-turn statistics
          * - indicate Player's turn
@@ -127,7 +130,7 @@ public class GameManager {
     }
 
     // Outputs to console the current statistics of the games
-    private void displayStatistics(Player p) {
+    protected void displayStatistics(Player p) {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
         discards.displayPiles();

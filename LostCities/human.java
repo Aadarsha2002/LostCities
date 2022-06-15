@@ -10,12 +10,13 @@ public class Human extends Player {
     Scanner in2;
     Scanner in3;
 
+    /* CONSTRUCTORS */
+
     /* Default CONSTRUCTOR */
     public Human() {
     }
 
     /*
-     * CONSTRUCTOR
      * Takes in a string indicating the file name from in which moves have been
      * written already
      */
@@ -29,18 +30,41 @@ public class Human extends Player {
         in3 = new Scanner(System.in);
     }
 
-    /* Returns true because player is human */
-    boolean isHuman() {
-        return true;
+    /* GETTER FUNCTIONS */
+
+    /* Returns true if string is "human" or something similar */
+    @Override
+    public boolean isIt(String s) {
+        return s == "human" || s == "Human" || s == "HUMAN";
     }
 
+    /*
+     * If the file has another line, reads it and returns it
+     * If not, takes input from player and returns it
+     */
+    protected String getNextString() {
+        String s;
+        if (in2.hasNextLine()) {
+            s = in2.nextLine();
+            System.out.println(s);
+            return s;
+        } else {
+            return in3.nextLine();
+        }
+    }
+
+    /* AUXILIARY FUNCTIONS */
+
+    /* Conducts the turn if called on a human object */
     @Override
     public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
         Card outgoing_card = outgoingPlay(discards);
         incomingPlay(discards, undealt, outgoing_card);
     }
 
-    private Card outgoingPlay(DiscardPiles discards) {
+    /* PROTECTED FUNCTIONS */
+
+    protected Card outgoingPlay(DiscardPiles discards) {
         // outgoing part
 
         Card outgoing_card;
@@ -80,7 +104,7 @@ public class Human extends Player {
         return outgoing_card;
     }
 
-    private void incomingPlay(DiscardPiles discards, CardsCollection undealt, Card outgoing_card) {
+    protected void incomingPlay(DiscardPiles discards, CardsCollection undealt, Card outgoing_card) {
         Card incoming_card;
         if (discards.isEmpty()) {
             /*
@@ -151,7 +175,7 @@ public class Human extends Player {
      * player enters something in2 the given options (character array).
      * Return the string form of that choice
      */
-    private String ask(String s, char[] choices) {
+    protected String ask(String s, char[] choices) {
         System.out.print(s);
         displayChoices(choices);
         String input = "";
@@ -175,32 +199,14 @@ public class Human extends Player {
         return input;
     }
 
-    /*
-     * Output to console the choices player has to choose from in2 above ask()
-     * function
-     */
-    private void displayChoices(char[] choices) {
+    /* Output to console the choices player has to choose from */
+    protected void displayChoices(char[] choices) {
         System.out.print(" [");
         for (int i = 0; i < choices.length; i++) {
             if (i == choices.length - 1)
                 System.out.print(choices[i] + "]: ");
             else
                 System.out.print(choices[i] + ", ");
-        }
-    }
-
-    /*
-     * If the file has another line, reads it and returns it
-     * If not, takes input from player and returns it
-     */
-    private String getNextString() {
-        String s;
-        if (in2.hasNextLine()) {
-            s = in2.nextLine();
-            System.out.println(s);
-            return s;
-        } else {
-            return in3.nextLine();
         }
     }
 }

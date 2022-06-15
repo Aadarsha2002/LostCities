@@ -9,18 +9,29 @@ public class Ai extends Player {
 
     ArrayList<Double> good_cards;
 
+    /* CONSTRUCTORS */
     Ai() {
         good_cards = new ArrayList<>(hand.size());
         for (int i = 0; i < good_cards.size(); i++) {
             good_cards.set(i, 100.00);
         }
     }
+    /* GETTER FUNCTIONS */
 
-    // Returns true because player is AI
-    public boolean isAI() {
-        return true;
+    /* Returns true if string is "ai" or something similar */
+    @Override
+    public boolean isIt(String s) {
+        return s == "ai" || s == "AI" || s == "Ai";
     }
 
+    /** Return random number between min and max */
+    private int getRandomNumber(int min, int max) {
+        return rand.nextInt(max - min) + min;
+    }
+
+    /* AUXILIARY FUNCTIONS */
+
+    /* Conducts the turn if called on an ai object */
     @Override
     public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
         int random_number = 0;
@@ -93,10 +104,5 @@ public class Ai extends Player {
 
         System.out.print("\nAI's hand is now ");
         display();
-    }
-
-    /** Return random number between min and max */
-    private int getRandomNumber(int min, int max) {
-        return rand.nextInt(max - min) + min;
     }
 }

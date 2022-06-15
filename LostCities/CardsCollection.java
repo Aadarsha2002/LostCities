@@ -48,12 +48,52 @@ public class CardsCollection {
         is_discard_pile = false;
     }
 
-    /** Return size of cards */
+    /* GETTER FUNCTIONS */
+
+    /* Return size of cards */
     public int size() {
         return pile.size();
     }
 
-    /** Display cards to console */
+    /* Returns true if a card exists in the cards */
+    public boolean hasCard(Card c) {
+        return pile.indexOf(c) != -1;
+    }
+
+    /* Returns true if empty */
+    public boolean isEmpty() {
+        return (size() == 0);
+    }
+
+    /* Return topmost card */
+    public Card getTopCard() {
+        return pile.get(pile.size() - 1);
+    }
+
+    /* Return specific card from index */
+    public Card getCardAt(int index) {
+        return pile.get(index);
+    }
+
+    /* Return the smallest card in a color */
+    public Card getSmallestCard(Color col) {
+        return getCardsbyColor(col).get(0);
+    }
+
+    /* Return cards of a specific color as ArrayList */
+    public ArrayList<Card> getCardsbyColor(Color col) {
+        ArrayList<Card> c1 = new ArrayList<>();
+        for (Card c : pile) {
+            if (c.getCardColor() == col) {
+                c1.add(c);
+            }
+        }
+        return c1;
+    }
+
+    /* DISPLAY FUNCTIONS */
+
+    /* Display cards to console */
     public void display() {
         if (pile.isEmpty()) {
             System.out.println("[]");
@@ -71,7 +111,9 @@ public class CardsCollection {
         System.out.println("]");
     }
 
-    /** Add card passed as parameter to cards */
+    /* AUXILIARY FUNCTIONS */
+
+    /* Add card passed as parameter to cards */
     public void addCard(Card c) {
         if (is_discard_pile) {
             pile.add(c);
@@ -83,56 +125,21 @@ public class CardsCollection {
         }
     }
 
-    /** Return topmost card */
-    public Card getTopCard() {
-        return pile.get(pile.size() - 1);
-    }
-
-    /** Return specific card from index */
-    public Card getCardAt(int index) {
-        return pile.get(index);
-    }
-
-    public Card getSmallestCard(Color col) {
-        return getCardsbyColor(col).get(0);
-    }
-
-    /** Remove a specific card */
+    /* Remove a specific card */
     public void removeCard(Card c) {
         pile.remove(c);
     }
 
-    /**
+    /*
      * OVERLOAD FUNCTION
-     * Takes in a color and number
-     * Creates a card using parameters and removes that card from cards
+     * Takes in a color and number. Creates a card using parameters and removes that
+     * card from cards
      */
     public void removeCard(Color col, int num) {
         pile.remove(new Card(num, col));
     }
 
-    /** Returns true if a card exists in the cards */
-    public boolean hasCard(Card c) {
-        return pile.indexOf(c) != -1;
-    }
-
-    /** Returns true if empty */
-    public boolean isEmpty() {
-        return (size() == 0);
-    }
-
-    /** Return cards of a specific color as ArrayList */
-    public ArrayList<Card> getCardsbyColor(Color col) {
-        ArrayList<Card> c1 = new ArrayList<>();
-        for (Card c : pile) {
-            if (c.getCardColor() == col) {
-                c1.add(c);
-            }
-        }
-        return c1;
-    }
-
-    /** Make a pile of Undealt Cards and shuffle it */
+    /* Make a pile of Undealt Cards and shuffle it */
     public void makeUndealtCardsPile() {
         for (Color col : colors) {
             // add normal number cards
@@ -152,7 +159,7 @@ public class CardsCollection {
         }
     }
 
-    /** If not discard pile, sort cards according to numbers in each color */
+    /* If not discard pile, sort cards according to numbers in each color */
     public void sort() {
         ArrayList<Card> sorted_cards = new ArrayList<>();
         for (int x = 0; x < colors.length && !is_discard_pile; x++) {
@@ -176,11 +183,13 @@ public class CardsCollection {
         pile = sorted_cards;
     }
 
-    /**
+    /* PROTECTED FUNCTIONS */
+
+    /*
      * Append 2nd ArrayList parameter to 1st ArrayList parameter
      * Return 1st ArrayList
      */
-    private ArrayList<Card> appendCards(ArrayList<Card> to, ArrayList<Card> from) {
+    protected ArrayList<Card> appendCards(ArrayList<Card> to, ArrayList<Card> from) {
         for (Card c : from) {
             to.add(c);
         }

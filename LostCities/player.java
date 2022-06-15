@@ -49,6 +49,12 @@ public abstract class Player {
      */
     public abstract void play(Player opponent, DiscardPiles discards, CardsCollection undealt);
 
+    /*
+     * Returns true if the caller is asking the right object the right question
+     * (true if AI object is asked if it is "AI", else false)
+     */
+    public abstract boolean isIt(String s);
+
     /* GETTER FUNCTIONS */
 
     /* Return hand */
