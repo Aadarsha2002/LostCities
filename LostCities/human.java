@@ -38,21 +38,6 @@ public class Human extends Player {
         return s == "human" || s == "Human" || s == "HUMAN";
     }
 
-    /*
-     * If the file has another line, reads it and returns it
-     * If not, takes input from player and returns it
-     */
-    protected String getNextString() {
-        String s;
-        if (in2.hasNextLine()) {
-            s = in2.nextLine();
-            System.out.println(s);
-            return s;
-        } else {
-            return in3.nextLine();
-        }
-    }
-
     /* AUXILIARY FUNCTIONS */
 
     /* Conducts the turn if called on a human object */
@@ -207,6 +192,21 @@ public class Human extends Player {
                 System.out.print(choices[i] + "]: ");
             else
                 System.out.print(choices[i] + ", ");
+        }
+    }
+
+    /*
+     * If the file has another line, reads it and returns it
+     * If not, takes input from player and returns it
+     */
+    protected String getNextString() {
+        String s;
+        if (in2.hasNextLine()) {
+            s = in2.nextLine();
+            System.out.println(s);
+            return s;
+        } else {
+            return in3.nextLine();
         }
     }
 }
