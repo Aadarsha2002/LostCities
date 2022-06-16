@@ -105,4 +105,9 @@ public class Ai extends Player {
         System.out.print("\nAI's hand is now ");
         display();
     }
+
+    public Card outgoingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
+        
+    }
+
 }

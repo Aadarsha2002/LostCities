@@ -183,6 +183,13 @@ public class CardsCollection {
         pile = sorted_cards;
     }
 
+    /* Creates a pile of cards from 0 to 9 of the same color */
+    public void createColorPile(Color col) {
+        for (int i : numbers) {
+            addCard(new Card(i, col));
+        }
+    }
+
     /* PROTECTED FUNCTIONS */
 
     /*
