@@ -31,15 +31,15 @@ public class GameManager {
     /* Initialize the internal variables */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
-            // p1 = new Human("testCasesp1.txt");
-            p1 = new Human("GameManager.java");
+            p1 = new Human("testCasesp1.txt");
+            // p1 = new Human("GameManager.java");
         } else {
             p1 = new Ai();
         }
 
         if (s2 == "human") {
-            // p2 = new Human("testCasesp2.txt");
-            p2 = new Human("emptyFileForHuman.txt");
+            p2 = new Human("testCasesp2.txt");
+            // p2 = new Human("emptyFileForHuman.txt");
         } else {
             p2 = new Ai();
         }
