@@ -71,7 +71,8 @@ public class Human extends Player {
         } else {
             // if the player chooses to place a card that is higher than the last placed
             // card in that card's color
-            if (outgoing_card.getCardNumber() < getTopPlacedCard(outgoing_card.card_color).getCardNumber()) {
+            if (getTopPlacedCard(outgoing_card.getCardColor()).getCardColor() != Color.black
+                    && outgoing_card.getCardNumber() < getTopPlacedCard(outgoing_card.getCardColor()).getCardNumber()) {
                 System.out.println(
                         "The card you chose to place is less than the last placed card in that color. Pick another card to place.");
                 outgoing_card_index_str = ask("Pick a card to play", choices2);
