@@ -69,7 +69,10 @@ public abstract class Player {
 
     /* Return topmost card in a specific color of placed piles */
     public Card getTopPlacedCard(Color col) {
-        return placed_down.get(getIndex(col)).getTopCard();
+        if (!placed_down.get(getIndex(col)).isEmpty()) {
+            return placed_down.get(getIndex(col)).getTopCard();
+        }
+        return new Card();
     }
 
     /* Returns the index of the requested card in the hand */

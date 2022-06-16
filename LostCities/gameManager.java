@@ -32,7 +32,7 @@ public class GameManager {
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
             p1 = new Human("testCasesp1.txt");
-            // p1 = new Human("GameManager.java");
+            // p1 = new Human("emptyFileForHuman.txt");
         } else {
             p1 = new Ai();
         }
