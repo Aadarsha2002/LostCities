@@ -107,6 +107,7 @@ public class Ai extends Player {
     }
 
     public Card outgoingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
+        return new Card();
         
     }
 
