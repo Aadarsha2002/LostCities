@@ -50,6 +50,14 @@ public class DiscardPiles {
         return true;
     }
 
+    /*
+     * OVERLOAD FUNCTION
+     * Return true if discard pile of the input color is empty
+     */
+    public boolean isEmpty(Color col) {
+        return discard_piles.get(getColorIndex(col)).size() == 0;
+    }
+
     /* Return the corresponding color's discard pile */
     public CardsCollection getPile(Color col) {
         return discard_piles.get(getColorIndex(col));
@@ -163,17 +171,12 @@ public class DiscardPiles {
     }
 
     /* Return string form of color passed as parameter */
+
     protected String getColorName(Color col) {
-        if (col.equals(Color.yellow))
-            return "yellow";
-        else if (col.equals(Color.blue))
-            return "blue";
-        else if (col.equals(Color.white))
-            return "white";
-        else if (col.equals(Color.green))
-            return "green";
-        else if (col.equals(Color.red))
-            return "red";
-        return "";
+        return (col == colors[0]) ? "Yellow"
+                : (col == colors[1]) ? "Blue"
+                        : (col == colors[2]) ? "White"
+                                : (col == colors[3]) ? "Green"
+                                        : (col == colors[4]) ? "Red" : "";
     }
 }

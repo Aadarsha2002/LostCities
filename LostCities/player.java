@@ -223,4 +223,14 @@ public abstract class Player {
                                 : (col == colors[3]) ? "Green"
                                         : (col == colors[4]) ? "Red" : "";
     }
+
+    /* Return the color version of the color passed as string */
+    protected Color getColor(String col_str) {
+        return (col_str == "y") ? Color.YELLOW
+                : (col_str == "b") ? Color.BLUE
+                        : (col_str == "w") ? Color.WHITE
+                                : (col_str == "g") ? Color.GREEN
+                                        : (col_str == "r") ? Color.RED : Color.BLACK;
+    }
+
 }

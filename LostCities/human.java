@@ -134,7 +134,7 @@ public class Human extends Player {
                     discards.displayPiles();
                     picked_color = ask("Pick a color", choices2);
                     // ask until the pile which is not empty is chosen
-                    while (discards.getPile(picked_color).isEmpty()) {
+                    while (discards.isEmpty(picked_color)) {
                         System.out.println("Discard Pile chosen is empty");
                         discards.displayPiles();
                         picked_color = ask("Pick a color", choices2);
