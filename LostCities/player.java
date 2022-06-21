@@ -70,8 +70,8 @@ public abstract class Player {
 
     /* Return topmost card in a specific color of placed piles */
     public Card getTopPlacedCard(Color col) {
-        if (!placed_down.get(getIndex(col)).isEmpty()) {
-            return placed_down.get(getIndex(col)).getTopCard();
+        if (!placed_down.get(getColorIndex(col)).isEmpty()) {
+            return placed_down.get(getColorIndex(col)).getTopCard();
         }
         return new Card();
     }
@@ -164,7 +164,7 @@ public abstract class Player {
     public void displayPlacedDownCards() {
         for (Color col : colors) {
             System.out.print(getColorName(col) + ":\t");
-            placed_down.get(getIndex(col)).display();
+            placed_down.get(getColorIndex(col)).display();
         }
     }
 
@@ -186,13 +186,17 @@ public abstract class Player {
      */
     public void placeCard(Card c) {
         hand.removeCard(c);
-        if (placed_down.get(getIndex(c.getCardColor())).isEmpty()
+        if (placed_down.get(getColorIndex(c.getCardColor())).isEmpty()
                 || (placed_down.isEmpty()
                         || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber()))
-            placed_down.get(getIndex(c.getCardColor())).addCard(c);
+            placed_down.get(getColorIndex(c.getCardColor())).addCard(c);
     }
 
     /* PROTECTED FUNCTIONS */
+
+    protected boolean isPlaced(Card c) {
+        return placed_down.get(getColorIndex(c.getCardColor())).hasCard(c);
+    }
 
     protected ArrayList<Integer> getCardCountsByColor() {
         ArrayList<Integer> counts = new ArrayList<>(colors.length);
@@ -203,7 +207,7 @@ public abstract class Player {
     }
 
     /* Return index of placed cards pile according to given color */
-    protected int getIndex(Color col) {
+    protected int getColorIndex(Color col) {
         for (int i = 0; i < 5; i++) {
             if (Player.colors[i] == col)
                 return i;

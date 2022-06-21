@@ -38,7 +38,7 @@ public class DiscardPiles {
 
     /* Returns the number of cards in the specific color's discard pile */
     public int size(Color col) {
-        return discard_piles.get(getIndex(col)).size();
+        return discard_piles.get(getColorIndex(col)).size();
     }
 
     /* Return true if all discard piles are empty */
@@ -53,7 +53,7 @@ public class DiscardPiles {
     /* Return the corresponding color's discard pile */
 
     public CardsCollection getPile(Color col) {
-        return discard_piles.get(getIndex(col));
+        return discard_piles.get(getColorIndex(col));
     }
 
     /*
@@ -63,15 +63,15 @@ public class DiscardPiles {
     public CardsCollection getPile(String picked_color) {
         for (Color col : colors) {
             if (isColorsMatching(picked_color, col))
-                return discard_piles.get(getIndex(col));
+                return discard_piles.get(getColorIndex(col));
         }
         return new CardsCollection();
     }
 
     /* Return topmost card */
     public Card getTopCard(Color col) {
-        if (!discard_piles.get(getIndex(col)).isEmpty())
-            return discard_piles.get(getIndex(col)).getTopCard();
+        if (!discard_piles.get(getColorIndex(col)).isEmpty())
+            return discard_piles.get(getColorIndex(col)).getTopCard();
         return new Card();
     }
 
@@ -94,7 +94,7 @@ public class DiscardPiles {
      */
     public Card getCard(String picked_color) {
         for (Color col : colors) {
-            if (!discard_piles.get(getIndex(col)).isEmpty()
+            if (!discard_piles.get(getColorIndex(col)).isEmpty()
                     && isColorsMatching(picked_color, col))
                 return getTopCard(col);
         }
@@ -108,7 +108,7 @@ public class DiscardPiles {
         System.out.println("Discard Piles: ");
         for (Color col : colors) {
             System.out.print(getColorName(col) + ":\t");
-            discard_piles.get(getIndex(col)).display();
+            discard_piles.get(getColorIndex(col)).display();
         }
     }
 
@@ -116,12 +116,12 @@ public class DiscardPiles {
 
     /* Insert card into the appropriate discard pile */
     public void addCard(Card c) {
-        discard_piles.get(getIndex(c.getCardColor())).addCard(c);
+        discard_piles.get(getColorIndex(c.getCardColor())).addCard(c);
     }
 
     /* Remove topmost card from given color's discard pile */
     public void removeCard(Color col) {
-        discard_piles.get(getIndex(col)).removeCard(getTopCard(col));
+        discard_piles.get(getColorIndex(col)).removeCard(getTopCard(col));
     }
 
     /*
@@ -150,7 +150,7 @@ public class DiscardPiles {
     }
 
     /* Return index of discard pile according to given color */
-    protected int getIndex(Color col) {
+    protected int getColorIndex(Color col) {
         for (int i = 0; i < 5; i++) {
             if (col == colors[i])
                 return i;
