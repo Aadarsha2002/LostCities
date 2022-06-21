@@ -116,7 +116,7 @@ public class GameManager {
          * If p is initialized as Human, Human.play() is called
          * Player.play() is only an abstract definition
          */
-        p.play(((p == p1) ? p2 : p1), discards, undealt); // execute player's turn
+        p.play(((p == p1) ? p2 : p1).getPlacedCards(), discards, undealt); // execute player's turn
 
         /*
          * Display post-turn statistics

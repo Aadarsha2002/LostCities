@@ -42,7 +42,7 @@ public class Human extends Player {
 
     /* Conducts the turn if called on a human object */
     @Override
-    public void play(CardsCollection opponent_placed_down, DiscardPiles discards, CardsCollection undealt) {
+    public void play(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards, CardsCollection undealt) {
         Card outgoing_card = outgoingPlay(discards);
         incomingPlay(discards, undealt, outgoing_card);
     }

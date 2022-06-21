@@ -69,17 +69,18 @@ public class DiscardPiles {
     }
 
     /* Return topmost card */
-    public Card getCard(Color col) {
+    public Card getTopCard(Color col) {
         if (!discard_piles.get(getIndex(col)).isEmpty())
             return discard_piles.get(getIndex(col)).getTopCard();
         return new Card();
     }
 
+    /* Returns a card if it's the only card, else a new card */
     public Card getOnlyCard() {
         if (totalSize() == 1) {
             for (Color col : colors) {
                 if (size(col) == 1) {
-                    return getCard(col);
+                    return getTopCard(col);
                 }
             }
         }
@@ -95,7 +96,7 @@ public class DiscardPiles {
         for (Color col : colors) {
             if (!discard_piles.get(getIndex(col)).isEmpty()
                     && isColorsMatching(picked_color, col))
-                return getCard(col);
+                return getTopCard(col);
         }
         return new Card();
     }
@@ -120,7 +121,7 @@ public class DiscardPiles {
 
     /* Remove topmost card from given color's discard pile */
     public void removeCard(Color col) {
-        discard_piles.get(getIndex(col)).removeCard(getCard(col));
+        discard_piles.get(getIndex(col)).removeCard(getTopCard(col));
     }
 
     /*
@@ -138,7 +139,7 @@ public class DiscardPiles {
 
     /* Return true if given card is topmost card */
     protected boolean isTopCard(Card c) {
-        return c == getCard(c.getCardColor());
+        return c == getTopCard(c.getCardColor());
     }
 
     /*

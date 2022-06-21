@@ -33,7 +33,7 @@ public class Ai extends Player {
 
     /* Conducts the turn if called on an ai object */
     @Override
-    public void play(CardsCollection opponent_placed_down, DiscardPiles discards, CardsCollection undealt) {
+    public void play(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards, CardsCollection undealt) {
         int random_number = 0;
         Card outgoing_card;
         /** Decide to discard or play */
@@ -77,10 +77,10 @@ public class Ai extends Player {
 
                 /** Decide which pile if discard piles */
                 random_number = getRandomNumber(0, 5);
-                incoming_card = discards.getCard(colors[random_number]);
+                incoming_card = discards.getTopCard(colors[random_number]);
                 while (incoming_card.getCardColor() == Color.black) {
                     random_number = getRandomNumber(0, 5);
-                    incoming_card = discards.getCard(colors[random_number]);
+                    incoming_card = discards.getTopCard(colors[random_number]);
                 }
                 if (incoming_card == outgoing_card) {
                     incoming_card = undealt.getTopCard();
@@ -106,20 +106,27 @@ public class Ai extends Player {
         display();
     }
 
-    public Card outgoingPlay(CardsCollection opponent_placed_down, DiscardPiles discards,
+    public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
         ArrayList<Integer> expected_scores = new ArrayList<>(hand.size());
         for (int i = 0; i < expected_scores.size(); i++) {
             expected_scores.set(i, getEstimatedScoreFor(i, opponent_placed_down, discards, undealt));
         }
+
+        int potential_total_score;
+        ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
+
+        for (int i = 0; i < potential_placed_cards.size(); i++) {
+            potential_placed_cards.get(i).createColorPile(colors[i]);
+        }
+
         return new Card();
     }
 
     /* PROTECTED FUNCTIONS */
 
-    protected int getEstimatedScoreFor(int card_index, CardsCollection opponent_placed_down,
+    protected int getEstimatedScoreFor(int card_index, ArrayList<CardsCollection> opponent_placed_down,
             DiscardPiles discards, CardsCollection undealt) {
-        int color_score = getColorScore(getIndex(hand.getCardAt(card_index).getCardColor()));
         return 0;
     }
 }

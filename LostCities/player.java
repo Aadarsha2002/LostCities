@@ -47,7 +47,8 @@ public abstract class Player {
      * Redirects to the appropriate play() in human.java or ai.java and conducts the
      * player's turn (incoming and outgoing card and changes the cards too)
      */
-    public abstract void play(CardsCollection opponent_placed_down, DiscardPiles discards, CardsCollection undealt);
+    public abstract void play(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
+            CardsCollection undealt);
 
     /*
      * Returns true if the caller is asking the right object the right question
