@@ -9,11 +9,12 @@ public class LostCities {
             gm.playGame();
 
             // ask player if they want to play again
-            Scanner in = new Scanner(System.in);
-            System.out.println("Play again? (y/n)");
-            String answer = in.nextLine();
-            if (answer.equalsIgnoreCase("n")) {
-                break;
+            try (Scanner in = new Scanner(System.in)) {
+                System.out.println("Play again? (y/n)");
+                String answer = in.nextLine();
+                if (answer.equalsIgnoreCase("n")) {
+                    break;
+                }
             }
         }
     }
