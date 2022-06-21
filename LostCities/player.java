@@ -121,10 +121,10 @@ public abstract class Player {
      * - add 20 bonus if more than 8 cards are placed down (sum+=20)
      * - add sum to total
      */
-    public int getColorScore(int i) {
-        placed_down.get(i).sort();
+    public int getColorScore(int color_index) {
+        placed_down.get(color_index).sort();
         ArrayList<Card> cards;
-        cards = placed_down.get(i).getCardsbyColor(colors[i]);
+        cards = placed_down.get(color_index).getCardsbyColor(colors[color_index]);
         int multiplier = 1;
         int sum = 0;
         // count multipliers and sum of numbered cards
@@ -137,10 +137,10 @@ public abstract class Player {
         }
         if (!cards.isEmpty())// cost
             sum -= 20;
-        if (i == colors.length - 1)
-            System.out.println(getColorName(colors[i]) + " Sum\t\t\t= " + sum);
+        if (color_index == colors.length - 1)
+            System.out.println(getColorName(colors[color_index]) + " Sum\t\t\t= " + sum);
         else
-            System.out.println(getColorName(colors[i]) + " Sum\t\t= " + sum);
+            System.out.println(getColorName(colors[color_index]) + " Sum\t\t= " + sum);
         System.out.println("\tMultiplier\t= " + multiplier);
         sum *= multiplier;// multiplier
         System.out.println("\tSum Now\t\t= " + sum);

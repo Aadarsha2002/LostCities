@@ -119,7 +119,7 @@ public class Ai extends Player {
 
     protected int getEstimatedScoreFor(int card_index, CardsCollection opponent_placed_down,
             DiscardPiles discards, CardsCollection undealt) {
-        int color_score = getColorScore(i);
+        int color_score = getColorScore(getIndex(hand.getCardAt(card_index).getCardColor()));
         return 0;
     }
 }
