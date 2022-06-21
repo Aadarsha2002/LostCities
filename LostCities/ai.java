@@ -106,6 +106,12 @@ public class Ai extends Player {
         display();
     }
 
+    /*
+     * General Approach:
+     * - Calculate a potential score based on the cards known and unknown
+     * - If it's greater than the opponent's potential score, place the best card
+     * - If it's not, then discard the worst
+     */
     public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
