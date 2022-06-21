@@ -68,7 +68,7 @@ public class GameManager {
     /**
      * Play the game!!
      * Until undealt pile is empty, play players
-     * Oncce undealt pile is empty, calculate score
+     * Once undealt pile is empty, calculate score
      */
     public void playGame() {
         while (!undealt.isEmpty()) {
@@ -129,7 +129,7 @@ public class GameManager {
         displayStatistics(p);
     }
 
-    // Outputs to console the current statistics of the games
+    // Output to console the current statistics of the games
     protected void displayStatistics(Player p) {
         System.out.println("Player " + ((p == p1) ? 2 : 1) + "'s Placed Down cards:");
         ((p == p1) ? p2 : p1).displayPlacedDownCards();
