@@ -13,7 +13,7 @@ public class Card {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
     static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
-    public int card_number;
+    public double card_number;
     public Color card_color;
 
     /* CONSTRUCTORS */
@@ -38,31 +38,38 @@ public class Card {
 
     /* GETTER FUNCTIONS */
 
-    /** Return card number */
-    public int getCardNumber() {
+    /* Return card number */
+    public double getCardNumber() {
         return card_number;
     }
 
-    /** Return card color */
+    /* Return card color */
     public Color getCardColor() {
         return card_color;
     }
 
-    /** Return card color in string type */
+    /* Return card color in string type */
     public String getCardColorName() {
         return getColorName(card_color);
     }
 
+    /* SETTER FUNCTIONS */
+
+    /* Sets the card's number to the value of the input number */
+    public void setCardNumber(double num) {
+        card_number = num;
+    }
+
     /* DISPLAY FUNCTIONS */
 
-    /** Output card to console */
+    /* Output card to console */
     public void display() {
         System.out.print(getColorName(card_color).charAt(0) + card_number);
     }
 
     /* PROTECTED FUNCTIONS */
 
-    /** Return string form of color passed as parameter */
+    /* Return string form of color passed as parameter */
     protected String getColorName(Color col) {
         return (col == colors[0]) ? "Yellow"
                 : (col == colors[1]) ? "Blue"

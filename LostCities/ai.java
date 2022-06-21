@@ -108,26 +108,40 @@ public class Ai extends Player {
 
     public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
-        ArrayList<Integer> expected_scores = new ArrayList<>(hand.size());
-        for (int i = 0; i < expected_scores.size(); i++) {
-            expected_scores.set(i, getEstimatedScoreFor(i, opponent_placed_down, discards, undealt));
-        }
-
-        int potential_total_score;
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
 
+        // remove ineligible cards
         for (int i = 0; i < potential_placed_cards.size(); i++) {
             potential_placed_cards.get(i).makeColorPile(colors[i]);
 
+            for (int j = 0; j < potential_placed_cards.size(); j++) {
+                Card c = potential_placed_cards.get(i).getCardAt(j);
+
+                if (!isPlaced(c) && !isInHand(c) && !discards.isTopCard(c)) {
+                    // if the card is not in AI's hand AND is not placed down AND is not a top card
+                    // in the discard pile, it will not contribute full points to the potential
+                    // placed down score
+                    c.setCardNumber(c.getCardNumber() * ((double) undealt.size() / 100));
+
+                    if (opponent_placed_down.get(i).contains(c)
+                            || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
+                        // if the card is placed down by opponent OR less than the highest placed card,
+                        // it cannot contribute any points to the potential placed down score
+                        potential_placed_cards.get(i).removeCard(c);
+                    }
+                }
+            }
         }
+
+        // int potential_total_score = calculateScore(potential_placed_cards);
 
         return new Card();
     }
 
     /* PROTECTED FUNCTIONS */
 
-    protected int getEstimatedScoreFor(int card_index, ArrayList<CardsCollection> opponent_placed_down,
-            DiscardPiles discards, CardsCollection undealt) {
+    protected int calculateScore(ArrayList<CardsCollection> potential_placed_cards) {
+        // TODO
         return 0;
     }
 }

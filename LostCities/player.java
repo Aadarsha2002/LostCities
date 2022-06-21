@@ -194,6 +194,10 @@ public abstract class Player {
 
     /* PROTECTED FUNCTIONS */
 
+    protected boolean isInHand(Card c) {
+        return hand.contains(c);
+    }
+
     protected boolean isPlaced(Card c) {
         return placed_down.get(getColorIndex(c.getCardColor())).contains(c);
     }
