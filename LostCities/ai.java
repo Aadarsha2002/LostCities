@@ -33,7 +33,7 @@ public class Ai extends Player {
 
     /* Conducts the turn if called on an ai object */
     @Override
-    public void play(Player opponent, DiscardPiles discards, CardsCollection undealt) {
+    public void play(CardsCollection opponent_placed_down, DiscardPiles discards, CardsCollection undealt) {
         int random_number = 0;
         Card outgoing_card;
         /** Decide to discard or play */
@@ -106,13 +106,20 @@ public class Ai extends Player {
         display();
     }
 
-    public Card outgoingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
+    public Card outgoingPlay(CardsCollection opponent_placed_down, DiscardPiles discards,
+            CardsCollection undealt) {
         ArrayList<Integer> expected_scores = new ArrayList<>(hand.size());
-
+        for (int i = 0; i < expected_scores.size(); i++) {
+            expected_scores.set(i, getEstimatedScoreFor(i, opponent_placed_down, discards, undealt));
+        }
         return new Card();
     }
 
-    protected int getEstimatedScoreFor(Card c, Player opponent, DiscardPiles discards, CardsCollection undealt) {
+    /* PROTECTED FUNCTIONS */
 
+    protected int getEstimatedScoreFor(int card_index, CardsCollection opponent_placed_down,
+            DiscardPiles discards, CardsCollection undealt) {
+        int color_score = getColorScore(i);
+        return 0;
     }
 }
