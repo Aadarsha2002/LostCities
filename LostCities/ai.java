@@ -107,7 +107,12 @@ public class Ai extends Player {
     }
 
     public Card outgoingPlay(Player opponent, DiscardPiles discards, CardsCollection undealt) {
-        
+        ArrayList<Integer> expected_scores = new ArrayList<>(hand.size());
+
         return new Card();
+    }
+
+    protected int getEstimatedScoreFor(Card c, Player opponent, DiscardPiles discards, CardsCollection undealt) {
+
     }
 }
