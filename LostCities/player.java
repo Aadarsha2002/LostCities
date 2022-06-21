@@ -195,7 +195,7 @@ public abstract class Player {
     /* PROTECTED FUNCTIONS */
 
     protected boolean isPlaced(Card c) {
-        return placed_down.get(getColorIndex(c.getCardColor())).hasCard(c);
+        return placed_down.get(getColorIndex(c.getCardColor())).contains(c);
     }
 
     protected ArrayList<Integer> getCardCountsByColor() {
@@ -226,11 +226,11 @@ public abstract class Player {
 
     /* Return the color version of the color passed as string */
     protected Color getColor(String col_str) {
-        return (col_str == "y") ? Color.YELLOW
-                : (col_str == "b") ? Color.BLUE
-                        : (col_str == "w") ? Color.WHITE
-                                : (col_str == "g") ? Color.GREEN
-                                        : (col_str == "r") ? Color.RED : Color.BLACK;
+        return (col_str.equals("y")) ? Color.YELLOW
+                : (col_str.equals("b")) ? Color.BLUE
+                        : (col_str.equals("w")) ? Color.WHITE
+                                : (col_str.equals("g")) ? Color.GREEN
+                                        : (col_str.equals("r")) ? Color.RED : Color.BLACK;
     }
 
 }

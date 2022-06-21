@@ -121,8 +121,9 @@ public class Human extends Player {
                 char[] choices2 = { 'y', 'b', 'w', 'g', 'r' };
                 picked_color = ask("Pick a color", choices2);
                 // ask until the pile which is not empty is chosen
-                while (discards.getPile(picked_color).isEmpty()) {
-                    System.out.println("Discard Pile chosen is empty");
+                while (discards.isEmpty(getColor(picked_color))) {
+                    System.out.println(
+                            "The " + getColorName(getColor(picked_color)) + " Discard Pile chosen is empty");
                     discards.displayPiles();
                     picked_color = ask("Pick a color", choices2);
                 }
@@ -134,8 +135,9 @@ public class Human extends Player {
                     discards.displayPiles();
                     picked_color = ask("Pick a color", choices2);
                     // ask until the pile which is not empty is chosen
-                    while (discards.isEmpty(picked_color)) {
-                        System.out.println("Discard Pile chosen is empty");
+                    while (discards.isEmpty(getColor(picked_color))) {
+                        System.out.println(
+                                "The " + getColorName(getColor(picked_color)) + " Discard Pile chosen is empty");
                         discards.displayPiles();
                         picked_color = ask("Pick a color", choices2);
                     }

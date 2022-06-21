@@ -42,20 +42,19 @@ public class DiscardPiles {
 
     /* Return true if all discard piles are empty */
     public boolean isEmpty() {
-        for (Color col : colors) {
-            if (size(col) != 0) {
+        for (CardsCollection cards : discard_piles) {
+            if (!cards.isEmpty())
                 return false;
-            }
         }
         return true;
     }
 
     /*
      * OVERLOAD FUNCTION
-     * Return true if discard pile of the input color is empty
+     * Return true if the input color's discard pile is empty
      */
     public boolean isEmpty(Color col) {
-        return discard_piles.get(getColorIndex(col)).size() == 0;
+        return getPile(col).isEmpty();
     }
 
     /* Return the corresponding color's discard pile */
@@ -77,24 +76,11 @@ public class DiscardPiles {
 
     /*
      * Return topmost card from the input color's discard pile if at least one card
-     * is present in the discard pile
+     * is present in the discard pile. Else return new card
      */
     public Card getTopCard(Color col) {
-        if (!discard_piles.get(getColorIndex(col)).isEmpty()) {
+        if (!discard_piles.get(getColorIndex(col)).isEmpty())
             return discard_piles.get(getColorIndex(col)).getTopCard();
-        }
-        return new Card();
-    }
-
-    /* Returns a card if it's the only card, else a new card */
-    public Card getOnlyCard() {
-        if (totalSize() == 1) {
-            for (Color col : colors) {
-                if (size(col) == 1) {
-                    return getTopCard(col);
-                }
-            }
-        }
         return new Card();
     }
 
@@ -108,6 +94,18 @@ public class DiscardPiles {
             if (!discard_piles.get(getColorIndex(col)).isEmpty()
                     && isColorsMatching(picked_color, col))
                 return getTopCard(col);
+        }
+        return new Card();
+    }
+
+    /* Returns a card if it's the only card, else a new card */
+    public Card getOnlyCard() {
+        if (totalSize() == 1) {
+            for (Color col : colors) {
+                if (size(col) == 1) {
+                    return getTopCard(col);
+                }
+            }
         }
         return new Card();
     }
@@ -150,21 +148,20 @@ public class DiscardPiles {
 
     /* Return true if given card is topmost card */
     protected boolean isTopCard(Card c) {
-        return getTopCard(c.getCardColor()).equals(c);
+        return c == getTopCard(c.getCardColor());
     }
 
     /*
      * Return true if the given string form of the color matches the given color
-     * regardless of case
      */
     protected boolean isColorsMatching(String picked_color, Color col) {
-        return picked_color.equalsIgnoreCase(getColorName(col));
+        return Character.toLowerCase(picked_color.charAt(0)) == Character.toLowerCase(getColorName(col).charAt(0));
     }
 
     /* Return index of discard pile according to given color */
     protected int getColorIndex(Color col) {
         for (int i = 0; i < colors.length; i++) {
-            if (colors[i].equals(col))
+            if (col == colors[i])
                 return i;
         }
         return -1;

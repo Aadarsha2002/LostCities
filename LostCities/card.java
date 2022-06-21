@@ -57,8 +57,7 @@ public class Card {
 
     /** Output card to console */
     public void display() {
-        System.out.print(getColorName(card_color).charAt(0));
-        System.out.print(card_number);
+        System.out.print(getColorName(card_color).charAt(0) + card_number);
     }
 
     /* PROTECTED FUNCTIONS */

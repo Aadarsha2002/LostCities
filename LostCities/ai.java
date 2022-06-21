@@ -117,8 +117,8 @@ public class Ai extends Player {
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
 
         for (int i = 0; i < potential_placed_cards.size(); i++) {
-            potential_placed_cards.get(i).createColorPile(colors[i]);
-            
+            potential_placed_cards.get(i).makeColorPile(colors[i]);
+
         }
 
         return new Card();

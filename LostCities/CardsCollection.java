@@ -56,13 +56,13 @@ public class CardsCollection {
     }
 
     /* Returns true if a card exists in the cards */
-    public boolean hasCard(Card c) {
-        return pile.indexOf(c) != -1;
+    public boolean contains(Card c) {
+        return pile.contains(c);
     }
 
     /* Returns true if empty */
     public boolean isEmpty() {
-        return (size() == 0);
+        return pile.isEmpty();
     }
 
     /* Return topmost card */
@@ -82,13 +82,12 @@ public class CardsCollection {
 
     /* Return cards of a specific color as ArrayList */
     public ArrayList<Card> getCardsbyColor(Color col) {
-        ArrayList<Card> c1 = new ArrayList<>();
+        ArrayList<Card> cards = new ArrayList<>();
         for (Card c : pile) {
-            if (c.getCardColor() == col) {
-                c1.add(c);
-            }
+            if (c.getCardColor() == col)
+                cards.add(c);
         }
-        return c1;
+        return cards;
     }
 
     /* DISPLAY FUNCTIONS */
@@ -113,7 +112,7 @@ public class CardsCollection {
 
     /* AUXILIARY FUNCTIONS */
 
-    /* Add card passed as parameter to cards */
+    /* Add card passed as parameter to cards based on what kind of pile it is */
     public void addCard(Card c) {
         if (is_discard_pile) {
             pile.add(c);
@@ -135,11 +134,12 @@ public class CardsCollection {
      * Takes in a color and number. Creates a card using parameters and removes that
      * card from cards
      */
-    public void removeCard(Color col, int num) {
+    public void removeCard(int num, Color col) {
         pile.remove(new Card(num, col));
     }
 
     /* Make a pile of Undealt Cards and shuffle it */
+
     public void makeUndealtCardsPile() {
         for (Color col : colors) {
             // add normal number cards
@@ -184,9 +184,9 @@ public class CardsCollection {
     }
 
     /* Creates a pile of cards from 0 to 9 of the same color */
-    public void createColorPile(Color col) {
-        for (int i : numbers) {
-            addCard(new Card(i, col));
+    public void makeColorPile(Color col) {
+        for (int num : numbers) {
+            addCard(new Card(num, col));
         }
     }
 

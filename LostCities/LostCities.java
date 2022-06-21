@@ -2,22 +2,23 @@ import java.util.*;
 
 public class LostCities {
     public static void main(String[] args) {
-        while (true) {// keep looping until player says enough
-
+        while (true) {
+            // GameManager gm = new GameManager(askAiHuman(1), askAiHuman(2));
             GameManager gm = new GameManager("human", "human");
             gm.dealCards();
             gm.playGame();
 
-            System.out.println("\n\nPlay again [Y/N]?");
-            try (Scanner in = new Scanner(System.in)) {
-                char c = in.nextLine().charAt(0); // ask player if they want to go again
-                if (c == 'n' || c == 'N')
-                    break; // if not break!
+            // ask player if they want to play again
+            Scanner in = new Scanner(System.in);
+            System.out.println("Play again? (y/n)");
+            String answer = in.nextLine();
+            if (answer.equalsIgnoreCase("n")) {
+                break;
             }
         }
     }
 
-    protected String askAiHuman(int player_number) {
+    protected static String askAiHuman(int player_number) {
         try (Scanner in = new Scanner(System.in)) {
             System.out.print("What is player " + player_number + " [AI/Human]? ");
             return in.nextLine().toLowerCase();
