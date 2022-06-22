@@ -11,7 +11,7 @@ Holds:
 
 public class Card {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    static int[] numbers = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     public double card_number;
     public Color card_color;
@@ -64,7 +64,8 @@ public class Card {
 
     /* Output card to console */
     public void display() {
-        System.out.print(getColorName(card_color).charAt(0) + card_number);
+        System.out.print(getColorName(card_color).charAt(0));
+        System.out.print((int) card_number);
     }
 
     /* PROTECTED FUNCTIONS */
