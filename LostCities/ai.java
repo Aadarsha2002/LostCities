@@ -158,9 +158,9 @@ public class Ai extends Player {
                 ArrayList<Card> cards_in_hand = hand.getCardsbyColor(c.getCardColor());
                 for (int j = 0; j < cards_in_hand.size(); j++) {
                     potential_placed_cards.get(getColorIndex(c.getCardColor())).addCard(cards_in_hand.get(j));
-                }                
-                if(potential_placed_cards.get(getColorIndex(c.getCardColor())).getScore()>0){
-                    
+                }
+                if (potential_placed_cards.get(getColorIndex(c.getCardColor())).getScore() > 0) {
+
                 }
             }
             // discarding it
