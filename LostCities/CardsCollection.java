@@ -119,11 +119,11 @@ public class CardsCollection {
         System.out.println("Sum\t\t\t= " + sum);
         System.out.println("\tMultiplier\t= " + multiplier);
         sum *= multiplier;// multiplier
-        System.out.println("\tSum Now\t\t= " + sum);
+        System.out.println("\tSum Now\t\t\t= " + sum);
         if (pile.size() >= 8) {// bonus points
             sum += 20;
-            System.out.println("Bonus Points\t= 20");
-            System.out.println("\tSum after bonus points\t= " + sum);
+            System.out.println("\tBonus Points\t= 20");
+            System.out.println("\tSum after bonus points\t\t= " + sum);
         }
         return sum;
     }
