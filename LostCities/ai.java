@@ -114,6 +114,8 @@ public class Ai extends Player {
      */
     public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
+
+                
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
 
         // remove ineligible cards
