@@ -127,9 +127,8 @@ public class Ai extends Player {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
 
                 if (!isPlaced(c)) {
-                    // if the card is not placed down AND is not a top card
-                    // in the discard pile, it will contribute PARTIAL points to the potential
-                    // placed down score
+                    // if the card is not placed down, it will contribute PARTIAL points to the
+                    // potential placed down score
                     c.setCardNumber(c.getCardNumber() * ((double) undealt.size() / 100));
 
                     if (opponent_placed_down.get(i).contains(c)
