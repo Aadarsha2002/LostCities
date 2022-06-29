@@ -91,7 +91,7 @@ public class CardsCollection {
     }
 
     /*
-     * Return the score of the placed cards of a specific color
+     * Return the score of the pile based on the cards in the pile
      * - count multipliers (multiplier++)
      * - sum numbered cards (sum+=c.getCardNumber())
      * - deduct 20 (sum-=20)
