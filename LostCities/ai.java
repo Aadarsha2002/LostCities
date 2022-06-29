@@ -155,7 +155,13 @@ public class Ai extends Player {
                 // if it's a handshake card, calculate the total expected score using the full
                 // points of the cards in the hand of that color. If it's positive, then
                 // calculate the total expected score using expected handshake cards too
-
+                ArrayList<Card> cards_in_hand = hand.getCardsbyColor(c.getCardColor());
+                for (int j = 0; j < cards_in_hand.size(); j++) {
+                    potential_placed_cards.get(getColorIndex(c.getCardColor())).addCard(cards_in_hand.get(j));
+                }                
+                if(potential_placed_cards.get(getColorIndex(c.getCardColor())).getScore()>0){
+                    
+                }
             }
             // discarding it
 
