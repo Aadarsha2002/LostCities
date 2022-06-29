@@ -67,7 +67,7 @@ public class Ai extends Player {
              * if AI can take a card from undealt pile only because there are no cards
              * in discard pile
              */
-            System.out.println("\nAI took card from undealt pile only because there are no cards in discard piles");
+            System.out.println("\nAI took card from draw pile only because there are no cards in discard piles");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else {
@@ -85,7 +85,7 @@ public class Ai extends Player {
                 if (incoming_card == outgoing_card) {
                     incoming_card = undealt.getTopCard();
                     undealt.removeCard(incoming_card);
-                    System.out.print("AI chose undealt pile\n");
+                    System.out.print("AI chose draw pile\n");
                 } else {
                     discards.removeCard(incoming_card);
                     System.out.print("AI chose discard pile.\n");
@@ -93,7 +93,7 @@ public class Ai extends Player {
             } else {
                 incoming_card = undealt.getTopCard();
                 undealt.removeCard(incoming_card);
-                System.out.print("AI chose undealt pile\n");
+                System.out.print("AI chose draw pile\n");
             }
 
         }

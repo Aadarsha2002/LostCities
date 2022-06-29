@@ -78,9 +78,14 @@ public class GameManager {
         }
 
         // Calculate scores
+        System.out.println("\n***********************************");
         System.out.println("\nPlayer 1 Score Calculation: ");
+        System.out.println("Player 1's Placed Down cards:");
+        p1.displayPlacedDownCards();
         int p1_score = p1.getScore();
         System.out.println("\nPlayer 2 Score Calculation: ");
+        System.out.println("Player 2's Placed Down cards:");
+        p2.displayPlacedDownCards();
         int p2_score = p2.getScore();
 
         // Output Scores
@@ -107,8 +112,8 @@ public class GameManager {
          */
         System.out.println("\n**********************************\n");
         System.out.println("It's player " + ((p == p1) ? 1 : 2) + "'s turn:");
-        System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
-        System.out.println("Pre Turn Statistics: ");
+        System.out.println("*_*_*_*_*_*_*_*_*_*_");
+        System.out.println("Pre-turn Statistics: ");
         displayStatistics(p);
 
         /*
@@ -125,7 +130,7 @@ public class GameManager {
          */
 
         System.out.println("\n_*_*_*_*_*_*_*_*_*_*");
-        System.out.println("Post Turn Statistics: ");
+        System.out.println("Post-turn Statistics: ");
         displayStatistics(p);
     }
 
@@ -137,7 +142,7 @@ public class GameManager {
         System.out.println("Player " + ((p == p1) ? 1 : 2) + "'s Placed Down cards:");
         ((p == p1) ? p1 : p2).displayPlacedDownCards();
         System.out.print("There " + (undealt.size() == 1 ? "is " : "are ")
-                + undealt.size() + " undealt card" + (undealt.size() == 1 ? "" : "s") + " left");
+                + undealt.size() + " card" + (undealt.size() == 1 ? "" : "s") + " left in the draw pile");
         System.out.print("\nHand: ");
         p.display();
         System.out.println("*_*_*_*_*_*_*_*_*_*_");

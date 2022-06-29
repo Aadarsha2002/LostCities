@@ -97,7 +97,7 @@ public class Human extends Player {
              * if player can take a card from undealt pile only because there are no cards
              * in discard pile
              */
-            System.out.println("\nDiscard piles are empty. You can take a card from Undealt Pile only.");
+            System.out.println("\nDiscard piles are empty. You can take a card from draw pile only.");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else if (discards.totalSize() == 1 && discards.getOnlyCard() == outgoing_card) {
@@ -106,13 +106,13 @@ public class Human extends Player {
              * the player just placed
              */
             System.out.println(
-                    "\nYou cannot pick the card you just discarded. So, you need to take a card from Undealt Pile only.");
+                    "\nYou cannot pick the card you just discarded. So, you need to take a card from draw pile only.");
             incoming_card = undealt.getTopCard();
             undealt.removeCard(incoming_card);
         } else {
             /* Ask whether player wants to take card from discard pile or undealt pile */
             char[] choices1 = { 'u', 'd' };
-            String discard_or_undealt = ask("\nPick from Discard or Undealt", choices1);
+            String discard_or_undealt = ask("\nPick from Discards or Draw Pile", choices1);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");
@@ -147,7 +147,7 @@ public class Human extends Player {
             } else {
                 incoming_card = undealt.getTopCard();
                 undealt.removeCard(incoming_card);
-                System.out.print("You chose undealt pile\n");
+                System.out.print("You chose draw pile\n");
             }
         }
         System.out.print("You're getting ");
