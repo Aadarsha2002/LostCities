@@ -89,7 +89,7 @@ public abstract class Player {
     public ArrayList<Double> getEachColorsScores() {
         ArrayList<Double> scores = new ArrayList<>();
         for (int i = 0; i < colors.length; i++) {
-            scores.add(getColorScore(i));
+            scores.add(placed_down.get(i).getScore());
         }
         return scores;
     }
@@ -108,49 +108,9 @@ public abstract class Player {
     public double getScore() {
         double total = 0;
         for (int i = 0; i < colors.length; i++) {
-            total += getColorScore(i);// add to total
+            total += placed_down.get(i).getScore();// add to total
         }
         return total;
-    }
-
-    /*
-     * Return the score of the placed cards of a specific color
-     * - count multipliers (multiplier++)
-     * - sum numbered cards (sum+=c.getCardNumber())
-     * - deduct 20 (sum-=20)
-     * - multiply sum and multipliers (sum*=multiplier)
-     * - add 20 bonus if more than 8 cards are placed down (sum+=20)
-     * - add sum to total
-     */
-    public double getColorScore(int color_index) {
-        placed_down.get(color_index).sort();
-        ArrayList<Card> cards;
-        cards = placed_down.get(color_index).getCardsbyColor(colors[color_index]);
-        double multiplier = 1;
-        double sum = 0;
-        // count multipliers and sum of numbered cards
-        for (Card c : cards) {
-            if (c.getCardNumber() == 0) {
-                multiplier++;
-            } else {
-                sum += c.getCardNumber();
-            }
-        }
-        if (!cards.isEmpty())// cost
-            sum -= 20;
-        if (color_index == colors.length - 1)
-            System.out.println(getColorName(colors[color_index]) + " Sum\t\t\t= " + sum);
-        else
-            System.out.println(getColorName(colors[color_index]) + " Sum\t\t= " + sum);
-        System.out.println("\tMultiplier\t= " + multiplier);
-        sum *= multiplier;// multiplier
-        System.out.println("\tSum Now\t\t= " + sum);
-        if (cards.size() >= 8) {// bonus points
-            sum += 20;
-            System.out.println("Bonus Points\t= 20");
-            System.out.println("\tSum after bonus points\t= " + sum);
-        }
-        return sum;
     }
 
     /* DISPLAY FUNCTIONS */
@@ -190,6 +150,16 @@ public abstract class Player {
                 || (placed_down.isEmpty()
                         || c.getCardNumber() >= getTopPlacedCard(c.getCardColor()).getCardNumber()))
             placed_down.get(getColorIndex(c.getCardColor())).addCard(c);
+    }
+
+    /*
+     * Remove specific card from placed down
+     * Add it to hand
+     */
+    public void unplaceCard(Card c) {
+        hand.addCard(c);
+        placed_down.get(getColorIndex(c.getCardColor())).removeCard(c);
+
     }
 
     /* PROTECTED FUNCTIONS */

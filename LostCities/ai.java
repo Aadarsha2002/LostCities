@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.*;
 
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
+
 public class Ai extends Player {
     Random rand = new Random(0);
 
@@ -124,16 +126,17 @@ public class Ai extends Player {
             for (int j = 0; j < potential_placed_cards.size(); j++) {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
 
-                if (!isPlaced(c) && !isInHand(c) && !discards.isTopCard(c)) {
-                    // if the card is not in AI's hand AND is not placed down AND is not a top card
+                if (!isPlaced(c) && !discards.isTopCard(c)) {
+                    // if the card is not placed down AND is not a top card
                     // in the discard pile, it will contribute PARTIAL points to the potential
                     // placed down score
                     c.setCardNumber(c.getCardNumber() * ((double) undealt.size() / 100));
 
                     if (opponent_placed_down.get(i).contains(c)
-                            || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
-                        // if the card is placed down by opponent OR less than the highest placed card,
-                        // it will contribute NO to the potential placed down score
+                            || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber() || isInHand(c)) {
+                        // if the card is placed down by opponent OR less than the highest placed card
+                        // OR is in AI's hand, it will contribute NOTHING to the potential placed down
+                        // score
                         potential_placed_cards.get(i).removeCard(c);
                     }
                 }
@@ -166,7 +169,7 @@ public class Ai extends Player {
     /* PROTECTED FUNCTIONS */
 
     protected double calculateExpectedScore(Card C) {
-        
+
         // TODO
         return 0;
     }

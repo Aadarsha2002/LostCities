@@ -90,6 +90,44 @@ public class CardsCollection {
         return cards;
     }
 
+    /*
+     * Return the score of the placed cards of a specific color
+     * - count multipliers (multiplier++)
+     * - sum numbered cards (sum+=c.getCardNumber())
+     * - deduct 20 (sum-=20)
+     * - multiply sum and multipliers (sum*=multiplier)
+     * - add 20 bonus if more than 8 cards are placed down (sum+=20)
+     * - add sum to total
+     */
+
+    public double getScore() {
+        sort();
+        double multiplier = 1;
+        double sum = 0;
+        // count multipliers and sum of numbered cards
+        for (Card c : pile) {
+            if (c.getCardNumber() == 0) {
+                multiplier++;
+            } else {
+                sum += c.getCardNumber();
+            }
+        }
+        // cost
+        if (!pile.isEmpty()) {
+            sum -= 20;
+        }
+        System.out.println("Sum\t\t\t= " + sum);
+        System.out.println("\tMultiplier\t= " + multiplier);
+        sum *= multiplier;// multiplier
+        System.out.println("\tSum Now\t\t= " + sum);
+        if (pile.size() >= 8) {// bonus points
+            sum += 20;
+            System.out.println("Bonus Points\t= 20");
+            System.out.println("\tSum after bonus points\t= " + sum);
+        }
+        return sum;
+    }
+
     /* DISPLAY FUNCTIONS */
 
     /* Display cards to console */
