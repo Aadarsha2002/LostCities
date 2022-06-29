@@ -82,16 +82,16 @@ public class GameManager {
         System.out.println("\nPlayer 1 Score Calculation: ");
         System.out.println("Player 1's Placed Down cards:");
         p1.displayPlacedDownCards();
-        int p1_score = p1.getScore();
+        double p1_score = p1.getScore();
         System.out.println("\nPlayer 2 Score Calculation: ");
         System.out.println("Player 2's Placed Down cards:");
         p2.displayPlacedDownCards();
-        int p2_score = p2.getScore();
+        double p2_score = p2.getScore();
 
         // Output Scores
         System.out.println("\n***********************************");
-        System.out.println("\n\nPlayer 1 scored " + p1_score);
-        System.out.println("Player 2 scored " + p2_score);
+        System.out.println("\n\nPlayer 1 scored " + (int) p1_score);
+        System.out.println("Player 2 scored " + (int) p2_score);
         System.out.println(((p1_score > p2_score) ? "Player 1 won!" : "Player 2 won!"));
     }
 

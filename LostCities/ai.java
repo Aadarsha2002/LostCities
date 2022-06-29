@@ -115,9 +115,6 @@ public class Ai extends Player {
     public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
 
-        
-
-
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
 
         // remove ineligible cards
@@ -129,18 +126,36 @@ public class Ai extends Player {
 
                 if (!isPlaced(c) && !isInHand(c) && !discards.isTopCard(c)) {
                     // if the card is not in AI's hand AND is not placed down AND is not a top card
-                    // in the discard pile, it will not contribute full points to the potential
+                    // in the discard pile, it will contribute PARTIAL points to the potential
                     // placed down score
                     c.setCardNumber(c.getCardNumber() * ((double) undealt.size() / 100));
 
                     if (opponent_placed_down.get(i).contains(c)
                             || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
                         // if the card is placed down by opponent OR less than the highest placed card,
-                        // it cannot contribute any points to the potential placed down score
+                        // it will contribute NO to the potential placed down score
                         potential_placed_cards.get(i).removeCard(c);
                     }
                 }
             }
+        }
+
+        ArrayList<Integer> placing_expected_score = new ArrayList<>();
+        ArrayList<Integer> discarding_expected_score = new ArrayList<>();
+
+        // for each card in the hand, calculate an expected score for placing it and
+        // discarding it and add it to the appropriate ArrayList
+        for (int i = 0; i < hand.size(); i++) {
+            Card c = hand.getCardAt(i);
+            // placing it
+            if (c.getCardNumber() == 0) {
+                // if it's a handshake card, calculate the total expected score using the full
+                // points of the cards in the hand of that color. If it's positive, then
+                // calculate the total expected score using expected handshake cards too
+
+            }
+            // discarding it
+
         }
 
         // int potential_total_score = calculateScore(potential_placed_cards);
@@ -150,7 +165,8 @@ public class Ai extends Player {
 
     /* PROTECTED FUNCTIONS */
 
-    protected int calculateScore(ArrayList<CardsCollection> potential_placed_cards) {
+    protected double calculateExpectedScore(Card C) {
+        
         // TODO
         return 0;
     }

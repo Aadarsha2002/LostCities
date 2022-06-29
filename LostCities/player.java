@@ -86,8 +86,8 @@ public abstract class Player {
     }
 
     /* Return scores of placed down cards color-wise in ArrayList */
-    public ArrayList<Integer> getEachColorsScores() {
-        ArrayList<Integer> scores = new ArrayList<>();
+    public ArrayList<Double> getEachColorsScores() {
+        ArrayList<Double> scores = new ArrayList<>();
         for (int i = 0; i < colors.length; i++) {
             scores.add(getColorScore(i));
         }
@@ -105,8 +105,8 @@ public abstract class Player {
      * - get score, and add to total
      * Return total
      */
-    public int getScore() {
-        int total = 0;
+    public double getScore() {
+        double total = 0;
         for (int i = 0; i < colors.length; i++) {
             total += getColorScore(i);// add to total
         }
@@ -122,12 +122,12 @@ public abstract class Player {
      * - add 20 bonus if more than 8 cards are placed down (sum+=20)
      * - add sum to total
      */
-    public int getColorScore(int color_index) {
+    public double getColorScore(int color_index) {
         placed_down.get(color_index).sort();
         ArrayList<Card> cards;
         cards = placed_down.get(color_index).getCardsbyColor(colors[color_index]);
-        int multiplier = 1;
-        int sum = 0;
+        double multiplier = 1;
+        double sum = 0;
         // count multipliers and sum of numbered cards
         for (Card c : cards) {
             if (c.getCardNumber() == 0) {
