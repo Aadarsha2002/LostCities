@@ -126,7 +126,7 @@ public class Ai extends Player {
             for (int j = 0; j < potential_placed_cards.size(); j++) {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
 
-                if (!isPlaced(c) && !discards.isTopCard(c)) {
+                if (!isPlaced(c)) {
                     // if the card is not placed down AND is not a top card
                     // in the discard pile, it will contribute PARTIAL points to the potential
                     // placed down score
