@@ -39,26 +39,28 @@ public class Ai extends Player {
         int random_number = 0;
         Card outgoing_card;
         /** Decide to discard or play */
-        random_number = getRandomNumber(0, 2);
-        if (random_number == 0) {
-            // discard
-            /** Decide which card */
-            random_number = getRandomNumber(0, 8);
-            outgoing_card = getCardAt(random_number);
-            removeCard(outgoing_card);
-            discards.addCard(outgoing_card);
-            System.out.print("AI chose to discard ");
+        // random_number = getRandomNumber(0, 2);
+        // if (random_number == 0) {
+        // // discard
+        // /** Decide which card */
+        // random_number = getRandomNumber(0, 8);
+        // outgoing_card = getCardAt(random_number);
+        // removeCard(outgoing_card);
+        // discards.addCard(outgoing_card);
+        // System.out.print("AI chose to discard ");
 
-        } else {
-            // play
-            /** Decide which card */
-            random_number = getRandomNumber(0, 8);
-            outgoing_card = getCardAt(random_number);
-            removeCard(outgoing_card);
-            placeCard(outgoing_card);
-            System.out.print("AI chose to place ");
-        }
-        outgoing_card.display();
+        // } else {
+        // // play
+        // /** Decide which card */
+        // random_number = getRandomNumber(0, 8);
+        // outgoing_card = getCardAt(random_number);
+        // removeCard(outgoing_card);
+        // placeCard(outgoing_card);
+        // System.out.print("AI chose to place ");
+        // }
+        // outgoing_card.display();
+
+        outgoing_card = outgoingPlay(opponent_placed_down, discards, undealt);
 
         System.out.print("\nAI's hand is now ");
         display();
@@ -117,21 +119,26 @@ public class Ai extends Player {
     public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
 
-        ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>(colors.length);
+        ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>();
 
-        // remove ineligible cards
-        for (int i = 0; i < potential_placed_cards.size(); i++) {
+        // From a collection of ALL cards remove ineligible-to-place cards, change
+        // numbers of undealt cards to be a percentage of themselves, and remove the
+        // cards in your hand
+        for (int i = 0; i < colors.length; i++) {
+            potential_placed_cards.add(new CardsCollection());
             potential_placed_cards.get(i).makeColorPile(colors[i]);
 
-            for (int j = 0; j < potential_placed_cards.size(); j++) {
+            for (int j = 0; j < potential_placed_cards.get(i).size(); j++) {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
+                potential_placed_cards.get(i).removeCard(c);
 
                 if (!isPlaced(c)) {
                     // if the card is not placed down, it will contribute PARTIAL points to the
                     // potential placed down score
-                    c.setCardNumber(c.getCardNumber() * ((double) undealt.size() / 100));
-
-                    if (opponent_placed_down.get(i).contains(c)
+                    double percentage = (double) undealt.size() / 100;
+                    c.setCardNumber(c.getCardNumber() * percentage);
+                    potential_placed_cards.get(i).addCard(c);
+                    if (c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
                             || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber() || isInHand(c)) {
                         // if the card is placed down by opponent OR less than the highest placed card
                         // OR is in AI's hand, it will contribute NOTHING to the potential placed down
@@ -141,41 +148,71 @@ public class Ai extends Player {
                 }
             }
         }
+        System.out.println("Potential Placed Cards: ");
+        for (int i = 0; i < potential_placed_cards.size(); i++) {
+            potential_placed_cards.get(i).display();
+        }
 
-        ArrayList<Integer> placing_expected_score = new ArrayList<>();
-        ArrayList<Integer> discarding_expected_score = new ArrayList<>();
+        ArrayList<Double> placing_expected_score = new ArrayList<>();
+        ArrayList<Double> discarding_expected_score = new ArrayList<>();
 
         // for each card in the hand, calculate an expected score for placing it and
         // discarding it and add it to the appropriate ArrayList
         for (int i = 0; i < hand.size(); i++) {
             Card c = hand.getCardAt(i);
-            // placing it
-            if (c.getCardNumber() == 0) {
-                // if it's a handshake card, calculate the total expected score using the full
-                // points of the cards in the hand of that color. If it's positive, then
-                // calculate the total expected score using expected handshake cards too
-                ArrayList<Card> cards_in_hand = hand.getCardsbyColor(c.getCardColor());
-                for (int j = 0; j < cards_in_hand.size(); j++) {
-                    potential_placed_cards.get(getColorIndex(c.getCardColor())).addCard(cards_in_hand.get(j));
-                }
-                if (potential_placed_cards.get(getColorIndex(c.getCardColor())).getScore() > 0) {
 
+            // discarding it
+            double total = 0;
+            for (Color col : colors) {
+                total += potential_placed_cards.get(getColorIndex((col))).getScore();
+            }
+            // display expected score
+            discarding_expected_score.add(total);
+            c.display();
+            System.out.println("'s discarding exp-score " + (float) total);
+
+            // placing it
+            CardsCollection placeable_cards_in_hand = hand.getCardsbyColor(c.getCardColor());
+            for (int j = 0; j < placeable_cards_in_hand.size(); j++) {
+                if (placeable_cards_in_hand.getCardAt(j).getCardNumber() < c.getCardNumber()) {
+                    placeable_cards_in_hand.removeCard(placeable_cards_in_hand.getCardAt(j));
                 }
             }
-            // discarding it
-
+            potential_placed_cards.get(getColorIndex(c.getCardColor())).addCards(placeable_cards_in_hand);
+            total = 0;
+            for (Color col : colors) {
+                total += potential_placed_cards.get(getColorIndex(col)).getScore();
+            }
+            // display expected score
+            placing_expected_score.add(total);
+            c.display();
+            System.out.println("'s placing exp-score " + (float) total);
+        }
+        int placing_max_index = 0;
+        int discarding_max_index = 0;
+        for (int i = 0; i < placing_expected_score.size(); i++) {
+            if (placing_expected_score.get(i) > placing_expected_score.get(placing_max_index))
+                placing_max_index = i;
+            if (discarding_expected_score.get(i) > discarding_expected_score.get(discarding_max_index))
+                discarding_max_index = i;
         }
 
-        // int potential_total_score = calculateScore(potential_placed_cards);
-
-        return new Card();
-    }
-
-    /* PROTECTED FUNCTIONS */
-
-    protected double calculateExpectedScore(Card C) {
-
-        // TODO
-        return 0;
+        Card outgoing_card = new Card();
+        if (discarding_expected_score.get(discarding_max_index) > placing_expected_score.get(placing_max_index)) {
+            // discard the card when discarding gives a higher score than placing it
+            outgoing_card = hand.getCardAt(discarding_max_index);
+            System.out.print("AI discarded ");
+            outgoing_card.display();
+            removeCard(outgoing_card);
+            discards.addCard(outgoing_card);
+        } else {
+            // place the card when placing it gives a higher score than discarding it
+            outgoing_card = hand.getCardAt(placing_max_index);
+            System.out.print("AI placed ");
+            outgoing_card.display();
+            removeCard(outgoing_card);
+            placeCard(outgoing_card);
+        }
+        return outgoing_card;
     }
 }

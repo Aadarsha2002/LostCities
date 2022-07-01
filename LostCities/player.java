@@ -108,7 +108,7 @@ public abstract class Player {
     public double getScore() {
         double total = 0;
         for (int i = 0; i < colors.length; i++) {
-            total += placed_down.get(i).getScore();// add to total
+            total += placed_down.get(i).getScore("d");// add to total
         }
         return total;
     }

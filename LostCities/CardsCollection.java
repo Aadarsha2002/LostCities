@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.util.*;
 
+import javax.swing.text.DefaultStyledDocument.ElementSpec;
+
 /*
 Holds
     array of colors possible
@@ -77,11 +79,21 @@ public class CardsCollection {
 
     /* Return the smallest card in a color */
     public Card getSmallestCard(Color col) {
-        return getCardsbyColor(col).get(0);
+        return getCardsbyColor(col).getCardAt(0);
+    }
+
+    /* Return cards of a specific color as CardsCollection */
+    public CardsCollection getCardsbyColor(Color col) {
+        CardsCollection cards = new CardsCollection();
+        for (Card c : pile) {
+            if (c.getCardColor() == col)
+                cards.addCard(c);
+        }
+        return cards;
     }
 
     /* Return cards of a specific color as ArrayList */
-    public ArrayList<Card> getCardsbyColor(Color col) {
+    public ArrayList<Card> getCardsbyColorAsArrayList(Color col) {
         ArrayList<Card> cards = new ArrayList<>();
         for (Card c : pile) {
             if (c.getCardColor() == col)
@@ -100,7 +112,7 @@ public class CardsCollection {
      * - add sum to total
      */
 
-    public double getScore() {
+    public double getScore(String s) {
         sort();
         double multiplier = 1;
         double sum = 0;
@@ -116,16 +128,31 @@ public class CardsCollection {
         if (!pile.isEmpty()) {
             sum -= 20;
         }
-        System.out.println("Sum\t\t\t= " + sum);
-        System.out.println("\tMultiplier\t= " + multiplier);
-        sum *= multiplier;// multiplier
-        System.out.println("\tSum Now\t\t\t= " + sum);
-        if (pile.size() >= 8) {// bonus points
-            sum += 20;
-            System.out.println("\tBonus Points\t= 20");
-            System.out.println("\tSum after bonus points\t\t= " + sum);
+        double multiplied_sum = sum * multiplier;
+        double final_sum = multiplied_sum;
+        if (pile.size() > 7) {
+            final_sum += 20;
         }
-        return sum;
+
+        // if asked to display score too (like at the end of the game), display it
+        if (s != "") {
+            System.out.println("Sum\t\t\t= " + sum);
+            System.out.println("\tMultiplier\t= " + multiplier);
+            System.out.println("\tSum Now\t\t\t= " + multiplied_sum);
+            if (final_sum > multiplied_sum) {// bonus points
+                System.out.println("\tBonus Points\t= 20");
+                System.out.println("\tSum after bonus points\t\t= " + final_sum);
+            }
+        }
+        return final_sum;
+    }
+
+    /*
+     * When no input is provided to getScore function, call it without displaying
+     * the score
+     */
+    public double getScore() {
+        return getScore("");
     }
 
     /* DISPLAY FUNCTIONS */
@@ -152,12 +179,33 @@ public class CardsCollection {
 
     /* Add card passed as parameter to cards based on what kind of pile it is */
     public void addCard(Card c) {
-        if (is_discard_pile) {
-            pile.add(c);
-        } else if (is_undealtCards) {
+        if (is_discard_pile || is_undealtCards) {
             pile.add(c);
         } else {
             pile.add(c);
+            sort();
+        }
+    }
+
+    public void addCardAt(int n, Card c) {
+        if (is_discard_pile || is_undealtCards) {
+            pile.add(c);
+        } else {
+            pile.add(n, c);
+            sort();
+        }
+    }
+
+    /* Add a collection of cards */
+    public void addCards(CardsCollection cards) {
+        if (is_discard_pile || is_undealtCards) {
+            for (int i = 0; i < cards.size(); i++) {
+                pile.add(cards.getCardAt(i));
+            }
+        } else {
+            for (int i = 0; i < cards.size(); i++) {
+                pile.add(cards.getCardAt(i));
+            }
             sort();
         }
     }
@@ -201,7 +249,7 @@ public class CardsCollection {
     public void sort() {
         ArrayList<Card> sorted_cards = new ArrayList<>();
         for (int x = 0; x < colors.length && !is_discard_pile; x++) {
-            ArrayList<Card> c = getCardsbyColor(colors[x]);
+            ArrayList<Card> c = getCardsbyColorAsArrayList(colors[x]);
             // sort c
             for (int i = 0; i < c.size() - 1; i++) {
                 int min_card_index = i;
@@ -209,6 +257,7 @@ public class CardsCollection {
                     if (c.get(j).getCardNumber() < c.get(min_card_index).getCardNumber())
                         min_card_index = j;
                 }
+
                 Card temp = c.get(min_card_index);
                 c.remove(min_card_index);
                 c.add(min_card_index, c.get(i));
@@ -223,6 +272,8 @@ public class CardsCollection {
 
     /* Creates a pile of cards from 0 to 9 of the same color */
     public void makeColorPile(Color col) {
+        addCard(new Card(0, col));
+        addCard(new Card(0, col));
         for (int num : numbers) {
             addCard(new Card(num, col));
         }
