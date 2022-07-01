@@ -118,7 +118,7 @@ public class CardsCollection {
         double sum = 0;
         // count multipliers and sum of numbered cards
         for (Card c : pile) {
-            if (c.getCardNumber() == 0) {
+            if (c.getCardNumber() == 0.00) {
                 multiplier++;
             } else {
                 sum += c.getCardNumber();
