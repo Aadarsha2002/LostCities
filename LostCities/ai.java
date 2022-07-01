@@ -138,7 +138,7 @@ public class Ai extends Player {
                     double percentage = (double) undealt.size() / 100;
                     c.setCardNumber(c.getCardNumber() * percentage);
                     potential_placed_cards.get(i).addCard(c);
-                    if (c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
+                    if (opponent_placed_down.get(i).contains(c)
                             || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber() || isInHand(c)) {
                         // if the card is placed down by opponent OR less than the highest placed card
                         // OR is in AI's hand, it will contribute NOTHING to the potential placed down
@@ -147,10 +147,6 @@ public class Ai extends Player {
                     }
                 }
             }
-        }
-        System.out.println("Potential Placed Cards: ");
-        for (int i = 0; i < potential_placed_cards.size(); i++) {
-            potential_placed_cards.get(i).display();
         }
 
         ArrayList<Double> placing_expected_score = new ArrayList<>();
@@ -163,10 +159,14 @@ public class Ai extends Player {
 
             // discarding it
             double total = 0;
+            c.display();
+            System.out.println(" Discarding ");
             for (Color col : colors) {
-                total += potential_placed_cards.get(getColorIndex((col))).getScore();
+                double score = potential_placed_cards.get(getColorIndex((col))).getScore();
+                System.out.print((float)score + ", ");
+                total += score;
             }
-            // display expected score
+            // display expected score for discarding card
             discarding_expected_score.add(total);
             c.display();
             System.out.println("'s discarding exp-score " + (float) total);
@@ -181,9 +181,12 @@ public class Ai extends Player {
             potential_placed_cards.get(getColorIndex(c.getCardColor())).addCards(placeable_cards_in_hand);
             total = 0;
             for (Color col : colors) {
-                total += potential_placed_cards.get(getColorIndex(col)).getScore();
+                double score = potential_placed_cards.get(getColorIndex((col))).getScore();
+                System.out.print((float)score + ", ");
+                total += score;
             }
-            // display expected score
+            potential_placed_cards.get(getColorIndex(c.getCardColor())).removeCards(placeable_cards_in_hand);
+            // display expected score for placing cards
             placing_expected_score.add(total);
             c.display();
             System.out.println("'s placing exp-score " + (float) total);

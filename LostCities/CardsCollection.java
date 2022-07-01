@@ -224,6 +224,20 @@ public class CardsCollection {
         pile.remove(new Card(num, col));
     }
 
+    /* Add a collection of cards */
+    public void removeCards(CardsCollection cards) {
+        if (is_discard_pile || is_undealtCards) {
+            for (int i = 0; i < cards.size(); i++) {
+                pile.remove(cards.getCardAt(i));
+            }
+        } else {
+            for (int i = 0; i < cards.size(); i++) {
+                pile.remove(cards.getCardAt(i));
+            }
+            sort();
+        }
+    }
+
     /* Make a pile of Undealt Cards and shuffle it */
 
     public void makeUndealtCardsPile() {
