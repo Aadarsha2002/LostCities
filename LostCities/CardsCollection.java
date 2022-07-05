@@ -138,7 +138,8 @@ public class CardsCollection {
 
         // if asked to display score too (like at the end of the game), display it
         if (s != "") {
-            System.out.println("Sum\t\t\t= " + sum);
+            System.out.println("Sum (before -20)\t= " + (sum + 20));
+            System.out.println("Sum (after -20)\t\t= " + sum);
             System.out.println("\tMultiplier\t= " + multiplier);
             System.out.println("\tSum Now\t\t\t= " + multiplied_sum);
             if (final_sum > multiplied_sum) {// bonus points

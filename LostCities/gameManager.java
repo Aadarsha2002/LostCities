@@ -31,8 +31,8 @@ public class GameManager {
     /* Initialize the internal variables */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
-            // p1 = new Human("testCasesp1.txt");
-            p1 = new Human("emptyFileForHuman.txt");
+            p1 = new Human("testCasesp1.txt");
+            // p1 = new Human("emptyFileForHuman.txt");
         } else {
             p1 = new Ai();
         }
