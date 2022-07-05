@@ -141,7 +141,7 @@ public class Ai extends Player {
                     System.out.println("fully added back");
                 }
             }
-        
+        }
 
         System.out.println("Potential Placed Cards: ");
         for (int i = 0; i < potential_placed_cards.size(); i++) {
