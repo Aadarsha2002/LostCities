@@ -215,7 +215,7 @@ public class Ai extends Player {
             c2.setCardNumber(c2.getCardNumber() * perc);
             potential_placed_cards.get(getColorIndex(c2.getCardColor())).addCard(c2);
             for (Color col : colors) {
-                double score = potential_placed_cards.get(getColorIndex((col))).getScore();
+                double score = potential_placed_cards.get(getColorIndex((col))).getScore(20 * perc);
                 System.out.print((float) score + " + ");
                 total += score;
             }
@@ -235,7 +235,7 @@ public class Ai extends Player {
             potential_placed_cards.get(getColorIndex(c.getCardColor())).addCards(placeable_cards_in_hand);
             total = 0;
             for (Color col : colors) {
-                double score = potential_placed_cards.get(getColorIndex((col))).getScore();
+                double score = potential_placed_cards.get(getColorIndex((col))).getScore(20 * perc);
                 System.out.print((float) score + ", ");
                 total += score;
             }

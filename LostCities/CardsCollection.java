@@ -114,7 +114,7 @@ public class CardsCollection {
      * - add sum to total
      */
 
-    public double getScore(String s) {
+    public double getScore(String s, double bonus) {
         sort();
         double multiplier = 1;
         double sum = 0;
@@ -133,7 +133,7 @@ public class CardsCollection {
         double multiplied_sum = sum * multiplier;
         double final_sum = multiplied_sum;
         if (pile.size() > 7) {
-            final_sum += 20;
+            final_sum += bonus;
         }
 
         // if asked to display score too (like at the end of the game), display it
@@ -143,7 +143,7 @@ public class CardsCollection {
             System.out.println("\tMultiplier\t= " + multiplier);
             System.out.println("\tSum Now\t\t\t= " + multiplied_sum);
             if (final_sum > multiplied_sum) {// bonus points
-                System.out.println("\tBonus Points\t= 20");
+                System.out.println("\tBonus Points\t= " + bonus);
                 System.out.println("\tSum after bonus points\t\t= " + final_sum);
             }
         }
@@ -155,7 +155,19 @@ public class CardsCollection {
      * the score
      */
     public double getScore() {
-        return getScore("");
+        return getScore("", 20);
+    }
+
+    /* When when a string only is input but no bonus point changes */
+    public double getScore(String s) {
+        if (s != "")
+            return getScore(s, 20);
+        return getScore();
+    }
+
+    /* When when only a bonus point change is requested */
+    public double getScore(double n) {
+        return getScore("", n);
     }
 
     /* DISPLAY FUNCTIONS */
