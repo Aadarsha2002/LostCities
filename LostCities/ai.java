@@ -121,22 +121,21 @@ public class Ai extends Player {
             potential_placed_cards.get(i).display();
         }
 
-        ArrayList<ArrayList<Double>> expected_scores = new ArrayList<>(2);
-        expected_scores = getExpectedScores(potential_placed_cards, undealt);
+        ArrayList<ArrayList<Double>> expected_scores = getExpectedScores(potential_placed_cards, undealt);
 
         int placing_max_index = 0;
         int discarding_max_index = 0;
-        for (int i = 0; i < expected_scores.get(2).size(); i++) {
-            if (expected_scores.get(2).get(i) > expected_scores.get(2).get(placing_max_index))
+        for (int i = 0; i < expected_scores.get(1).size(); i++) {
+            if (expected_scores.get(1).get(i) > expected_scores.get(1).get(placing_max_index))
                 placing_max_index = i;
-            if (expected_scores.get(1).get(i) > expected_scores.get(1).get(discarding_max_index))
+            if (expected_scores.get(0).get(i) > expected_scores.get(0).get(discarding_max_index))
                 discarding_max_index = i;
         }
 
         Card outgoing_card;
         // if expected score of discarding is better than placing, then discard,
         // else place
-        if (expected_scores.get(1).get(discarding_max_index) > expected_scores.get(2).get(placing_max_index)) {
+        if (expected_scores.get(0).get(discarding_max_index) > expected_scores.get(1).get(placing_max_index)) {
             // discard the card when discarding gives a higher score than placing it
             outgoing_card = hand.getCardAt(discarding_max_index);
             System.out.print("AI discarded ");
@@ -179,7 +178,8 @@ public class Ai extends Player {
 
                 if (c.getCardNumber() == 0 || isInHand(c) || opponent_placed_down.get(i).contains(c)
                         || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
-                    continue;
+                    c.display();
+                    System.out.println(" was removed from potential placed cards");
                 } else if (!isPlaced(c)) {
                     double perc = (double) undealt.size() / 100;
                     c.setCardNumber(c.getCardNumber() * perc);
@@ -197,9 +197,9 @@ public class Ai extends Player {
      */
     protected ArrayList<ArrayList<Double>> getExpectedScores(ArrayList<CardsCollection> potential_placed_cards,
             CardsCollection undealt) {
-        ArrayList<ArrayList<Double>> expected_scores = new ArrayList<>(2);
-        // 1 = expected scores for discarding
-        // 2 = expected scores for placing
+        ArrayList<ArrayList<Double>> expected_scores = new ArrayList<>();
+        expected_scores.add(new ArrayList<>()); // 1 = expected scores for discarding
+        expected_scores.add(new ArrayList<>()); // 2 = expected scores for placing
 
         // for each card in the hand, calculate an expected score for placing it and
         // discarding it and add it to the appropriate ArrayList
@@ -221,7 +221,7 @@ public class Ai extends Player {
             }
             potential_placed_cards.get(getColorIndex(c.getCardColor())).removeCard(c2);
             // display expected score for discarding card
-            expected_scores.get(1).add(total);
+            expected_scores.get(0).add(total);
             c2.display();
             System.out.println("'s discarding exp-score " + (float) total);
 
@@ -241,7 +241,7 @@ public class Ai extends Player {
             }
             potential_placed_cards.get(getColorIndex(c.getCardColor())).removeCards(placeable_cards_in_hand);
             // display expected score for placing cards
-            expected_scores.get(2).add(total);
+            expected_scores.get(1).add(total);
             c.display();
             System.out.println("'s placing exp-score " + (float) total);
         }
