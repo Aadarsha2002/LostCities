@@ -128,7 +128,7 @@ public class Ai extends Player {
             for (int j = 0; j < potential_placed_cards.get(i).size(); j++) {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
                 potential_placed_cards.get(i).removeCard(c);
-                if (isInHand(c) || opponent_placed_down.get(i).contains(c)
+                if (c.getCardNumber() == 0 || isInHand(c) || opponent_placed_down.get(i).contains(c)
                         || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
                 } else if (!isPlaced(c)) {
                     double perc = (double) undealt.size() / 100;
@@ -163,13 +163,13 @@ public class Ai extends Player {
             potential_placed_cards.get(getColorIndex(c2.getCardColor())).addCard(c2);
             for (Color col : colors) {
                 double score = potential_placed_cards.get(getColorIndex((col))).getScore();
-                System.out.print((float) score + ", ");
+                System.out.print((float) score + " + ");
                 total += score;
             }
             potential_placed_cards.get(getColorIndex(c.getCardColor())).removeCard(c2);
             // display expected score for discarding card
             discarding_expected_score.add(total);
-            c.display();
+            c2.display();
             System.out.println("'s discarding exp-score " + (float) total);
 
             // placing it
