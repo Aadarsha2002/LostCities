@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.util.*;
 
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-
 /*
 Holds
     array of colors possible

@@ -200,7 +200,7 @@ public class Ai extends Player {
                 discarding_max_index = i;
         }
 
-        Card outgoing_card = new Card();
+        Card outgoing_card;
         if (discarding_expected_score.get(discarding_max_index) > placing_expected_score.get(placing_max_index)) {
             // discard the card when discarding gives a higher score than placing it
             outgoing_card = hand.getCardAt(discarding_max_index);
