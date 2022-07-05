@@ -4,7 +4,7 @@ public class LostCities {
     public static void main(String[] args) {
         while (true) {
             // GameManager gm = new GameManager(askAiHuman(1), askAiHuman(2));
-            GameManager gm = new GameManager("human", "human");
+            GameManager gm = new GameManager("human", "ai");
             gm.dealCards();
             gm.playGame();
 

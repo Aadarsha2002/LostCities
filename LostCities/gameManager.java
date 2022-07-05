@@ -31,8 +31,8 @@ public class GameManager {
     /* Initialize the internal variables */
     public GameManager(String s1, String s2) {
         if (s1 == "human") {
-            p1 = new Human("testCasesp1.txt");
-            // p1 = new Human("emptyFileForHuman.txt");
+            // p1 = new Human("testCasesp1.txt");
+            p1 = new Human("emptyFileForHuman.txt");
         } else {
             p1 = new Ai();
         }
@@ -74,7 +74,8 @@ public class GameManager {
         while (!undealt.isEmpty()) {
             // Player 1's Turn
             playPlayer(p1);
-            playPlayer(p2);
+            if (!undealt.isEmpty())
+                playPlayer(p2);
         }
 
         // Calculate scores
