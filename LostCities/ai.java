@@ -121,9 +121,6 @@ public class Ai extends Player {
 
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>();
 
-        // From a collection of ALL cards remove ineligible-to-place cards, change
-        // numbers of undealt cards to be a percentage of themselves, and remove the
-        // cards in your hand
         for (int i = 0; i < colors.length; i++) {
             potential_placed_cards.add(new CardsCollection());
             potential_placed_cards.get(i).makeColorPile(colors[i]);
@@ -131,22 +128,24 @@ public class Ai extends Player {
             for (int j = 0; j < potential_placed_cards.get(i).size(); j++) {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
                 potential_placed_cards.get(i).removeCard(c);
-
-                if (!isPlaced(c)) {
-                    // if the card is not placed down, it will contribute PARTIAL points to the
-                    // potential placed down score
-                    double percentage = (double) undealt.size() / 100;
-                    c.setCardNumber(c.getCardNumber() * percentage);
+                if (isInHand(c) || opponent_placed_down.get(i).contains(c)
+                        || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
+                    System.out.println("removed");
+                } else if (!isPlaced(c)) {
+                    double perc = (double) undealt.size() / 100;
+                    c.setCardNumber(c.getCardNumber() * perc);
                     potential_placed_cards.get(i).addCard(c);
-                    if (opponent_placed_down.get(i).contains(c)
-                            || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber() || isInHand(c)) {
-                        // if the card is placed down by opponent OR less than the highest placed card
-                        // OR is in AI's hand, it will contribute NOTHING to the potential placed down
-                        // score
-                        potential_placed_cards.get(i).removeCard(c);
-                    }
+                    System.out.println("perc added back");
+                } else {
+                    potential_placed_cards.get(i).addCard(c);
+                    System.out.println("fully added back");
                 }
             }
+        }
+
+        System.out.println("Potential Placed Cards: ");
+        for (int i = 0; i < potential_placed_cards.size(); i++) {
+            potential_placed_cards.get(i).display();
         }
 
         ArrayList<Double> placing_expected_score = new ArrayList<>();
@@ -163,7 +162,7 @@ public class Ai extends Player {
             System.out.println(" Discarding ");
             for (Color col : colors) {
                 double score = potential_placed_cards.get(getColorIndex((col))).getScore();
-                System.out.print((float)score + ", ");
+                System.out.print((float) score + ", ");
                 total += score;
             }
             // display expected score for discarding card
@@ -182,7 +181,7 @@ public class Ai extends Player {
             total = 0;
             for (Color col : colors) {
                 double score = potential_placed_cards.get(getColorIndex((col))).getScore();
-                System.out.print((float)score + ", ");
+                System.out.print((float) score + ", ");
                 total += score;
             }
             potential_placed_cards.get(getColorIndex(c.getCardColor())).removeCards(placeable_cards_in_hand);

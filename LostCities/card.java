@@ -65,7 +65,7 @@ public class Card {
     /* Output card to console */
     public void display() {
         System.out.print(getColorName(card_color).charAt(0));
-        System.out.print((int) card_number);
+        System.out.print((float) card_number);
     }
 
     /* PROTECTED FUNCTIONS */

@@ -59,7 +59,11 @@ public class CardsCollection {
 
     /* Returns true if a card exists in the cards */
     public boolean contains(Card c) {
-        return pile.contains(c);
+        for (int i = 0; i < pile.size(); i++) {
+            if (pile.get(i).getCardColor() == c.getCardColor() && pile.get(i).getCardNumber() == c.getCardNumber())
+                return true;
+        }
+        return false;
     }
 
     /* Returns true if empty */
