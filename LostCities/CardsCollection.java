@@ -66,7 +66,7 @@ public class CardsCollection {
 
     /* Returns true if empty */
     public boolean isEmpty() {
-        return pile.size() == 0;
+        return pile.isEmpty();
     }
 
     /* Return topmost card */
