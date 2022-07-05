@@ -130,15 +130,12 @@ public class Ai extends Player {
                 potential_placed_cards.get(i).removeCard(c);
                 if (isInHand(c) || opponent_placed_down.get(i).contains(c)
                         || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
-                    System.out.println("removed");
                 } else if (!isPlaced(c)) {
                     double perc = (double) undealt.size() / 100;
                     c.setCardNumber(c.getCardNumber() * perc);
                     potential_placed_cards.get(i).addCard(c);
-                    System.out.println("perc added back");
                 } else {
                     potential_placed_cards.get(i).addCard(c);
-                    System.out.println("fully added back");
                 }
             }
         }
@@ -155,16 +152,21 @@ public class Ai extends Player {
         // discarding it and add it to the appropriate ArrayList
         for (int i = 0; i < hand.size(); i++) {
             Card c = hand.getCardAt(i);
+            Card c2 = new Card((int) c.getCardNumber(), c.getCardColor());
 
             // discarding it
             double total = 0;
             c.display();
-            System.out.println(" Discarding ");
+            System.out.println();
+            double perc = (double) undealt.size() / 100;
+            c2.setCardNumber(c2.getCardNumber() * perc);
+            potential_placed_cards.get(getColorIndex(c2.getCardColor())).addCard(c2);
             for (Color col : colors) {
                 double score = potential_placed_cards.get(getColorIndex((col))).getScore();
                 System.out.print((float) score + ", ");
                 total += score;
             }
+            potential_placed_cards.get(getColorIndex(c.getCardColor())).removeCard(c2);
             // display expected score for discarding card
             discarding_expected_score.add(total);
             c.display();
