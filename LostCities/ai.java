@@ -111,8 +111,8 @@ public class Ai extends Player {
      * - If it's greater than the opponent's potential score, place the best card
      * - If it's not, then discard the worst
      */
-    public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down,
-            DiscardPiles discards, CardsCollection undealt) {
+    public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
+            CardsCollection undealt) {
 
         ArrayList<CardsCollection> potential_placed_cards = makePotentialPlacedCards(opponent_placed_down, undealt);
 
@@ -166,8 +166,8 @@ public class Ai extends Player {
      * of itself
      * ---- if card is none of the above, then keep the card as it is
      */
-    protected ArrayList<CardsCollection> makePotentialPlacedCards(
-            ArrayList<CardsCollection> opponent_placed_down, CardsCollection undealt) {
+    protected ArrayList<CardsCollection> makePotentialPlacedCards(ArrayList<CardsCollection> opponent_placed_down,
+            CardsCollection undealt) {
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>();
         for (int i = 0; i < colors.length; i++) {
             potential_placed_cards.add(new CardsCollection());
@@ -192,8 +192,11 @@ public class Ai extends Player {
         return potential_placed_cards;
     }
 
-    protected ArrayList<ArrayList<Double>> getExpectedScores(
-            ArrayList<CardsCollection> potential_placed_cards, CardsCollection undealt) {
+    /*
+     * 
+     */
+    protected ArrayList<ArrayList<Double>> getExpectedScores(ArrayList<CardsCollection> potential_placed_cards,
+            CardsCollection undealt) {
         ArrayList<ArrayList<Double>> expected_scores = new ArrayList<>(2);
         // 1 = expected scores for discarding
         // 2 = expected scores for placing
