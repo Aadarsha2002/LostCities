@@ -1,13 +1,11 @@
 import java.awt.*;
 import java.util.*;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
-
 public class Ai extends Player {
     Random rand = new Random(0);
 
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    static int[] numbers = { 0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     ArrayList<Double> good_cards;
 
@@ -130,6 +128,7 @@ public class Ai extends Player {
                 potential_placed_cards.get(i).removeCard(c);
                 if (c.getCardNumber() == 0 || isInHand(c) || opponent_placed_down.get(i).contains(c)
                         || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
+                    continue;
                 } else if (!isPlaced(c)) {
                     double perc = (double) undealt.size() / 100;
                     c.setCardNumber(c.getCardNumber() * perc);

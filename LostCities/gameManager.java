@@ -15,7 +15,7 @@ Holds:
 
 public class GameManager {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    static int[] numbers = { 0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     Player p1;
     Player p2;
@@ -38,8 +38,8 @@ public class GameManager {
         }
 
         if (s2 == "human") {
-            p2 = new Human("testCasesp2.txt");
-            // p2 = new Human("emptyFileForHuman.txt");
+            // p2 = new Human("testCasesp2.txt");
+            p2 = new Human("emptyFileForHuman.txt");
         } else {
             p2 = new Ai();
         }
@@ -145,6 +145,6 @@ public class GameManager {
                 + undealt.size() + " card" + (undealt.size() == 1 ? "" : "s") + " left in the draw pile");
         System.out.print("\nHand: ");
         p.display();
-        System.out.println("*_*_*_*_*_*_*_*_*_*_");
+        System.out.println("\n*_*_*_*_*_*_*_*_*_*_");
     }
 }

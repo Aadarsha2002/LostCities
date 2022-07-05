@@ -11,7 +11,7 @@ Holds:
 
 public abstract class Player {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    static int[] numbers = { 0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     Scanner in;
 

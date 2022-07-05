@@ -17,7 +17,7 @@ public class CardsCollection {
     Random rand = new Random(0);
 
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    static int[] numbers = { 0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     private ArrayList<Card> pile = new ArrayList<>(); // just holds a list of cards
     private boolean is_discard_pile; // holds whether the pile is a discard pile or not
@@ -246,13 +246,9 @@ public class CardsCollection {
 
     public void makeUndealtCardsPile() {
         for (Color col : colors) {
-            // add normal number cards
+            // add number and handshake cards
             for (int num : numbers) {
                 addCard(new Card(num, col));
-            }
-            // add 2 more handshake cards (1 was added in above loop)
-            for (int j = 0; j < 2; j++) {
-                addCard(new Card(numbers[0], col));
             }
         }
 
@@ -290,8 +286,6 @@ public class CardsCollection {
 
     /* Creates a pile of cards from 0 to 9 of the same color */
     public void makeColorPile(Color col) {
-        addCard(new Card(0, col));
-        addCard(new Card(0, col));
         for (int num : numbers) {
             addCard(new Card(num, col));
         }

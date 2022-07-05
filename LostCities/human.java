@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Human extends Player {
     static Color[] colors = { Color.yellow, Color.blue, Color.white, Color.green, Color.red };
-    static int[] numbers = { 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    static int[] numbers = { 0, 0, 0, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     File file;
     Scanner in2;
@@ -63,13 +63,13 @@ public class Human extends Player {
         String outgoing_card_index_str = ask("Pick a card to play", choices2);
         int outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
         outgoing_card = getCardAt(outgoing_card_index);
-        removeCard(outgoing_card);
 
         if (discard_or_place.equalsIgnoreCase("d")) {
+            removeCard(outgoing_card);
             discards.addCard(outgoing_card);
             System.out.print("You chose to discard ");
         } else {
-            // if the player chooses to place a card that is higher than the last placed
+            // if the player chooses to place a card that is smaller than the last placed
             // card in that card's color
             if (getTopPlacedCard(outgoing_card.getCardColor()).getCardColor() != Color.black
                     && outgoing_card.getCardNumber() < getTopPlacedCard(outgoing_card.getCardColor()).getCardNumber()) {
@@ -78,11 +78,11 @@ public class Human extends Player {
                 outgoing_card_index_str = ask("Pick a card to play", choices2);
                 outgoing_card_index = Integer.parseInt(outgoing_card_index_str);
                 outgoing_card = getCardAt(outgoing_card_index);
-                removeCard(outgoing_card);
             }
+            removeCard(outgoing_card);
             placeCard(outgoing_card);
-            System.out.print("You chose to place ");
         }
+        System.out.print("You chose to place ");
         outgoing_card.display();
 
         System.out.print("\nYour hand is now ");
