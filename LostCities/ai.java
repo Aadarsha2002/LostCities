@@ -182,7 +182,7 @@ public class Ai extends Player {
                     c.display();
                     System.out.println(" was removed from potential placed cards");
                 } else if (!isPlaced(c)) {
-                    double perc = 1 / (double) undealt.size();
+                    double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
                     c.setCardNumber(c.getCardNumber() * perc);
                     potential_placed_cards.get(i).addCard(c);
                 } else {
@@ -212,7 +212,7 @@ public class Ai extends Player {
             double total = 0;
             c.display();
             System.out.println();
-            double perc = 1 / (double) undealt.size();
+            double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
             c2.setCardNumber(c2.getCardNumber() * perc);
             potential_placed_cards.get(getColorIndex(c2.getCardColor())).addCard(c2);
             for (Color col : colors) {
