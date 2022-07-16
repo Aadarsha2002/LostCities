@@ -65,7 +65,7 @@ public class Card {
     /* Output card to console */
     public void display() {
         System.out.print(getColorName(card_color).charAt(0));
-        System.out.print(Math.round(card_number));
+        System.out.print((float) Math.round(card_number * 1000) / 1000);
     }
 
     /* PROTECTED FUNCTIONS */

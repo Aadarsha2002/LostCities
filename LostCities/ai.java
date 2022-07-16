@@ -116,8 +116,17 @@ public class Ai extends Player {
 
         ArrayList<CardsCollection> potential_placed_cards = makePotentialPlacedCards(hand, placed_down,
                 opponent_placed_down, undealt);
+        System.out.println("potential placed cards: ");
+        for (int i = 0; i < potential_placed_cards.size(); i++) {
+            potential_placed_cards.get(i).display();
+        }
+
         ArrayList<CardsCollection> opponent_potential_placed_cards = makePotentialPlacedCards(hand,
                 opponent_placed_down, placed_down, undealt);
+        System.out.println("opponent potential placed cards: ");
+        for (int i = 0; i < opponent_potential_placed_cards.size(); i++) {
+            opponent_potential_placed_cards.get(i).display();
+        }
 
         ArrayList<ArrayList<Double>> expected_scores = getExpectedScores(potential_placed_cards, undealt);
 
@@ -175,16 +184,33 @@ public class Ai extends Player {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
                 potential_placed_cards.get(i).removeCard(c);
 
-                if ((hand == player_hand && player_hand.contains(c)) && (c.getCardNumber() == 0
-                        || opponent_placed_down.get(i).contains(c)
-                        || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber())) {
-                    j--;
-                } else if (!player_placed_down.get(i).contains(c)) {
-                    double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
-                    c.setCardNumber(c.getCardNumber() * perc);
-                    potential_placed_cards.get(i).addCard(c);
+                // When it's AI's hand
+                if (hand == player_hand) {
+                    if (player_hand.contains(c) || c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
+                            || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
+                        j--;
+                    } else if (!player_placed_down.get(i).contains(c)) {
+                        // anything other than player placed down or hand
+                        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
+                        c.setCardNumber(c.getCardNumber() * perc);
+                        potential_placed_cards.get(i).addCard(c);
+                    } else {
+                        // If player placed
+                        potential_placed_cards.get(i).addCard(c);
+                    }
                 } else {
-                    potential_placed_cards.get(i).addCard(c);
+                    if (c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
+                            || c.getCardNumber() < player_placed_down.get(i).getTopCard().getCardNumber()) {
+                        j--;
+                    } else if (!player_placed_down.get(i).contains(c)) {
+                        //
+                        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 16);
+                        c.setCardNumber(c.getCardNumber() * perc);
+                        potential_placed_cards.get(i).addCard(c);
+                    } else {
+                        // if player placed
+                        potential_placed_cards.get(i).addCard(c);
+                    }
                 }
             }
         }
