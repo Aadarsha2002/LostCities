@@ -130,6 +130,15 @@ public class Ai extends Player {
 
         ArrayList<ArrayList<Double>> expected_scores = getExpectedScores(potential_placed_cards, undealt);
 
+        // opponent expected score
+        double total = 0;
+        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 16);
+        for (int i = 0; i < potential_placed_cards.size(); i++) {
+            double score = potential_placed_cards.get(getColorIndex((colors[i]))).getScore(20 * perc);
+            total += score;
+        }
+        System.out.println("Opponent's total expected score = " + total);
+
         int placing_max_index = 0;
         int discarding_max_index = 0;
         for (int i = 0; i < expected_scores.get(1).size(); i++) {
@@ -184,7 +193,8 @@ public class Ai extends Player {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
                 potential_placed_cards.get(i).removeCard(c);
                 if (player_placed_down == placed_down) {
-                    if (player_hand.contains(c) || c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
+                    if (player_hand.contains(c) || (c.getCardNumber() == 0)
+                            || opponent_placed_down.get(i).contains(c)
                             || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
                         j--;
                     } else if (!player_placed_down.get(i).contains(c)) {
@@ -208,6 +218,13 @@ public class Ai extends Player {
                     } else {
                         potential_placed_cards.get(i).addCard(c);
                     }
+                }
+            }
+            for (int j = 0; j < player_placed_down.get(i).size(); j++) {
+                if (player_placed_down.get(i).getCardAt(j).getCardNumber() != 0) {
+                    break;
+                } else {
+                    potential_placed_cards.get(i).addCard(new Card(0, colors[i]));
                 }
             }
         }
