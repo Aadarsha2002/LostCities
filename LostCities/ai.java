@@ -114,15 +114,15 @@ public class Ai extends Player {
     public Card outgoingPlay(ArrayList<CardsCollection> opponent_placed_down, DiscardPiles discards,
             CardsCollection undealt) {
 
-        ArrayList<CardsCollection> potential_placed_cards = makePlayerPotentialPlacedCards(hand, placed_down,
+        ArrayList<CardsCollection> potential_placed_cards = makePotentialPlacedCards(hand, placed_down,
                 opponent_placed_down, undealt);
         System.out.println("potential placed cards: ");
         for (int i = 0; i < potential_placed_cards.size(); i++) {
             potential_placed_cards.get(i).display();
         }
 
-        ArrayList<CardsCollection> opponent_potential_placed_cards = makeOpponentPotentialPlacedCards(hand, placed_down,
-                opponent_placed_down, undealt);
+        ArrayList<CardsCollection> opponent_potential_placed_cards = makePotentialPlacedCards(hand,
+                opponent_placed_down, placed_down, undealt);
         System.out.println("opponent potential placed cards: ");
         for (int i = 0; i < opponent_potential_placed_cards.size(); i++) {
             opponent_potential_placed_cards.get(i).display();
@@ -172,11 +172,10 @@ public class Ai extends Player {
      * of itself
      * ---- if card is none of the above, then keep the card as it is
      */
-    protected ArrayList<CardsCollection> makePlayerPotentialPlacedCards(CardsCollection player_hand,
+    protected ArrayList<CardsCollection> makePotentialPlacedCards(CardsCollection player_hand,
             ArrayList<CardsCollection> player_placed_down, ArrayList<CardsCollection> opponent_placed_down,
             CardsCollection undealt) {
         ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>();
-        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
         for (int i = 0; i < colors.length; i++) {
             potential_placed_cards.add(new CardsCollection());
             potential_placed_cards.get(i).makeColorPile(colors[i]);
@@ -184,42 +183,31 @@ public class Ai extends Player {
             for (int j = 0; j < potential_placed_cards.get(i).size(); j++) {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
                 potential_placed_cards.get(i).removeCard(c);
-                if (player_hand.contains(c) || c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
-                        || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
-                    j--;
-                } else if (!player_placed_down.get(i).contains(c)) {
-                    // anything other than player placed down or hand
-                    c.setCardNumber(c.getCardNumber() * perc);
-                    potential_placed_cards.get(i).addCard(c);
+                if (player_placed_down == placed_down) {
+                    if (player_hand.contains(c) || c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c)
+                            || c.getCardNumber() < getTopPlacedCard(colors[i]).getCardNumber()) {
+                        j--;
+                    } else if (!player_placed_down.get(i).contains(c)) {
+                        // anything other than player placed down or hand
+                        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
+                        c.setCardNumber(c.getCardNumber() * perc);
+                        potential_placed_cards.get(i).addCard(c);
+                    } else {
+                        // If player placed
+                        potential_placed_cards.get(i).addCard(c);
+                    }
                 } else {
-                    // If player placed
-                    potential_placed_cards.get(i).addCard(c);
-                }
-            }
-        }
-        return potential_placed_cards;
-    }
-
-    protected ArrayList<CardsCollection> makeOpponentPotentialPlacedCards(CardsCollection player_hand,
-            ArrayList<CardsCollection> player_placed_down, ArrayList<CardsCollection> opponent_placed_down,
-            CardsCollection undealt) {
-        ArrayList<CardsCollection> potential_placed_cards = new ArrayList<>();
-        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 16);
-        for (int i = 0; i < colors.length; i++) {
-            potential_placed_cards.add(new CardsCollection());
-            potential_placed_cards.get(i).makeColorPile(colors[i]);
-            for (int j = 0; j < potential_placed_cards.get(i).size(); j++) {
-                Card c = potential_placed_cards.get(i).getCardAt(j);
-                potential_placed_cards.get(i).removeCard(c);
-                if (c.getCardNumber() == 0 || player_placed_down.get(i).contains(c) || player_hand.contains(c)
-                        || (!opponent_placed_down.isEmpty()
-                                && c.getCardNumber() < opponent_placed_down.get(i).getTopCard().getCardNumber())) {
-                    j--;
-                } else if (!opponent_placed_down.get(i).contains(c)) {
-                    c.setCardNumber(c.getCardNumber() * perc);
-                    potential_placed_cards.get(i).addCard(c);
-                } else {
-                    potential_placed_cards.get(i).addCard(c);
+                    if (c.getCardNumber() == 0 || opponent_placed_down.get(i).contains(c) || player_hand.contains(c)
+                            || (!player_placed_down.get(i).isEmpty()
+                                    && c.getCardNumber() < player_placed_down.get(i).getTopCard().getCardNumber())) {
+                        j--;
+                    } else if (!player_placed_down.get(i).contains(c)) {
+                        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 16);
+                        c.setCardNumber(c.getCardNumber() * perc);
+                        potential_placed_cards.get(i).addCard(c);
+                    } else {
+                        potential_placed_cards.get(i).addCard(c);
+                    }
                 }
             }
         }
