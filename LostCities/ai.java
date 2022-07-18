@@ -212,7 +212,8 @@ public class Ai extends Player {
                 Card c = potential_placed_cards.get(i).getCardAt(j);
                 potential_placed_cards.get(i).removeCard(c);
                 if (c.getCardNumber() == 0 || player_placed_down.get(i).contains(c) || player_hand.contains(c)
-                        || c.getCardNumber() < opponent_placed_down.get(i).getTopCard().getCardNumber()) {
+                        || (!opponent_placed_down.isEmpty()
+                                && c.getCardNumber() < opponent_placed_down.get(i).getTopCard().getCardNumber())) {
                     j--;
                 } else if (!opponent_placed_down.get(i).contains(c)) {
                     c.setCardNumber(c.getCardNumber() * perc);
