@@ -112,7 +112,7 @@ public class Human extends Player {
         } else {
             /* Ask whether player wants to take card from discard pile or undealt pile */
             char[] choices1 = { 'u', 'd' };
-            String discard_or_undealt = ask("\nPick from Discards or Draw Pile", choices1);
+            String discard_or_undealt = ask("\nPick from Draw Pile or Discards", choices1);
 
             if (discard_or_undealt.equalsIgnoreCase("d")) {
                 System.out.print("You chose discard pile.\n");

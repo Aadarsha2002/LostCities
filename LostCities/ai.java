@@ -116,22 +116,22 @@ public class Ai extends Player {
 
         ArrayList<CardsCollection> potential_placed_cards = makePotentialPlacedCards(hand, placed_down,
                 opponent_placed_down, undealt);
-        System.out.println("potential placed cards: ");
-        for (int i = 0; i < potential_placed_cards.size(); i++) {
-            potential_placed_cards.get(i).display();
-        }
+        // System.out.println("potential placed cards: ");
+        // for (int i = 0; i < potential_placed_cards.size(); i++) {
+        //     potential_placed_cards.get(i).display();
+        // }
 
         ArrayList<CardsCollection> opponent_potential_placed_cards = makePotentialPlacedCards(hand,
                 opponent_placed_down, placed_down, undealt);
-        System.out.println("opponent potential placed cards: ");
-        for (int i = 0; i < opponent_potential_placed_cards.size(); i++) {
-            opponent_potential_placed_cards.get(i).display();
-        }
+        // System.out.println("opponent potential placed cards: ");
+        // for (int i = 0; i < opponent_potential_placed_cards.size(); i++) {
+        //     opponent_potential_placed_cards.get(i).display();
+        // }
 
         ArrayList<ArrayList<Double>> expected_scores = getExpectedScores(potential_placed_cards, undealt);
 
-        System.out.println("AI Expected Scores: ");
-        System.out.println(expected_scores.toString());
+        // System.out.println("AI Expected Scores: ");
+        // System.out.println(expected_scores.toString());
 
         // opponent expected score
         double total = 0;
