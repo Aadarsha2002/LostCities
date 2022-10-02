@@ -130,9 +130,12 @@ public class Ai extends Player {
 
         ArrayList<ArrayList<Double>> expected_scores = getExpectedScores(potential_placed_cards, undealt);
 
+        System.out.println("AI Expected Scores: ");
+        System.out.println(expected_scores.toString());
+
         // opponent expected score
         double total = 0;
-        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 16);
+        double perc = (((double) undealt.size() + 16) / 2) / ((double) undealt.size());
         for (int i = 0; i < potential_placed_cards.size(); i++) {
             double score = potential_placed_cards.get(getColorIndex((colors[i]))).getScore(20 * perc);
             total += score;
@@ -199,7 +202,7 @@ public class Ai extends Player {
                         j--;
                     } else if (!player_placed_down.get(i).contains(c)) {
                         // anything other than player placed down or hand
-                        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
+                        double perc = (((double) undealt.size() + 8) / 2) / ((double) undealt.size());
                         c.setCardNumber(c.getCardNumber() * perc);
                         potential_placed_cards.get(i).addCard(c);
                     } else {
@@ -212,7 +215,7 @@ public class Ai extends Player {
                                     && c.getCardNumber() < player_placed_down.get(i).getTopCard().getCardNumber())) {
                         j--;
                     } else if (!player_placed_down.get(i).contains(c)) {
-                        double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 16);
+                        double perc = (((double) undealt.size() + 16) / 2) / ((double) undealt.size());
                         c.setCardNumber(c.getCardNumber() * perc);
                         potential_placed_cards.get(i).addCard(c);
                     } else {
@@ -248,7 +251,7 @@ public class Ai extends Player {
 
             // discarding it
             double total = 0;
-            double perc = ((double) undealt.size() / 2) / ((double) undealt.size() + 8);
+            double perc = (((double) undealt.size() + 8) / 2) / ((double) undealt.size());
             c2.setCardNumber(c2.getCardNumber() * perc);
             potential_placed_cards.get(getColorIndex(c2.getCardColor())).addCard(c2);
             for (Color col : colors) {
